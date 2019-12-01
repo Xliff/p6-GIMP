@@ -4,11 +4,11 @@ use GTK::Compat::Types;
 
 use GIMP::Raw::Enums;
 
-use GIMP::Raw::Brush;
+use GIMP::PDB::Raw::Brush;
 
 use GLib::Roles::StaticClass;
 
-class GIMP::Brush {
+class GIMP::PDB::Brush {
   also does GLib::Roles::StaticClass;
 
   method new (Str() $name) {

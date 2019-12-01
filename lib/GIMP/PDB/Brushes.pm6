@@ -4,7 +4,7 @@ use NativeCall;
 
 use GLib::Roles::StaticClass;
 
-class GIMP::Brushes {
+class GIMP::PDB::Brushes {
   also does GLib::Roles::StaticClass;
 
   method close_popup (Str() $brush_callback) {

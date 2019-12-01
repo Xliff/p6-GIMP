@@ -2,11 +2,11 @@ use v6;
 
 use GTK::Raw::Utils;
 
-use GIMP::Raw::Misc;
+use GIMP::PDB::Raw::Misc;
 
 use GLib::Roles::StaticClass;
 
-class GIMP::Misc {
+class GIMP::PDB::Misc {
   also does GLib::Roles::StaticClass;
 
   method attach_parasite (GimpParasite $parasite) {

@@ -4,7 +4,7 @@ use NativeCall;
 
 use GTK::Compat::Types;
 
-unit package GIMP::Raw::Brush;
+unit package GIMP::PDB::Raw::Brush;
 
 ### /usr/include/gimp-2.0/libgimp/gimpbrush_pdb.h
 
