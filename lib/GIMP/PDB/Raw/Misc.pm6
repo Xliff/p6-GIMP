@@ -48,3 +48,17 @@ sub gimp_version ()
   is native(gimp)
   is export
 { * }
+
+### /usr/include/gimp-2.0/libgimp/gimpdebug_pdb.h
+
+sub gimp_debug_timer_end ()
+  returns gdouble
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_debug_timer_start ()
+  returns uint32
+  is native(gimp)
+  is export
+{ * }

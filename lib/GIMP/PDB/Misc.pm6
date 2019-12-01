@@ -39,4 +39,13 @@ class GIMP::PDB::Misc {
     gimp_version();
   }
 
+  method timer_end {
+    gimp_debug_timer_end();
+  }
+
+  method timer_start {
+    gimp_debug_timer_start();
+  }
+
+
 }
