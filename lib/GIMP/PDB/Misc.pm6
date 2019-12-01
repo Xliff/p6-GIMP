@@ -47,5 +47,4 @@ class GIMP::PDB::Misc {
     gimp_debug_timer_start();
   }
 
-
 }
