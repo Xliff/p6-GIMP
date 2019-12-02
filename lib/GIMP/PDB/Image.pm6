@@ -118,7 +118,7 @@ class GIMP::PDB::Image::Convert {
   method grayscale (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_convert_grayscale($image_ID);
+    gimp_image_convert_grayscale($i);
   }
 
   method indexed (
@@ -143,13 +143,13 @@ class GIMP::PDB::Image::Convert {
     my gint32 $i = $image_ID;
     my GimpPrecision $p = $precision;
 
-    gimp_image_convert_precision($image_ID, $precision);
+    gimp_image_convert_precision($i, $p);
   }
 
   method rgb (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_convert_rgb($image_ID);
+    gimp_image_convert_rgb($i);
   }
 
   method set_dither_matrix (
@@ -171,20 +171,20 @@ class GIMP::PDB::Image::Grid {
   method get_background_color (Int() $image_ID, GimpRGB $bgcolor) {
     my gint32 $i = $image_ID;
 
-    gimp_image_grid_get_background_color($image_ID, $bgcolor);
+    gimp_image_grid_get_background_color($i, $bgcolor);
   }
 
   method get_foreground_color (Int() $image_ID, GimpRGB $fgcolor) {
     my gint32 $i = $image_ID;
 
-    gimp_image_grid_get_foreground_color($image_ID, $fgcolor);
+    gimp_image_grid_get_foreground_color($i, $fgcolor);
   }
 
   method get_offset (Int() $image_ID, $xoffset is rw, $yoffset is rw) {
     my gint32 $i = $image_ID;
     my gdouble ($xo, $yo) = 0e0 xx 2;
 
-    gimp_image_grid_get_offset($image_ID, $xo, $yo);
+    gimp_image_grid_get_offset($i, $xo, $yo);
     ($xoffset, $yoffset) = ($xo, $yo)
   }
 
@@ -202,47 +202,47 @@ class GIMP::PDB::Image::Grid {
     my gint32 $i = $image_ID;
     my gdouble ($xs, $ys) = 0e0 xx 2;
 
-    gimp_image_grid_get_spacing($image_ID, $xs, $ys);
+    gimp_image_grid_get_spacing($i, $xs, $ys);
     ($xspacing, $yspacing) = ($xs, $ys);
   }
 
   method get_style (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    GimpGridStyleEnum( gimp_image_grid_get_style($image_ID) );
+    GimpGridStyleEnum( gimp_image_grid_get_style($i) );
   }
 
   method set_background_color (Int() $image_ID, GimpRGB $bgcolor) {
     my gint32 $i = $image_ID;
 
-    gimp_image_grid_set_background_color($image_ID, $bgcolor);
+    gimp_image_grid_set_background_color($i, $bgcolor);
   }
 
   method set_foreground_color (Int() $image_ID, GimpRGB $fgcolor) {
     my gint32 $i = $image_ID;
 
-    gimp_image_grid_set_foreground_color($image_ID, $fgcolor);
+    gimp_image_grid_set_foreground_color($i, $fgcolor);
   }
 
   method set_offset (Int() $image_ID, Num() $xoffset, Num() $yoffset) {
     my gint32 $i = $image_ID;
     my gdouble ($xo, $yo) = ($xoffset, $yoffset);
 
-    gimp_image_grid_set_offset($image_ID, $xo, $yo);
+    gimp_image_grid_set_offset($i, $xo, $yo);
   }
 
   method set_spacing (Int() $image_ID, Num() $xspacing, Num() $yspacing) {
     my gint32 $i = $image_ID;
     my gdouble ($xs, $ys) = ($xspacing, $yspacing);
 
-    gimp_image_grid_set_spacing($image_ID, $xs, $ys);
+    gimp_image_grid_set_spacing($i, $xs, $ys);
   }
 
   method set_style (Int() $image_ID, Int() $style) {
     my gint32 $i = $image_ID;
     my GimpGridStyle $s = $style;
 
-    gimp_image_grid_set_style($image_ID, $s);
+    gimp_image_grid_set_style($i, $s);
   }
 }
 
@@ -287,7 +287,7 @@ class GIMP::PDB::Image::Select {
     my GimpChannelOps $o = $operation;
     my gdouble ($xx, $yy, $w, $h) = ($x, $y, $width, $height);
 
-    gimp_image_select_ellipse($image_ID, $operation, $xx, $yy, $w, $h);
+    gimp_image_select_ellipse($i, $o, $xx, $yy, $w, $h);
   }
 
   method item (Int() $image_ID, Int() $operation, Int() $item_ID) {
@@ -359,7 +359,6 @@ class GIMP::PDB::Image::Select {
     Num() $corner_radius_y
   ) {
     my gint32 $i = $image_ID;
-    my gint32 $i = $image_ID;
     my GimpChannelOps $o = $operation;
     my gdouble ($xx, $yy, $w, $h, $cx, $cy) = (
       $x,
@@ -371,6 +370,53 @@ class GIMP::PDB::Image::Select {
     );
 
     gimp_image_select_round_rectangle($i, $o, $xx, $yy, $w, $h, $cx, $cy);
+  }
+
+}
+
+class GIMP::PDB::Image::Undo {
+  also does GLib::Roles::StaticClass;
+
+  method disable (Int() $image_ID) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_undo_disable($i);
+  }
+
+  method enable (Int() $image_ID) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_undo_enable($i);
+  }
+
+  method freeze (Int() $image_ID) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_undo_freeze($i);
+  }
+
+  method group_end (Int() $image_ID) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_undo_group_end($i);
+  }
+
+  method group_start (Int() $image_ID) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_undo_group_start($i);
+  }
+
+  method is_enabled (Int() $image_ID) {
+    my gint32 $i = $image_ID;
+
+    so gimp_image_undo_is_enabled($i);
+  }
+
+  method thaw (Int() $image_ID) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_undo_thaw($i);
   }
 
 }

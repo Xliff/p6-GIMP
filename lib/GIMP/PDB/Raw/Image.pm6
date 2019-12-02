@@ -312,3 +312,47 @@ sub gimp_image_select_round_rectangle (
   is native(gimp)
   is export
 { * }
+
+### /usr/include/gimp-2.0/libgimp/gimpimageundo_pdb.h
+
+sub gimp_image_undo_disable (gint32 $image_ID)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_undo_enable (gint32 $image_ID)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_undo_freeze (gint32 $image_ID)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_undo_group_end (gint32 $image_ID)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_undo_group_start (gint32 $image_ID)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_undo_is_enabled (gint32 $image_ID)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_undo_thaw (gint32 $image_ID)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
