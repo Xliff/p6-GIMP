@@ -250,84 +250,127 @@ class GIMP::PDB::Image::Select {
   also does GLib::Roles::StaticClass;
 
   method color (
-    gint32 $image_ID,
-    GimpChannelOps $operation,
-    gint32 $drawable_ID,
+    Int() $image_ID,
+    Int() $operation,
+    Int() $drawable_ID,
     GimpRGB $color
   ) {
-    my gint32 $i = $image_ID;
+    my gint32 ($i, $d) = ($image_ID, $drawable_ID);
+    my GimpChannelOps $o = $operation;
 
-    gimp_image_select_color($image_ID, $operation, $drawable_ID, $color);
+    gimp_image_select_color($i, $o, $d, $color);
   }
 
   method contiguous_color (
-    gint32 $image_ID,
-    GimpChannelOps $operation,
-    gint32 $drawable_ID,
-    gdouble $x,
-    gdouble $y
+    Int() $image_ID,
+    Int() $operation,
+    Int() $drawable_ID,
+    Num() $x,
+    Num() $y
   ) {
-    my gint32 $i = $image_ID;
+    my gint32 ($i, $d) = ($image_ID, $drawable_ID);
+    my GimpChannelOps $o = $operation;
+    my gdouble ($xx, $yy) = ($x, $y);
 
-    gimp_image_select_contiguous_color($image_ID, $operation, $drawable_ID, $x, $y);
+    gimp_image_select_contiguous_color($i, $o, $d, $xy, $yy);
   }
 
   method ellipse (
-    gint32 $image_ID,
-    GimpChannelOps $operation,
-    gdouble $x,
-    gdouble $y,
-    gdouble $width,
-    gdouble $height
+    Int() $image_ID,
+    Int() $operation,
+    Num() $x,
+    Num() $y,
+    Num() $width,
+    Num() $height
   ) {
     my gint32 $i = $image_ID;
+    my GimpChannelOps $o = $operation;
+    my gdouble ($xx, $yy, $w, $h) = ($x, $y, $width, $height);
 
-    gimp_image_select_ellipse($image_ID, $operation, $x, $y, $width, $height);
+    gimp_image_select_ellipse($image_ID, $operation, $xx, $yy, $w, $h);
   }
 
-  method item (gint32 $image_ID, GimpChannelOps $operation, gint32 $item_ID) {
-    my gint32 $i = $image_ID;
+  method item (Int() $image_ID, Int() $operation, Int() $item_ID) {
+    my gint32 ($i, $it) = ($image_ID, $item_ID);
+    my GimpChannelOps $o = $operation;
 
-    gimp_image_select_item($image_ID, $operation, $item_ID);
+    gimp_image_select_item($i, $o, $it);
   }
 
-  method polygon (
-    gint32 $image_ID,
-    GimpChannelOps $operation,
-    gint $num_segs,
+  proto method polygon (|)
+  { * }
+
+  multi method polygon
+    Int() $image_ID,
+    Int() $operation,
+    @segs
+  ) {
+    @segs .= map({
+      do if $_ ~~ Num {
+        $_
+      } else {
+        die '@segs must contain gdouble compatible entries'
+          unless .^can('Num').elems;
+        .Num;
+      }
+    });
+    my $sa = CArray[gdouble].new;
+    my $sc = @segs.elems;
+
+    $sa[$_] = @segs[$_] for ^$sc;
+    samewith($image_id, $operation, $sc, $sa);
+  }
+  multi method polygon (
+    Int() $image_ID,
+    Int() $operation,
+    Int() $num_segs,
     CArray[gdouble] $segs
   ) {
     my gint32 $i = $image_ID;
+    my GimpChannelOps $o = $operation;
+    my gint $n = $num_segs;
 
-    gimp_image_select_polygon($image_ID, $operation, $num_segs, $segs);
+    gimp_image_select_polygon($i, $o, $n, $segs);
   }
 
   method rectangle (
-    gint32 $image_ID,
-    GimpChannelOps $operation,
-    gdouble $x,
-    gdouble $y,
-    gdouble $width,
-    gdouble $height
+    Int() $image_ID,
+    Int() $operation,
+    Num() $x,
+    Num() $y,
+    Num() $width,
+    Num() $height
   ) {
     my gint32 $i = $image_ID;
+    my GimpChannelOps $o = $operation;
+    my gdouble ($xx, $yy, $w, $h) = ($x, $y, $width, $height);
 
-    gimp_image_select_rectangle($image_ID, $operation, $x, $y, $width, $height);
+    gimp_image_select_rectangle($i, $o, $xx, $yy, $w, $h);
   }
 
   method round_rectangle (
-    gint32 $image_ID,
-    GimpChannelOps $operation,
-    gdouble $x,
-    gdouble $y,
-    gdouble $width,
-    gdouble $height,
-    gdouble $corner_radius_x,
-    gdouble $corner_radius_y
+    Int() $image_ID,
+    Int() $operation,
+    Num() $x,
+    Num() $y,
+    Num() $width,
+    Num() $height,
+    Num() $corner_radius_x,
+    Num() $corner_radius_y
   ) {
     my gint32 $i = $image_ID;
+    my gint32 $i = $image_ID;
+    my GimpChannelOps $o = $operation;
+    my gdouble ($xx, $yy, $w, $h, $cx, $cy) = (
+      $x,
+      $y,
+      $width,
+      $height,
+      $corner_radius_x
+      $corner_radius_y
+    );
 
-    gimp_image_select_round_rectangle($image_ID, $operation, $x, $y, $width, $height, $corner_radius_x, $corner_radius_y);
+    gimp_image_select_round_rectangle($i, $o, $xx, $yy, $w, $h, $cx, $cy);
   }
-  
+
 }
