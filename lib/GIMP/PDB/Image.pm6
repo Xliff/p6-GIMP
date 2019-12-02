@@ -245,3 +245,89 @@ class GIMP::PDB::Image::Grid {
     gimp_image_grid_set_style($image_ID, $s);
   }
 }
+
+class GIMP::PDB::Image::Select {
+  also does GLib::Roles::StaticClass;
+
+  method color (
+    gint32 $image_ID,
+    GimpChannelOps $operation,
+    gint32 $drawable_ID,
+    GimpRGB $color
+  ) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_select_color($image_ID, $operation, $drawable_ID, $color);
+  }
+
+  method contiguous_color (
+    gint32 $image_ID,
+    GimpChannelOps $operation,
+    gint32 $drawable_ID,
+    gdouble $x,
+    gdouble $y
+  ) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_select_contiguous_color($image_ID, $operation, $drawable_ID, $x, $y);
+  }
+
+  method ellipse (
+    gint32 $image_ID,
+    GimpChannelOps $operation,
+    gdouble $x,
+    gdouble $y,
+    gdouble $width,
+    gdouble $height
+  ) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_select_ellipse($image_ID, $operation, $x, $y, $width, $height);
+  }
+
+  method item (gint32 $image_ID, GimpChannelOps $operation, gint32 $item_ID) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_select_item($image_ID, $operation, $item_ID);
+  }
+
+  method polygon (
+    gint32 $image_ID,
+    GimpChannelOps $operation,
+    gint $num_segs,
+    CArray[gdouble] $segs
+  ) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_select_polygon($image_ID, $operation, $num_segs, $segs);
+  }
+
+  method rectangle (
+    gint32 $image_ID,
+    GimpChannelOps $operation,
+    gdouble $x,
+    gdouble $y,
+    gdouble $width,
+    gdouble $height
+  ) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_select_rectangle($image_ID, $operation, $x, $y, $width, $height);
+  }
+
+  method round_rectangle (
+    gint32 $image_ID,
+    GimpChannelOps $operation,
+    gdouble $x,
+    gdouble $y,
+    gdouble $width,
+    gdouble $height,
+    gdouble $corner_radius_x,
+    gdouble $corner_radius_y
+  ) {
+    my gint32 $i = $image_ID;
+
+    gimp_image_select_round_rectangle($image_ID, $operation, $x, $y, $width, $height, $corner_radius_x, $corner_radius_y);
+  }
+  
+}

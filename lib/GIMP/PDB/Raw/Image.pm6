@@ -225,3 +225,90 @@ sub gimp_image_get_sample_point_position (
   is native(gimp)
   is export
 { * }
+
+### /usr/include/gimp-2.0/libgimp/gimpimageselect_pdb.h
+
+sub gimp_image_select_color (
+  gint32 $image_ID,
+  GimpChannelOps $operation,
+  gint32 $drawable_ID,
+  GimpRGB $color
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_select_contiguous_color (
+  gint32 $image_ID,
+  GimpChannelOps $operation,
+  gint32 $drawable_ID,
+  gdouble $x,
+  gdouble $y
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_select_ellipse (
+  gint32 $image_ID,
+  GimpChannelOps $operation,
+  gdouble $x,
+  gdouble $y,
+  gdouble $width,
+  gdouble $height
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_select_item (
+  gint32 $image_ID,
+  GimpChannelOps $operation,
+  gint32 $item_ID
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_select_polygon (
+  gint32 $image_ID,
+  GimpChannelOps $operation,
+  gint $num_segs,
+  CArray[gdouble] $segs
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_select_rectangle (
+  gint32 $image_ID,
+  GimpChannelOps $operation,
+  gdouble $x,
+  gdouble $y,
+  gdouble $width,
+  gdouble $height
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_select_round_rectangle (
+  gint32 $image_ID,
+  GimpChannelOps $operation,
+  gdouble $x,
+  gdouble $y,
+  gdouble $width,
+  gdouble $height,
+  gdouble $corner_radius_x,
+  gdouble $corner_radius_y
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
