@@ -205,3 +205,132 @@ sub gimp_item_set_visible (gint32 $item_ID, gboolean $visible)
   is native(gimp)
   is export
 { * }
+
+### /usr/include/gimp-2.0/libgimp/gimpitemtransform_pdb.h
+
+sub gimp_item_transform_2d (
+  gint32 $item_ID,
+  gdouble $source_x,
+  gdouble $source_y,
+  gdouble $scale_x,
+  gdouble $scale_y,
+  gdouble $angle,
+  gdouble $dest_x,
+  gdouble $dest_y
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_item_transform_flip (
+  gint32 $item_ID,
+  gdouble $x0,
+  gdouble $y0,
+  gdouble $x1,
+  gdouble $y1
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_item_transform_flip_simple (
+  gint32 $item_ID,
+  GimpOrientationType $flip_type,
+  gboolean $auto_center,
+  gdouble $axis
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_item_transform_matrix (
+  gint32 $item_ID,
+  gdouble $coeff_0_0,
+  gdouble $coeff_0_1,
+  gdouble $coeff_0_2,
+  gdouble $coeff_1_0,
+  gdouble $coeff_1_1,
+  gdouble $coeff_1_2,
+  gdouble $coeff_2_0,
+  gdouble $coeff_2_1,
+  gdouble $coeff_2_2
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_item_transform_perspective (
+  gint32 $item_ID,
+  gdouble $x0,
+  gdouble $y0,
+  gdouble $x1,
+  gdouble $y1,
+  gdouble $x2,
+  gdouble $y2,
+  gdouble $x3,
+  gdouble $y3
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_item_transform_rotate (
+  gint32 $item_ID,
+  gdouble $angle,
+  gboolean $auto_center,
+  gdouble $center_x,
+  gdouble $center_y
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_item_transform_rotate_simple (
+  gint32 $item_ID,
+  GimpRotationType $rotate_type,
+  gboolean $auto_center,
+  gdouble $center_x,
+  gdouble $center_y
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_item_transform_scale (
+  gint32 $item_ID,
+  gdouble $x0,
+  gdouble $y0,
+  gdouble $x1,
+  gdouble $y1
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_item_transform_shear (
+  gint32 $item_ID,
+  GimpOrientationType $shear_type,
+  gdouble $magnitude
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_item_transform_translate (
+  gint32 $item_ID,
+  gdouble $off_x,
+  gdouble $off_y
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }

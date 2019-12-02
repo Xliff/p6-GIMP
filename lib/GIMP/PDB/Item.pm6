@@ -226,4 +226,196 @@ class GIMP::PDB::Item {
     so gimp_item_set_visible($i, $v);
   }
 
+
+class GIMP::PDB::Item::Transform {
+  also does GLib::Raw::StaticClass;\
+
+  method two-d (
+    Int() $item_ID,
+    Num() $source_x,
+    Num() $source_y,
+    Num() $scale_x,
+    Num() $scale_y,
+    Num() $angle,
+    Num() $dest_x,
+    Num() $dest_y
+  ) {
+    my gint32 $i = $item_ID;
+
+    my ($sx, $sy, $scx, $scy, $a, $dx, $dy) = (
+      $source_x,
+      $source_y,
+      $scale_x,
+      $scale_y,
+      $angle,
+      $dest_x,
+      $dest_y
+    );
+
+    gimp_item_transform_2d($i, $sx, $sy, $scx, $scy, $a, $dx, $dy);
+  }
+
+  method flip (
+    Int() $item_ID,
+    Num() $x0,
+    Num() $y0,
+    Num() $x1,
+    Num() $y1
+  ) {
+    my gint32 $i = $item_ID;
+    my gdouble ($xx0, $yy0, $xx1, $yy1) = ($x0, $y0, $x1, $y1);
+
+    gimp_item_transform_flip($item_ID, $xx0, $yy0, $xx1, $yy1);
+  }
+
+  method flip_simple (
+    Int() $item_ID,
+    Int() $flip_type,
+    Int() $auto_center,
+    Num() $axis
+  ) {
+    my gint32 $i = $item_ID;
+    my GimpOrientationType $f = $flip_type;
+    my gboolean $a = (so $auto_center).Int;
+    my gdouble $ax = $axis;
+
+    gimp_item_transform_flip_simple($i, $f, $a, $ax);
+  }
+
+  method matrix (
+    Int() $item_ID,
+    Num() $coeff_0_0,
+    Num() $coeff_0_1,
+    Num() $coeff_0_2,
+    Num() $coeff_1_0,
+    Num() $coeff_1_1,
+    Num() $coeff_1_2,
+    Num() $coeff_2_0,
+    Num() $coeff_2_1,
+    Num() $coeff_2_2
+  ) {
+    my gint32 $i = $item_ID;
+    my gdouble ($c00, $c01, $c02, $c10, $c11, $c12, $c20, $c21, $c22) = (
+      $coeff_0_0,
+      $coeff_0_1,
+      $coeff_0_2,
+      $coeff_1_0,
+      $coeff_1_1,
+      $coeff_1_2,
+      $coeff_2_0,
+      $coeff_2_1,
+      $coeff_2_2
+    );
+
+    gimp_item_transform_matrix(
+      $i,
+      $c00,
+      $c01,
+      $c02,
+      $c10,
+      $c11,
+      $c12,
+      $c20,
+      $c21,
+      $c22
+    );
+  }
+
+  method perspective (
+    gint32 $item_ID,
+    gdouble $x0,
+    gdouble $y0,
+    gdouble $x1,
+    gdouble $y1,
+    gdouble $x2,
+    gdouble $y2,
+    gdouble $x3,
+    gdouble $y3
+  ) {
+    my gint32 $i = $item_ID;
+    my gdouble ($dx0, $dy0, $dx1, $dy1, $dx2, $dy2, $dx3, $dy3) = (
+      $x0,
+      $y0,
+      $x1,
+      $y1,
+      $x2,
+      $y2,
+      $x3,
+      $y3
+    );
+
+    gimp_item_transform_perspective(
+      $i,
+      $dx0,
+      $dy0,
+      $dx1,
+      $dy1,
+      $dx2,
+      $dy2,
+      $dx3,
+      $dy3
+    );
+  }
+
+  method rotate (
+    Int() $item_ID,
+    Num() $angle,
+    Int() $auto_center,
+    Num() $center_x,
+    Num() $center_y
+  ) {
+    my gint32 $i = $item_ID;
+    my gboolean $ac = (so $auto_center).Int;
+    my gdouble ($a, $cx, $cy) = ($angle, $center_x, $center_y);
+
+    gimp_item_transform_rotate($i, $a, $ac, $cx, $cy);
+  }
+
+  method rotate_simple (
+    Int() $item_ID,
+    Int() $rotate_type,
+    Int() $auto_center,
+    Num() $center_x,
+    Num() $center_y
+  ) {
+    my gint32 $i = $item_ID;
+    my GimpRotationType $r = $rotate_type;
+    my gboolean $ac = (so $auto_center).Int;
+    my gdouble ($cx, $cy) = ($angle, $center_x, $center_y);
+
+    gimp_item_transform_rotate_simple($i, $r, $ac, $cx, $cy);
+  }
+
+  method scale (
+    Int() $item_ID,
+    Num() $x0,
+    Num() $y0,
+    Num() $x1,
+    Num() $y1
+  ) {
+    my gint32 $i = $item_ID;
+    my gdouble ($xx0, $yy0, $xx1, $yy1) = ($x0, $y0, $x1, $y1);
+
+    gimp_item_transform_scale($i, $xx0, $yy0, $xx1, $yy1);
+  }
+
+  method shear (
+    Int() $item_ID,
+    Int() $shear_type,
+    Num() $magnitude
+  ) {
+    my gint32 $i = $item_ID;
+    my GimpOrientationType $s = $shear_type;
+    my gdouble $m = $magnitude;
+
+    gimp_item_transform_shear($i, $s, $m);
+  }
+
+  method translate (Int() $item_ID, Num() $off_x, Num() $off_y) {
+    my gint32 $i = $item_ID;
+    my gdouble ($ox, $oy) = ($off_x, $off_y);
+
+    gimp_item_transform_translate($i, $ox, $oy);
+  }
+
 }
