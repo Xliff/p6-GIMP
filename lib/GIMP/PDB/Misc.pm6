@@ -47,4 +47,8 @@ class GIMP::PDB::Misc {
     gimp_debug_timer_start();
   }
 
+  method help (Str() $help_domain, Str() $help_id) {
+    gimp_help($help_domain, $help_id);
+  }
+
 }

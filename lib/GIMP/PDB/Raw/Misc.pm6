@@ -62,3 +62,12 @@ sub gimp_debug_timer_start ()
   is native(gimp)
   is export
 { * }
+
+
+### /usr/include/gimp-2.0/libgimp/gimphelp_pdb.h
+
+sub gimp_help (Str $help_domain, Str $help_id)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
