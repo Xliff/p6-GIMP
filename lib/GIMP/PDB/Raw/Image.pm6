@@ -72,3 +72,81 @@ sub gimp_image_convert_set_dither_matrix (
   is native(gimp)
   is export
 { * }
+
+### /usr/include/gimp-2.0/libgimp/gimpimagegrid_pdb.h
+
+sub gimp_image_grid_get_background_color (gint32 $image_ID, GimpRGB $bgcolor)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_grid_get_foreground_color (gint32 $image_ID, GimpRGB $fgcolor)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_grid_get_offset (
+  gint32 $image_ID,
+  gdouble $xoffset,
+  gdouble $yoffset
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_grid_get_spacing (
+  gint32 $image_ID,
+  gdouble $xspacing,
+  gdouble $yspacing
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_grid_get_style (gint32 $image_ID)
+  returns GimpGridStyle
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_grid_set_background_color (gint32 $image_ID, GimpRGB $bgcolor)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_grid_set_foreground_color (gint32 $image_ID, GimpRGB $fgcolor)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_grid_set_offset (
+  gint32 $image_ID,
+  gdouble $xoffset,
+  gdouble $yoffset
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_grid_set_spacing (
+  gint32 $image_ID,
+  gdouble $xspacing,
+  gdouble $yspacing
+)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_grid_set_style (gint32 $image_ID, GimpGridStyle $style)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
