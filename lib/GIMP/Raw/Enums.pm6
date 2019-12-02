@@ -437,6 +437,39 @@ our enum GimpLayerModeEnum is export <
     GIMP_LAYER_MODE_PASS_THROUGH
 >;
 
+constant GimpConversionPaletteType := guint;
+our enum GimpConversionPaletteTypeEnum is export (
+  'GIMP_CONVERT_PALETTE_GENERATE', # Generate optimum palette
+  'GIMP_CONVERT_PALETTE_REUSE',    # Skip
+  'GIMP_CONVERT_PALETTE_WEB',      # Use web-optimized palette
+  'GIMP_CONVERT_PALETTE_MONO',     # Use black and white (1-bit) palette
+  'GIMP_CONVERT_PALETTE_CUSTOM',   # Use custom palette
+);
+
+our enum GimpConversionPaletteTypeDeprecatedEnum is export (
+  GIMP_MAKE_PALETTE   => GIMP_CONVERT_PALETTE_GENERATE, # skip, pdb-skip
+  GIMP_REUSE_PALETTE  => GIMP_CONVERT_PALETTE_REUSE,    # skip, pdb-skip
+  GIMP_WEB_PALETTE    => GIMP_CONVERT_PALETTE_WEB,      # skip, pdb-skip
+  GIMP_MONO_PALETTE   => GIMP_CONVERT_PALETTE_MONO,     # skip, pdb-skip
+  GIMP_CUSTOM_PALETTE => GIMP_CONVERT_PALETTE_CUSTOM    # skip, pdb-skip
+);
+
+constant GimpPrecision is export := guint;
+our enum GimpPrecisionEnum (
+  GIMP_PRECISION_U8_LINEAR     => 100, # 8-bit linear integer
+  GIMP_PRECISION_U8_GAMMA      => 150, # 8-bit gamma integer
+  GIMP_PRECISION_U16_LINEAR    => 200, # 16-bit linear integer
+  GIMP_PRECISION_U16_GAMMA     => 250, # 16-bit gamma integer
+  GIMP_PRECISION_U32_LINEAR    => 300, # 32-bit linear integer
+  GIMP_PRECISION_U32_GAMMA     => 350, # 32-bit gamma integer
+  GIMP_PRECISION_HALF_LINEAR   => 500, # 16-bit linear floating point
+  GIMP_PRECISION_HALF_GAMMA    => 550, # 16-bit gamma floating point
+  GIMP_PRECISION_FLOAT_LINEAR  => 600, # 32-bit linear floating point
+  GIMP_PRECISION_FLOAT_GAMMA   => 650, # 32-bit gamma floating point
+  GIMP_PRECISION_DOUBLE_LINEAR => 700, # 64-bit linear floating point
+  GIMP_PRECISION_DOUBLE_GAMMA  => 750  # 64-bit gamma floating point
+);
+
 constant GimpPixbufTransparency is export := guint32;
 our enum GimpPixbufTransparencyEnum is export <
     GIMP_PIXBUF_KEEP_ALPHA
