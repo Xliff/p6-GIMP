@@ -150,3 +150,41 @@ sub gimp_image_grid_set_style (gint32 $image_ID, GimpGridStyle $style)
   is native(gimp)
   is export
 { * }
+
+### /usr/include/gimp-2.0/libgimp/gimpimageguides_pdb.h
+
+sub gimp_image_add_hguide (gint32 $image_ID, gint $yposition)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_add_vguide (gint32 $image_ID, gint $xposition)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_delete_guide (gint32 $image_ID, gint32 $guide_ID)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_find_next_guide (gint32 $image_ID, gint32 $guide_ID)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_get_guide_orientation (gint32 $image_ID, gint32 $guide_ID)
+  returns GimpOrientationType
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_get_guide_position (gint32 $image_ID, gint32 $guide_ID)
+  returns gint
+  is native(gimp)
+  is export
+{ * }
