@@ -7,6 +7,7 @@ use GTK::Compat::Types;
 use GIMP::Raw::Enums;
 use GIMP::Raw::Structs;
 
+use GIMP::PDB::Raw::Utils;
 use GIMP::PDB::Raw::Image;
 
 use GLib::Roles::StaticClass;
@@ -305,20 +306,7 @@ class GIMP::PDB::Image::Select {
     Int() $operation,
     @segs
   ) {
-    @segs .= map({
-      do if $_ ~~ Num {
-        $_
-      } else {
-        die '@segs must contain gdouble compatible entries'
-          unless .^can('Num').elems;
-        .Num;
-      }
-    });
-    my $sa = CArray[gdouble].new;
-    my $sc = @segs.elems;
-
-    $sa[$_] = @segs[$_] for ^$sc;
-    samewith($image_id, $operation, $sc, $sa);
+    samewith($image_id, $operation, DoubleArrayToCArray(@segs), $sa);
   }
   multi method polygon (
     Int() $image_ID,
