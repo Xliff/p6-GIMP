@@ -21,6 +21,24 @@ class GIMP::PDB::Fonts {
     gimp_fonts_set_popup($font_callback, $font_name);
   }
 
+  proto method get_list (|)
+  { * }
+
+  multi method get_list (Str() $filter) {
+    samewith($filter, $);
+  }
+  method get_list (Str() $filter, $num_fonts is rw) {
+    my gint $n = $num_fonts;
+    my $fa = gimp_fonts_get_list($filter, $n);
+
+    $num_fonts = $n;
+    CStringArrayToArray($fa, $n);
+  }
+
+  method refresh {
+    gimp_fonts_refresh();
+  }
+
 }
 
 ### /usr/include/gimp-2.0/libgimp/gimpfontselect_pdb.h
@@ -38,6 +56,20 @@ sub gimp_fonts_popup (Str() $font_callback, Str() $popup_title, Str() $initial_f
 { * }
 
 sub gimp_fonts_set_popup (Str() $font_callback, Str() $font_name)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+### /usr/include/gimp-2.0/libgimp/gimpfonts_pdb.h
+
+sub gimp_fonts_get_list (Str $filter, gint $num_fonts is rw)
+  returns CArray[Str]
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_fonts_refresh ()
   returns uint32
   is native(gimp)
   is export
