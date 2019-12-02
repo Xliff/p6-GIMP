@@ -188,3 +188,40 @@ sub gimp_image_get_guide_position (gint32 $image_ID, gint32 $guide_ID)
   is native(gimp)
   is export
 { * }
+
+### /usr/include/gimp-2.0/libgimp/gimpimagesamplepoints_pdb.h
+
+sub gimp_image_add_sample_point (
+  gint32 $image_ID,
+  gint $position_x,
+  gint $position_y
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_delete_sample_point (gint32 $image_ID, gint32 $sample_point_ID)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_find_next_sample_point (
+  gint32 $image_ID,
+  gint32 $sample_point_ID
+)
+  returns gint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_image_get_sample_point_position (
+  gint32 $image_ID,
+  gint32 $sample_point_ID,
+  gint $position_y
+)
+  returns gint
+  is native(gimp)
+  is export
+{ * }
