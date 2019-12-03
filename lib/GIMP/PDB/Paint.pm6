@@ -14,7 +14,15 @@ use GLib::Roles::StaticClass;
 class GIMP::PDB::Raw::Paint {
   also does GLib::Roles::StaticClass;
 
-  method airbrush (
+  multi method airbrush (
+    Int() $drawable_ID,
+    Num() $pressure
+  ) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, $pressure, @strokes.elems, $ca);
+  }
+  multi method airbrush (
     Int() $drawable_ID,
     Num() $pressure,
     Int() $num_strokes,
@@ -27,7 +35,12 @@ class GIMP::PDB::Raw::Paint {
     gimp_airbrush($drawable_ID, $pressure, $num_strokes, $strokes);
   }
 
-  method airbrush_default (
+  multi method airbrush_default (Int() $drawable_ID, @strokes) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, @strokes.elems, $ca);
+  }
+  multi method airbrush_default (
     Int() $drawable_ID,
     Int() $num_strokes,
     CArray[gdouble] $strokes
@@ -38,7 +51,26 @@ class GIMP::PDB::Raw::Paint {
     gimp_airbrush_default($drawable_ID, $num_strokes, $strokes);
   }
 
-  method clone (
+  multi method clone (
+    Int() $drawable_ID,
+    Int() $src_drawable_ID,
+    Int() $clone_type,
+    Num() $src_x,
+    Num() $src_y
+  ) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith(
+      $drawable_ID,
+      $src_drawable_ID,
+      $clone_type,
+      $src_x,
+      $src_y,
+      @strokes.elems,
+      $ca
+    );
+  }
+  multi method clone (
     Int() $drawable_ID,
     Int() $src_drawable_ID,
     Int() $clone_type,
@@ -52,10 +84,26 @@ class GIMP::PDB::Raw::Paint {
     my gint $n = $num_strokes;
     my gdouble ($sx, $sy) = ($src_x, $src_y);
 
-    gimp_clone($drawable_ID, $src_drawable_ID, $clone_type, $src_x, $src_y, $num_strokes, $strokes);
+    gimp_clone(
+      $drawable_ID,
+      $src_drawable_ID,
+      $clone_type,
+      $src_x,
+      $src_y,
+      $num_strokes,
+      $strokes
+    );
   }
 
-  method clone_default (
+  proto method clone_default (|)
+  { * }
+
+  multi method clone_default (Int() $drawable_ID, @strokes) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, @strokes.elems, @strokes);
+  }
+  multi method clone_default (
     Int() $drawable_ID,
     Int() $num_strokes,
     CArray[gdouble] $strokes
@@ -66,7 +114,17 @@ class GIMP::PDB::Raw::Paint {
     gimp_clone_default($drawable_ID, $num_strokes, $strokes);
   }
 
-  method convolve (
+  multi method convolve (
+    Int() $drawable_ID,
+    Num() $pressure,
+    Int() $convolve_type,
+    @strokes
+  ) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, $pressure, $convolve_type, @strokes.elems, $ca);
+  }
+  multi method convolve (
     Int() $drawable_ID,
     Num() $pressure,
     Int() $convolve_type,
@@ -81,6 +139,14 @@ class GIMP::PDB::Raw::Paint {
     gimp_convolve($drawable_ID, $pressure, $convolve_type, $num_strokes, $strokes);
   }
 
+  proto method convolve_default (|)
+  { * }
+
+  method convolve_default (Int() $drawable_ID, @strokes) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, @strokes.elems, $ca);
+  }
   method convolve_default (
     Int() $drawable_ID,
     Int() $num_strokes,
@@ -92,7 +158,25 @@ class GIMP::PDB::Raw::Paint {
     gimp_convolve_default($drawable_ID, $num_strokes, $strokes);
   }
 
-  method dodgeburn (
+  multi method dodgeburn (
+    Int() $drawable_ID,
+    Num() $exposure,
+    Int() $dodgeburn_type,
+    Int() $dodgeburn_mode,
+    @strokes
+  ) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith(
+      $drawable_ID,
+      $exposure,
+      $dodgeburn_type,
+      $dodgeburn_mode,
+      @strokes.elems,
+      $ca
+    );
+  }
+  multi method dodgeburn (
     Int() $drawable_ID,
     Num() $exposure,
     Int() $dodgeburn_type,
@@ -109,7 +193,15 @@ class GIMP::PDB::Raw::Paint {
     gimp_dodgeburn($drawable_ID, $exposure, $dodgeburn_type, $dodgeburn_mode, $num_strokes, $strokes);
   }
 
-  method dodgeburn_default (
+  proto method dodgeburn_default (|)
+  { * }
+
+  multi method dodgeburn_default (Int() $drawable_ID, @strokes) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, @strokes.elems, $ca);
+  }
+  multi method dodgeburn_default (
     Int() $drawable_ID,
     Int() $num_strokes,
     CArray[gdouble] $strokes
@@ -120,7 +212,17 @@ class GIMP::PDB::Raw::Paint {
     gimp_dodgeburn_default($drawable_ID, $num_strokes, $strokes);
   }
 
-  method eraser (
+  multi method eraser (
+    Int() $drawable_ID,
+    Int() $hardness,
+    Int() $method,
+    @strokes
+  ) {
+    my $ca = DoubleArrayToCArray(@stokes);
+
+    samewith($drawable_ID, @strokes.elems, $ca, $hardness, $method);
+  }
+  multi method eraser (
     Int() $drawable_ID,
     Int() $num_strokes,
     CArray[gdouble] $strokes,
@@ -135,7 +237,15 @@ class GIMP::PDB::Raw::Paint {
     gimp_eraser($drawable_ID, $num_strokes, $strokes, $hardness, $method);
   }
 
-  method eraser_default (
+  proto method eraser_default (|)
+  { * }
+
+  multi method eraser_default (Int() $drawable_ID, @strokes) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, @strokes.elems, $ca);
+  }
+  multi method eraser_default (
     Int() $drawable_ID,
     Int() $num_strokes,
     CArray[gdouble] $strokes
@@ -146,7 +256,25 @@ class GIMP::PDB::Raw::Paint {
     gimp_eraser_default($drawable_ID, $num_strokes, $strokes);
   }
 
-  method heal (
+  multi method heal (
+    Int() $drawable_ID,
+    Int() $src_drawable_ID,
+    Num() $src_x,
+    Num() $src_y,
+    @strokes
+  ) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith(
+      $drawable_ID,
+      $src_drawable_ID,
+      $src_x,
+      $src_y,
+      @strokes.elems,
+      $ca
+    );
+  }
+  multi method heal (
     Int() $drawable_ID,
     Int() $src_drawable_ID,
     Num() $src_x,
@@ -161,7 +289,15 @@ class GIMP::PDB::Raw::Paint {
     gimp_heal($drawable_ID, $src_drawable_ID, $src_x, $src_y, $num_strokes, $strokes);
   }
 
-  method heal_default (
+  proto method heal_default (|)
+  { * }
+
+  multi method heal_default (Int() $drawable_ID, @strokes) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, @strokes.elems, $ca);
+  }
+  multi method heal_default (
     Int() $drawable_ID,
     Int() $num_strokes,
     CArray[gdouble] $strokes
@@ -172,7 +308,25 @@ class GIMP::PDB::Raw::Paint {
     gimp_heal_default($drawable_ID, $num_strokes, $strokes);
   }
 
-  method paintbrush (
+  multi method paintbrush (
+    Int() $drawable_ID,
+    Num() $fade_out,
+    Int() $method,
+    Num() $gradient_length,
+    @strokes
+  ) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith(
+      $drawable_ID,
+      $fade_out,
+      @strokes.elems,
+      $ca,
+      $method,
+      $gradient_length
+    );
+  }
+  multi method paintbrush (
     Int() $drawable_ID,
     Num() $fade_out,
     Int() $num_strokes,
@@ -188,7 +342,15 @@ class GIMP::PDB::Raw::Paint {
     gimp_paintbrush($drawable_ID, $fade_out, $num_strokes, $strokes, $method, $gradient_length);
   }
 
-  method paintbrush_default (
+  proto method paintbrush_default (|)
+  { * }
+
+  multi method paintbrush_default (Int() $drawable_ID, @strokes) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, @strokes.elems, $ca);
+  }
+  multi method paintbrush_default (
     Int() $drawable_ID,
     Int() $num_strokes,
     CArray[gdouble] $strokes
@@ -199,7 +361,12 @@ class GIMP::PDB::Raw::Paint {
     gimp_paintbrush_default($drawable_ID, $num_strokes, $strokes);
   }
 
-  method pencil (
+  multi method pencil (Int() $drawable_ID, @strokes) {
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, @strokes.elems, $ca);
+  }
+  multi method pencil (
     Int() $drawable_ID,
     Int() $num_strokes,
     CArray[gdouble] $strokes
@@ -215,7 +382,9 @@ class GIMP::PDB::Raw::Paint {
     Num() $pressure,
     @strokes
   ) {
-    samewith( $drawable_ID, $pressure, DoubleArrayToCArray(@strokes) );
+    my $ca = DoubleArrayToCArray(@strokes);
+
+    samewith($drawable_ID, $pressure, @strokes.elems, $ca);
   }
   method smudge (
     Int() $drawable_ID,
@@ -235,8 +404,9 @@ class GIMP::PDB::Raw::Paint {
 
   multi method smudge_default (Int() $drawable_ID, @strokes) {
     my gint32 $d = $drawable_ID;
+    my $ca = DoubleArrayToCArray(@strokes);
 
-    samewith( $drawable_ID, DoubleArrayToCArray(@strokes)
+    samewith($drawable_ID, @strokes.elems, $ca);
   }
   multi method smudge_default (
     Int() $drawable_ID,
