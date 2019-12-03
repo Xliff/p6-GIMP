@@ -32,7 +32,7 @@ class GIMP::PDB::Raw::Paint {
     my gint $n = $num_strokes;
     my gdouble $p = $pressure;
 
-    gimp_airbrush($drawable_ID, $pressure, $num_strokes, $strokes);
+    gimp_airbrush($d, $p, $n, $strokes);
   }
 
   multi method airbrush_default (Int() $drawable_ID, @strokes) {
@@ -48,7 +48,7 @@ class GIMP::PDB::Raw::Paint {
     my gint32 $d = $drawable_ID;
     my gint $n = $num_strokes;
 
-    gimp_airbrush_default($drawable_ID, $num_strokes, $strokes);
+    gimp_airbrush_default($d, $n, $strokes);
   }
 
   multi method clone (
@@ -79,20 +79,12 @@ class GIMP::PDB::Raw::Paint {
     Int() $num_strokes,
     CArray[gdouble] $strokes
   ) {
-    my gint32 ($d, $s) = ($drawable_ID, $src_drawable_ID);
+    my gint32 ($d, $n) = ($drawable_ID, $src_drawable_ID);
     my GimpCloneType $c = $clone_type,
     my gint $n = $num_strokes;
     my gdouble ($sx, $sy) = ($src_x, $src_y);
 
-    gimp_clone(
-      $drawable_ID,
-      $src_drawable_ID,
-      $clone_type,
-      $src_x,
-      $src_y,
-      $num_strokes,
-      $strokes
-    );
+    gimp_clone($d, $s, $c, $sx, $sy, $n, $strokes);
   }
 
   proto method clone_default (|)
@@ -111,7 +103,7 @@ class GIMP::PDB::Raw::Paint {
     my gint32 $d = $drawable_ID;
     my gint $n = $num_strokes;
 
-    gimp_clone_default($drawable_ID, $num_strokes, $strokes);
+    gimp_clone_default($d, $n, $strokes);
   }
 
   multi method convolve (
@@ -136,7 +128,7 @@ class GIMP::PDB::Raw::Paint {
     my gint $n = $num_strokes;
     my GimpConvolveType $c = $convolve_type;
 
-    gimp_convolve($drawable_ID, $pressure, $convolve_type, $num_strokes, $strokes);
+    gimp_convolve($d, $p, $c, $n, $strokes);
   }
 
   proto method convolve_default (|)
@@ -155,7 +147,7 @@ class GIMP::PDB::Raw::Paint {
     my gint32 $d = $drawable_ID;
     my gint $n = $num_strokes;
 
-    gimp_convolve_default($drawable_ID, $num_strokes, $strokes);
+    gimp_convolve_default($d, $n, $strokes);
   }
 
   multi method dodgeburn (
@@ -190,7 +182,7 @@ class GIMP::PDB::Raw::Paint {
     my GimpDodgeBurnType $dt = $dodgeburn_type;
     my GimpTransferMode $dm = $dodgeburn_mode;
 
-    gimp_dodgeburn($drawable_ID, $exposure, $dodgeburn_type, $dodgeburn_mode, $num_strokes, $strokes);
+    gimp_dodgeburn($d, $e, $dt, $dm, $n, $strokes);
   }
 
   proto method dodgeburn_default (|)
@@ -209,7 +201,7 @@ class GIMP::PDB::Raw::Paint {
     my gint32 $d = $drawable_ID;
     my gint $n = $num_strokes;
 
-    gimp_dodgeburn_default($drawable_ID, $num_strokes, $strokes);
+    gimp_dodgeburn_default($d, $n, $strokes);
   }
 
   multi method eraser (
@@ -234,7 +226,7 @@ class GIMP::PDB::Raw::Paint {
     my GimpBrushApplicationMode $h = $hardness;
     my GimpPaintApplicationMode $m = $method;
 
-    gimp_eraser($drawable_ID, $num_strokes, $strokes, $hardness, $method);
+    gimp_eraser($d, $n, $strokes, $h, $m);
   }
 
   proto method eraser_default (|)
@@ -253,7 +245,7 @@ class GIMP::PDB::Raw::Paint {
     my gint32 $d = $drawable_ID;
     my gint $n = $num_strokes;
 
-    gimp_eraser_default($drawable_ID, $num_strokes, $strokes);
+    gimp_eraser_default($d, $n, $strokes);
   }
 
   multi method heal (
@@ -286,7 +278,7 @@ class GIMP::PDB::Raw::Paint {
     my gdouble ($sx, $sy) = ($src_x, $src_y);
     my gint $n = $num_strokes;
 
-    gimp_heal($drawable_ID, $src_drawable_ID, $src_x, $src_y, $num_strokes, $strokes);
+    gimp_heal($d, $s, $sx, $sy, $n, $strokes);
   }
 
   proto method heal_default (|)
@@ -305,7 +297,7 @@ class GIMP::PDB::Raw::Paint {
     my gint32 $d = $drawable_ID;
     my gint $n = $num_strokes;
 
-    gimp_heal_default($drawable_ID, $num_strokes, $strokes);
+    gimp_heal_default($d, $n, $strokes);
   }
 
   multi method paintbrush (
@@ -339,7 +331,7 @@ class GIMP::PDB::Raw::Paint {
     my gint $n = $num_strokes;
     my GimpPaintApplicationMode $m = $method;
 
-    gimp_paintbrush($drawable_ID, $fade_out, $num_strokes, $strokes, $method, $gradient_length);
+    gimp_paintbrush($d, $f, $n, $strokes, $m, $g);
   }
 
   proto method paintbrush_default (|)
@@ -358,7 +350,7 @@ class GIMP::PDB::Raw::Paint {
     my gint32 $d = $drawable_ID;
     my gint $n = $num_strokes;
 
-    gimp_paintbrush_default($drawable_ID, $num_strokes, $strokes);
+    gimp_paintbrush_default($d, $n, $strokes);
   }
 
   multi method pencil (Int() $drawable_ID, @strokes) {
@@ -374,7 +366,7 @@ class GIMP::PDB::Raw::Paint {
     my gint32 $d = $drawable_ID;
     my gint $n = $num_strokes;
 
-    gimp_pencil($drawable_ID, $num_strokes, $strokes);
+    gimp_pencil($d, $n, $strokes);
   }
 
   multi method smudge (
@@ -396,7 +388,7 @@ class GIMP::PDB::Raw::Paint {
     my gdouble $p = $pressure;
     my gint $n = $num_strokes;
 
-    gimp_smudge($drawable_ID, $pressure, $num_strokes, $strokes);
+    gimp_smudge($d, $p, $n, $strokes);
   }
 
   proto method smudge_default (|)
@@ -416,7 +408,7 @@ class GIMP::PDB::Raw::Paint {
     my gint32 $d = $drawable_ID;
     my gint $n = $num_strokes;
 
-    gimp_smudge_default($drawable_ID, $num_strokes, $strokes);
+    gimp_smudge_default($d, $n, $strokes);
   }
 
 }
