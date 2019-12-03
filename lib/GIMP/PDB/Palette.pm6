@@ -2,22 +2,42 @@ use v6;
 
 use GTK::Compat::Types;
 
-use GIMP::Raw::Str()ucts;
+use GIMP::Raw::Structs;
 
 use GLib::Roles::StaticClass;
+
+use GTK::Compat::Roles::TypedBuffer;
 
 class GIMP::PDB::Palette {
   also does GLib::Roles::StaticClass;
 
-  method add_entry (
+  method new_palette (Str() $name) {
+    gimp_palette_new($name);
+  }
+
+  proto method add_entry (|)
+  { * }
+
+  multi method add_entry (
     Str() $name,
     Str() $entry_name,
     GimpRGB $color,
-    Int() $entry_num
+    :$all = True
   ) {
-    my gint $e = $entry_num;
+    samewith($name, $entry_name, $color, $, :$all);
+  }
+  multi method add_entry (
+    Str() $name,
+    Str() $entry_name,
+    GimpRGB $color,
+    $entry_num is rw,
+    :$all = False
+  ) {
+    my gint $e = 0;
+    my $rv = gimp_palette_add_entry($name, $entry_name, $color, $e);
 
-    gimp_palette_add_entry($name, $entry_name, $color, $entry_num);
+    $entry_num = $e;
+    $all.not ?? $rv !! ($rv, $entry_num);
   }
 
   method delete (Str() $name) {
@@ -56,28 +76,45 @@ class GIMP::PDB::Palette {
     gimp_palette_entry_set_name($name, $e, $entry_name);
   }
 
-  method get_colors (Str() $name, Int() $num_colors) {
-    my gint $n = $num_colors;
+  proto method get_colors (|)
+  { * }
 
-    gimp_palette_get_colors($name, $n);
+  multi method get_colors (Str() $name) {
+    samewith($name, $);
+  }
+  multi method get_colors (Str() $name, $num_colors is rw, :$raw = False) {
+    my gint $n = 0;
+
+    my $rv = gimp_palette_get_colors($name, $n);
+    $num_colors = $n;
+
+    return $rv if $raw;
+    my $b = GTK::Compat::Roles::TypedBuffer[GimpRGB].new($rv);
+    $b.setSize($n, :forced);
+    $b.Array;
   }
 
   method get_columns (Str() $name) {
     gimp_palette_get_columns($name);
   }
 
-  method get_info (Str() $name, Int() $num_colors) {
-    my gint $n = $num_colors;
+  proto method get_info (|)
+  { * }
 
-    gimp_palette_get_info($name, $n);
+  multi method get_info (:$all = True) {
+    samewith($, $, :$all);
+  }
+  multi method get_info ($name is rw, $num_colors is rw) {
+    my gint $n = 0e0;
+    my $s = Str;
+
+    my $rv = gimp_palette_get_info($s, $n);
+    ($name, $num_colors) = ($s, $n);
+    $all.not ?? $rv !! ($rv, $name, $num_colors);
   }
 
   method is_editable (Str() $name) {
-    gimp_palette_is_editable($name);
-  }
-
-  method new (Str() $name) {
-    gimp_palette_new($name);
+    so gimp_palette_is_editable($name);
   }
 
   method rename (Str() $name, Str() $new_name) {
