@@ -21,11 +21,21 @@ class GIMP::PDB::PatternSelect {
     gimp_patterns_popup($pattern_callback, $popup_title, $initial_pattern);
   }
 
+  method set_popup (Str() $pattern_callback, Str() $pattern_name) {
+    gimp_patterns_set_popup($pattern_callback, $pattern_name);
+  }
+
 }
 
 ### /usr/include/gimp-2.0/libgimp/gimppatternselect_pdb.h
 
 sub gimp_patterns_close_popup (Str $pattern_callback)
+  returns uint32
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_patterns_set_popup (Str $pattern_callback, Str $pattern_name)
   returns uint32
   is native(gimp)
   is export
