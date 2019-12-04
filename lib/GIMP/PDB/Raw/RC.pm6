@@ -2,10 +2,9 @@ use v6;
 
 use NativeCall;
 
-use GTK::Compat::Types;
+use GIMP::Raw::Types;
 
 unit package GIMP::PDB::Raw::RC;
-
 
 ### /usr/include/gimp-2.0/libgimp/gimpgimprc_pdb.h
 

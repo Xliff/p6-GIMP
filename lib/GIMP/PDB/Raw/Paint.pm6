@@ -2,9 +2,7 @@ use v6;
 
 use NativeCall;
 
-use GTK::Compat::Types;
-
-use GIMP::Raw::Enums;
+use GIMP::Raw::Types;
 
 unit package GIMP::PDB::Raw::Paint;
 

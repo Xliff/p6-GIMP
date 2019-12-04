@@ -1,8 +1,12 @@
 use v6.c;
 
+use NativeCall;
+
+use GTK::Compat::Types;
+
 unit package GIMP::Raw::Structs;
 
-class GimpDrawable is repr<CStruct> { ... }
+class GimpDrawable is repr<CStruct> is export { ... }
 
 class GimpRGB is repr('CStruct') is export {
 	has gdouble      $.r is rw;
@@ -45,7 +49,7 @@ class GimpTile is repr('CStruct') is export {
 	has GimpDrawable $.drawable;
 }
 
-class GimpDrawable is repr('CStruct') is export {
+class GimpDrawable {
 	has gint32        $.drawable_id;
 	has guint         $.width;
 	has guint         $.height;

@@ -2,8 +2,9 @@ use v6;
 
 use NativeCall;
 
-unit package GIMP::PDB::Raw::Misc;
+use GIMP::Raw::Types;
 
+unit package GIMP::PDB::Raw::Misc;
 
 ### /usr/include/gimp-2.0/libgimp/gimp_pdb.h
 

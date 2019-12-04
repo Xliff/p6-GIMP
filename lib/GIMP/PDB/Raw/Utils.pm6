@@ -1,5 +1,9 @@
 use v6;
 
+use NativeCall;
+
+use GIMP::Raw::Types;
+
 unit package GIMP::PDB::Raw::Utils;
 
 sub DoubleArrayToCArray(@a) is export {

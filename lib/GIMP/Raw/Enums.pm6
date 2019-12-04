@@ -1,5 +1,7 @@
 use v6.c;
 
+use GTK::Compat::Types;
+
 unit package GIMP::Raw::Enums;
 
 constant GimpBrushGeneratedShape is export := guint32;
@@ -23,6 +25,25 @@ our enum GimpChannelOpsEnum is export <
     GIMP_CHANNEL_OP_REPLACE
     GIMP_CHANNEL_OP_INTERSECT
 >;
+
+constant GimpChannelType is export := guint32;
+our enum GimpChannelTypeEnum is export <
+  GIMP_CHANNEL_RED
+  GIMP_CHANNEL_GREEN
+  GIMP_CHANNEL_BLUE
+  GIMP_CHANNEL_GRAY
+  GIMP_CHANNEL_INDEXED
+  GIMP_CHANNEL_ALPHA
+>;
+
+our enum GimpChannmelTypeDeprecatedEnum is export (
+  GIMP_RED_CHANNEL     => GIMP_CHANNEL_RED,
+  GIMP_GREEN_CHANNEL   => GIMP_CHANNEL_GREEN,
+  GIMP_BLUE_CHANNEL    => GIMP_CHANNEL_BLUE,
+  GIMP_GRAY_CHANNEL    => GIMP_CHANNEL_GRAY,
+  GIMP_INDEXED_CHANNEL => GIMP_CHANNEL_INDEXED,
+  GIMP_ALPHA_CHANNEL   => GIMP_CHANNEL_ALPHA
+);
 
 constant GimpColorTag is export := guint32;
 our enum GimpColorTagEnum is export <
