@@ -4,7 +4,7 @@ use GTK::Compat::Types;
 
 use GIMP::Raw::Structs;
 
-use GIMP::Raw::Channel;
+use GIMP::PDB::Raw::Channel;
 
 use GLib::Roles::StaticClass;
 

@@ -2,7 +2,7 @@ use v6;
 
 use GTK::Compat::Types;
 
-use GIMP::Raw::File;
+use GIMP::PDB::Raw::File;
 
 use GLib::Roles::StaticClass;
 
