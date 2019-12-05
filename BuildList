@@ -6,6 +6,7 @@ GIMP::Raw::Enums
 GIMP::Raw::Structs
 GIMP::PDB::Palette
 GIMP::Raw::Types
+GIMP::Checks
 GIMP::PDB::Brushes
 GIMP::PDB::Dynamics
 GIMP::PDB::Fonts

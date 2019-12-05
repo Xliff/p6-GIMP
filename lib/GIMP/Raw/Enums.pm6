@@ -284,6 +284,33 @@ our enum GimpChannmelTypeDeprecatedEnum is export (
   GIMP_ALPHA_CHANNEL   => GIMP_CHANNEL_ALPHA
 );
 
+# From #define entries, so no associated type
+our enum GimpCheckDefinesEnum is export (
+  GIMP_CHECK_SIZE    => 8,
+  GIMP_CHECK_SIZE_SM => 4
+);
+our enum GimpCheckDefinesNumEnum is export (
+  GIMP_CHECK_DARK    => 0.4,
+  GIMP_CHECK_LIGHT   => 0.8
+);
+
+constant GimpCheckSize is export := guint32;
+our enum GimpCheckSizeEnum is export (
+  GIMP_CHECK_SIZE_SMALL_CHECKS  => 0,
+  GIMP_CHECK_SIZE_MEDIUM_CHECKS => 1,
+  GIMP_CHECK_SIZE_LARGE_CHECKS  => 2
+);
+
+constant GimpCheckType is export := guint32;
+our enum GimpCheckTypeEnum is export (
+  GIMP_CHECK_TYPE_LIGHT_CHECKS => 0,
+  GIMP_CHECK_TYPE_GRAY_CHECKS  => 1,
+  GIMP_CHECK_TYPE_DARK_CHECKS  => 2,
+  GIMP_CHECK_TYPE_WHITE_ONLY   => 3,
+  GIMP_CHECK_TYPE_GRAY_ONLY    => 4,
+  GIMP_CHECK_TYPE_BLACK_ONLY   => 5
+);
+
 constant GimpCloneType is export := guint32;
 our enum GimpCloneTypeEnum is export (
     'GIMP_CLONE_IMAGE',

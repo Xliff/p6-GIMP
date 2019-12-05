@@ -5,7 +5,8 @@ use GIMP::Raw::Enums;
 use GIMP::Raw::Structs;
 
 package GIMP::Raw::Types {
-  constant gimp is export = 'gimp-2.0',v0;
+  constant gimp     is export = 'gimp-2.0',v0;
+  constant gimpbase is export = 'gimpbase-2.0',v0;
 }
 
 sub EXPORT {
