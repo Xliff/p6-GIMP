@@ -555,6 +555,24 @@ our enum GimpMetadataColorspaceEnum is export <
     GIMP_METADATA_COLORSPACE_ADOBERGB
 >;
 
+constant GimpMetadataLoadFlags is export := guint32;
+our enum GimpMetadataLoadFlagsEnum is export (
+  GIMP_METADATA_LOAD_COMMENT     => 1,
+  GIMP_METADATA_LOAD_RESOLUTION  => 1 +< 1,
+  GIMP_METADATA_LOAD_ORIENTATION => 1 +< 2,
+  GIMP_METADATA_LOAD_COLORSPACE  => 1 +< 3,
+  GIMP_METADATA_LOAD_ALL         => 0xffffffff
+);
+
+constant GimpMetadataSaveFlags is export := guint32;
+our enum GimpMetadataSaveFlagsEnum is export (
+  GIMP_METADATA_SAVE_EXIF      => 1,
+  GIMP_METADATA_SAVE_XMP       => 1 +< 1,
+  GIMP_METADATA_SAVE_IPTC      => 1 +< 2,
+  GIMP_METADATA_SAVE_THUMBNAIL => 1 +< 3,
+  GIMP_METADATA_SAVE_ALL       => 0xffffffff
+);
+
 constant GimpOffsetType is export := guint32;
 our enum GimpOffsetTypeEnum is export <
     GIMP_OFFSET_BACKGROUND
