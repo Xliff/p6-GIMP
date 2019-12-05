@@ -2,11 +2,11 @@ use v6;
 
 use GTK::Compat::Types;
 
-use GIMP::PDB::Raw::File;
+use GIMP::Raw::Enums;
 
 use GLib::Roles::StaticClass;
 
-class GIMP::PDB::Raw::File;
+use GIMP::PDB::Raw::File;
 
 class GIMP::PDB::File {
   also does GLib::Roles::StaticClass;

@@ -8,11 +8,11 @@ unit package GIMP::PDB::Raw::RC;
 
 ### /usr/include/gimp-2.0/libgimp/gimpgimprc_pdb.h
 
-sub _gimp_get_color_configuration ()
-  returns Str
-  is native(gimp)
-  is export
-{ * }
+# sub _gimp_get_color_configuration ()
+#   returns Str
+#   is native(gimp)
+#   is export
+# { * }
 
 sub gimp_get_default_comment ()
   returns Str

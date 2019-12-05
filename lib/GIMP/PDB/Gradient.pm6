@@ -1,9 +1,6 @@
 use v6;
 
-use GTK::Compat::Types;
-
-use GIMP::Raw::Enums;
-use GIMP::Raw::Structs;
+use GIMP::Raw::Types;
 
 use GIMP::PDB::Raw::Gradient;
 
@@ -96,9 +93,10 @@ class GIMP::PDB::Gradient::Segment {
     Str() $name,
     Int() $segment,
     GimpRGB $color,
-    gdouble $opacity
+    Num() $opacity
   ) {
     my gint $s = $segment;
+    my gdouble $o = $opacity;
 
     gimp_gradient_segment_get_left_color($name, $s, $color, $o);
   }
@@ -233,7 +231,7 @@ class GIMP::PDB::Graidient::Segment::Range {
     Int() $control_compress
   ) {
     my gint ($s, $e) = ($start_segment, $end_segment);
-    my gdouble = $delta;
+    my gdouble $d = $delta;
     my gboolean $c = (so $control_compress).Int;
 
     gimp_gradient_segment_range_move($name, $s, $e, $d, $c);

@@ -11,12 +11,13 @@ use GIMP::PDB::Raw::Paint;
 
 use GLib::Roles::StaticClass;
 
-class GIMP::PDB::Raw::Paint {
+class GIMP::PDB::Paint {
   also does GLib::Roles::StaticClass;
 
   multi method airbrush (
     Int() $drawable_ID,
-    Num() $pressure
+    Num() $pressure,
+    @strokes
   ) {
     my $ca = DoubleArrayToCArray(@strokes);
 
@@ -56,7 +57,8 @@ class GIMP::PDB::Raw::Paint {
     Int() $src_drawable_ID,
     Int() $clone_type,
     Num() $src_x,
-    Num() $src_y
+    Num() $src_y,
+    @strokes
   ) {
     my $ca = DoubleArrayToCArray(@strokes);
 
@@ -79,7 +81,7 @@ class GIMP::PDB::Raw::Paint {
     Int() $num_strokes,
     CArray[gdouble] $strokes
   ) {
-    my gint32 ($d, $n) = ($drawable_ID, $src_drawable_ID);
+    my gint32 ($d, $s) = ($drawable_ID, $src_drawable_ID);
     my GimpCloneType $c = $clone_type,
     my gint $n = $num_strokes;
     my gdouble ($sx, $sy) = ($src_x, $src_y);
@@ -134,12 +136,12 @@ class GIMP::PDB::Raw::Paint {
   proto method convolve_default (|)
   { * }
 
-  method convolve_default (Int() $drawable_ID, @strokes) {
+  multi method convolve_default (Int() $drawable_ID, @strokes) {
     my $ca = DoubleArrayToCArray(@strokes);
 
     samewith($drawable_ID, @strokes.elems, $ca);
   }
-  method convolve_default (
+  multi method convolve_default (
     Int() $drawable_ID,
     Int() $num_strokes,
     CArray[gdouble] $strokes
@@ -210,7 +212,7 @@ class GIMP::PDB::Raw::Paint {
     Int() $method,
     @strokes
   ) {
-    my $ca = DoubleArrayToCArray(@stokes);
+    my $ca = DoubleArrayToCArray(@strokes);
 
     samewith($drawable_ID, @strokes.elems, $ca, $hardness, $method);
   }
@@ -378,7 +380,7 @@ class GIMP::PDB::Raw::Paint {
 
     samewith($drawable_ID, $pressure, @strokes.elems, $ca);
   }
-  method smudge (
+  multi method smudge (
     Int() $drawable_ID,
     Num() $pressure,
     Int() $num_strokes,

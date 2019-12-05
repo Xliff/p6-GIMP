@@ -2,7 +2,9 @@ use v6;
 
 use NativeCall;
 
-use GTK::Compat::Types;
+use GTK::Raw::Utils;
+
+use GIMP::Raw::Types;
 
 use GLib::Roles::StaticClass;
 

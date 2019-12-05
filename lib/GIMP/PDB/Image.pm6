@@ -2,10 +2,7 @@ use v6;
 
 use NativeCall;
 
-use GTK::Compat::Types;
-
-use GIMP::Raw::Enums;
-use GIMP::Raw::Structs;
+use GIMP::Raw::Types;
 
 use GIMP::PDB::Raw::Utils;
 use GIMP::PDB::Raw::Image;
@@ -41,39 +38,39 @@ class GIMP::PDB::Image {
 
   # Guides
 
-  method add_hguide Int() $image_ID, Int() $yposition) {
+  method add_hguide (Int() $image_ID, Int() $yposition) {
     my gint32 $i = $image_ID;
     my gint $y = $yposition;
 
     gimp_image_add_hguide($image_ID, $yposition);
   }
 
-  method add_vguide Int() $image_ID, Int() $xposition) {
+  method add_vguide (Int() $image_ID, Int() $xposition) {
     my gint32 $i = $image_ID;
     my gint $x = $xposition;
 
     gimp_image_add_vguide($image_ID, $xposition);
   }
 
-  method delete_guide Int() $image_ID, Int() $guide_ID) {
+  method delete_guide (Int() $image_ID, Int() $guide_ID) {
     my gint32 ($i, $g) = ($image_ID, $guide_ID);
 
     gimp_image_delete_guide($image_ID, $guide_ID);
   }
 
-  method find_next_guide Int() $image_ID, Int() $guide_ID) {
+  method find_next_guide (Int() $image_ID, Int() $guide_ID) {
     my gint32 ($i, $g) = ($image_ID, $guide_ID);
 
     gimp_image_find_next_guide($image_ID, $guide_ID);
   }
 
-  method get_guide_orientation Int() $image_ID, Int() $guide_ID) {
+  method get_guide_orientation (Int() $image_ID, Int() $guide_ID) {
     my gint32 ($i, $g) = ($image_ID, $guide_ID);
 
     gimp_image_get_guide_orientation($image_ID, $guide_ID);
   }
 
-  method get_guide_position Int() $image_ID, Int() $guide_ID) {
+  method get_guide_position (Int() $image_ID, Int() $guide_ID) {
     my gint32 ($i, $g) = ($image_ID, $guide_ID);
 
     gimp_image_get_guide_position($image_ID, $guide_ID);
@@ -106,7 +103,7 @@ class GIMP::PDB::Image {
     Int() $position_y
   ) {
     my gint32 ($i, $s) = ($image_ID, $sample_point_ID);
-    my gint $position_y;
+    my gint $y = $position_y;
 
     gimp_image_get_sample_point_position($i, $s, $y);
   }
@@ -273,7 +270,7 @@ class GIMP::PDB::Image::Select {
     my GimpChannelOps $o = $operation;
     my gdouble ($xx, $yy) = ($x, $y);
 
-    gimp_image_select_contiguous_color($i, $o, $d, $xy, $yy);
+    gimp_image_select_contiguous_color($i, $o, $d, $xx, $yy);
   }
 
   method ellipse (
@@ -301,12 +298,12 @@ class GIMP::PDB::Image::Select {
   proto method polygon (|)
   { * }
 
-  multi method polygon
+  multi method polygon (
     Int() $image_ID,
     Int() $operation,
     @segs
   ) {
-    samewith($image_id, $operation, DoubleArrayToCArray(@segs), $sa);
+    samewith( $image_ID, $operation, @segs.elems, DoubleArrayToCArray(@segs) );
   }
   multi method polygon (
     Int() $image_ID,
@@ -353,7 +350,7 @@ class GIMP::PDB::Image::Select {
       $y,
       $width,
       $height,
-      $corner_radius_x
+      $corner_radius_x,
       $corner_radius_y
     );
 

@@ -2,6 +2,8 @@ use v6;
 
 use NativeCall;
 
+use GIMP::Raw::Types;
+
 use GLib::Roles::StaticClass;
 
 class GIMP::PDB::Brushes {

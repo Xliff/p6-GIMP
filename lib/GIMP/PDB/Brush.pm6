@@ -11,7 +11,7 @@ use GLib::Roles::StaticClass;
 class GIMP::PDB::Brush {
   also does GLib::Roles::StaticClass;
 
-  method new (Str() $name) {
+  multi method new (Str() $name) {
     gimp_brush_new($name);
   }
 

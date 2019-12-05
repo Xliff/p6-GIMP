@@ -2,6 +2,8 @@ use v6;
 
 use NativeCall;
 
+use GTK::Raw::Utils;
+
 use GTK::Compat::Types;
 
 use GIMP::Raw::Enums;
@@ -58,7 +60,7 @@ class GIMP::PDB::Procedural {
       $arg_name = CStringArrayToArray($arg_name);
       $arg_desc = CStringArrayToArray($arg_desc);
     }
-    $all.not ?? $rv ?? ($rv, $arg_type, $arg_name, $arg_desc);
+    $all.not ?? $rv !! ($rv, $arg_type, $arg_name, $arg_desc);
   }
 
   method procedural_db_proc_exists (Str() $procedure_name) {
@@ -156,8 +158,8 @@ class GIMP::PDB::Procedural {
       $copyright,
       $date,
       $proc_type,
-      $na,
-      $pa
+      $n,
+      $pna,
     );
     my @names = ();
 

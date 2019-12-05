@@ -2,7 +2,7 @@ use v6.c;
 
 use NativeCall;
 
-use GTK::Compat::Types;
+use GIMP::Raw::Types;
 
 use GLib::Roles::StaticClass;
 
@@ -32,7 +32,7 @@ class GIMP::PDB::Pattern {
   proto method get_pixels (|)
   { * }
 
-  multi multi method get_pixels (Str() $name, :$all = True) {
+  multi method get_pixels (Str() $name, :$all = True) {
     samewith($name, $, $, $, $, $, :$all);
   }
   multi method get_pixels (
@@ -80,7 +80,7 @@ sub gimp_pattern_get_pixels (
   Str $name,
   gint $width           is rw,
   gint $height          is rw,
-  gint $bpp             is rw
+  gint $bpp             is rw,
   gint $num_color_bytes is rw,
   CArray[CArray[guint8]] $color_bytes
 )

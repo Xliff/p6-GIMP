@@ -88,7 +88,7 @@ class GIMP::PDB::Drawable {
 
   method equalize (Int() $drawable_ID, Int() $mask_only) {
     my gint32 $d = $drawable_ID;
-    my gboolean = (so $mask_only).Int;
+    my gboolean $m = (so $mask_only).Int;
 
     gimp_drawable_equalize($drawable_ID, $m);
   }
@@ -107,7 +107,7 @@ class GIMP::PDB::Drawable {
   ) {
     my gint32 $d = $drawable_ID;
     my GimpHistogramChannel $c = $channel;
-    my gdouble ($s, $e, $m, $st, $me, $p, $c, $pct) = (
+    my gdouble ($s, $e, $m, $st, $me, $p, $ct, $pct) = (
       $start_range,
       $end_range,
       $mean,
@@ -118,7 +118,7 @@ class GIMP::PDB::Drawable {
       $percentile
     );
 
-    gimp_drawable_histogram($d, $c, $s, $e, $m, $st, $me, $p, $c, $pct);
+    gimp_drawable_histogram($d, $c, $s, $e, $m, $st, $me, $p, $ct, $pct);
   }
 
   method hue_saturation (
@@ -129,7 +129,7 @@ class GIMP::PDB::Drawable {
     Num() $saturation,
     Num() $overlap
   ) {
-    my gint32 $d = $drawable_ID;
+    my gint32 ($d, $hr) = ($drawable_ID, $hue_range);
     my gdouble ($h, $l, $s, $o) = (
       $hue_offset,
       $lightness,
@@ -137,12 +137,12 @@ class GIMP::PDB::Drawable {
       $overlap
     );
 
-    gimp_drawable_hue_saturation($d, $h, $s, $l, $o);
+    gimp_drawable_hue_saturation($d, $hr, $h, $s, $l, $o);
   }
 
   method invert (Int() $drawable_ID, Int() $linear) {
     my gint32 $d = $drawable_ID;
-    my gboolean $s = (so $linear).Int;
+    my gboolean $l = (so $linear).Int;
 
     gimp_drawable_invert($d, $l);
   }
@@ -161,7 +161,7 @@ class GIMP::PDB::Drawable {
     my gint32 $d = $drawable_ID;
     my GimpHistogramChannel $c = $channel;
     my gboolean ($ci, $co) = ($clamp_input, $clamp_output)».so».Int;
-    my dbouble ($li, $hi, $h, $lo, $ho) = (
+    my gdouble ($li, $hi, $g, $lo, $ho) = (
       $low_input,
       $high_input,
       $gamma,
@@ -169,7 +169,7 @@ class GIMP::PDB::Drawable {
       $high_output
     );
 
-    gimp_drawable_levels($d, $c, $li, $hi, $ci, $lo, $ho, $co);
+    gimp_drawable_levels($d, $c, $li, $hi, $ci, $g, $lo, $ho, $co);
   }
 
   method levels_stretch (Int() $drawable_ID) {
@@ -240,7 +240,7 @@ class GIMP::PDB::Drawable {
   ) {
     my gint32 ($d, $sm) = ($drawable_ID, $supersample_max_depth);
     my GimpGradientType $g = $gradient_type;
-    my gboolean ($s, $d) = ($supersample, $dither)».so».Int;
+    my gboolean ($s, $di) = ($supersample, $dither)».so».Int;
     my gdouble ($o, $st, $xx1, $yy1, $xx2, $yy2) = (
       $offset,
       $supersample_threshold,
@@ -257,7 +257,7 @@ class GIMP::PDB::Drawable {
       $s,
       $sm,
       $st,
-      $d,
+      $di,
       $xx1,
       $yy2,
       $xx2,

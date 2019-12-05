@@ -2,6 +2,8 @@ use v6;
 
 use GTK::Raw::Utils;
 
+use GIMP::Raw::Types;
+
 use GIMP::PDB::Raw::Misc;
 
 use GLib::Roles::StaticClass;
@@ -22,7 +24,7 @@ class GIMP::PDB::Misc {
   }
 
   method get_parasite_list (gint $num_parasites) {
-    my gint $n = $num_parasites
+    my gint $n = $num_parasites;
 
     CStringArrayToArray( gimp_get_parasite_list($num_parasites) );
   }

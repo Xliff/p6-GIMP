@@ -1,6 +1,6 @@
 use v6;
 
-use GTK::Compat::Types;
+use GIMP::Raw::Types;
 
 use GIMP::PDB::Raw::RC;
 
