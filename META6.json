@@ -13,6 +13,7 @@
       "GIMP::PDB::Palette"         :  "lib/GIMP/PDB/Palette.pm6"        ,
       "GIMP::Raw::Types"           :  "lib/GIMP/Raw/Types.pm6"          ,
       "GIMP::Checks"               :  "lib/GIMP/Checks.pm6"             ,
+      "GIMP::CpuAccel"             :  "lib/GIMP/CpuAccel.pm6"           ,
       "GIMP::PDB::Brushes"         :  "lib/GIMP/PDB/Brushes.pm6"        ,
       "GIMP::PDB::Dynamics"        :  "lib/GIMP/PDB/Dynamics.pm6"       ,
       "GIMP::PDB::Fonts"           :  "lib/GIMP/PDB/Fonts.pm6"          ,

@@ -186,6 +186,22 @@ our enum GimpAddMaskTypeDeprecatedEnum is export (
     GIMP_ADD_CHANNEL_MASK        => GIMP_ADD_MASK_CHANNEL
 );
 
+constant GimpCpuAccelFlags is export := guint32;
+our enum GimpCpuAccelFlagsEnum is export (
+  GIMP_CPU_ACCEL_NONE        => 0x0,
+  GIMP_CPU_ACCEL_X86_MMX     => 0x80000000,
+  GIMP_CPU_ACCEL_X86_3DNOW   => 0x40000000,
+  GIMP_CPU_ACCEL_X86_MMXEXT  => 0x20000000,
+  GIMP_CPU_ACCEL_X86_SSE     => 0x10000000,
+  GIMP_CPU_ACCEL_X86_SSE2    => 0x08000000,
+  GIMP_CPU_ACCEL_X86_SSE3    => 0x02000000,
+  GIMP_CPU_ACCEL_X86_SSSE3   => 0x01000000,
+  GIMP_CPU_ACCEL_X86_SSE4_1  => 0x00800000,
+  GIMP_CPU_ACCEL_X86_SSE4_2  => 0x00400000,
+  GIMP_CPU_ACCEL_X86_AVX     => 0x00200000,
+  GIMP_CPU_ACCEL_PPC_ALTIVEC => 0x04000000
+);
+
 constant GimpPDBArgType is export := guint32;
 our enum GimpPDBArgTypeEnum is export <
   GIMP_PDB_INT32

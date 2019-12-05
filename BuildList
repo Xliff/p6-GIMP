@@ -7,6 +7,7 @@ GIMP::Raw::Structs
 GIMP::PDB::Palette
 GIMP::Raw::Types
 GIMP::Checks
+GIMP::CpuAccel
 GIMP::PDB::Brushes
 GIMP::PDB::Dynamics
 GIMP::PDB::Fonts
