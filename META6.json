@@ -38,6 +38,7 @@
       "GIMP::PDB::Raw::Procedural" :  "lib/GIMP/PDB/Raw/Procedural.pm6" ,
       "GIMP::PDB::Raw::RC"         :  "lib/GIMP/PDB/Raw/RC.pm6"         ,
       "GIMP::PDB::Raw::Utils"      :  "lib/GIMP/PDB/Raw/Utils.pm6"      ,
+      "GIMP::PixPipeParams"        :  "lib/GIMP/PixPipeParams.pm6"      ,
       "GIMP::Raw::Env"             :  "lib/GIMP/Raw/Env.pm6"            ,
       "GIMP::Raw::Parasite"        :  "lib/GIMP/Raw/Parasite.pm6"       ,
       "GIMP::Env"                  :  "lib/GIMP/Env.pm6"                ,

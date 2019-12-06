@@ -175,3 +175,20 @@ class GimpDatafileData is repr('CStruct') is export {
 	has int64              $.mtime    is rw; # Typedef<time_t>->«Typedef<__time_t>->«long int»» mtime
 	has int64              $.ctime    is rw; # Typedef<time_t>->«Typedef<__time_t>->«long int»» ctime
 }
+
+constant GIMP_PIXPIPE_MAXDIM is export = 4;
+class GimpPixPipeParams is repr('CStruct') is export {
+  has gint      $.step                           is rw;
+  has gint      $.ncells                         is rw;
+  has gint      $.dim                            is rw;
+  has gint      $.cols                           is rw;
+  has gint      $.rows                           is rw;
+  has gint      $.cellwidth                      is rw;
+  has gint      $.cellheight                     is rw;
+  has Str       $.placement                      is rw;
+  has gboolean  $.free_placement_string          is rw;
+  HAS gint      @.rank[GIMP_PIXPIPE_MAXDIM]      is CArray;
+  HAS Str       @!selection[GIMP_PIXPIPE_MAXDIM] is CArray;
+  # this flag is now useless. All selection strings are allocated.
+  has gboolean  $.free_selection_string          is rw;
+}
