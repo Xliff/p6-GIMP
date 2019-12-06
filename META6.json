@@ -9,6 +9,7 @@
     "source-url": "https://github.com/Xliff/p6-GIMP",
     "provides": {
       "GIMP::Raw::Enums"           :  "lib/GIMP/Raw/Enums.pm6"          ,
+      "GIMP::Rectangle"            :  "lib/GIMP/Rectangle.pm6"          ,
       "GIMP::Raw::Structs"         :  "lib/GIMP/Raw/Structs.pm6"        ,
       "GIMP::PDB::Palette"         :  "lib/GIMP/PDB/Palette.pm6"        ,
       "GIMP::Raw::Types"           :  "lib/GIMP/Raw/Types.pm6"          ,
