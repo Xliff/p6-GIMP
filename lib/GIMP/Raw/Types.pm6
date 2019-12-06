@@ -7,6 +7,8 @@ use GIMP::Raw::Structs;
 package GIMP::Raw::Types {
   constant gimp     is export = 'gimp-2.0',v0;
   constant gimpbase is export = 'gimpbase-2.0',v0;
+
+  class GimpValueArray is repr<CPointer> does GTK::Roles::Pointers is export {}
 }
 
 sub EXPORT {
