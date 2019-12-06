@@ -32,7 +32,9 @@ GIMP::PDB::Raw::Plugin
 GIMP::PDB::Raw::Procedural
 GIMP::PDB::Raw::RC
 GIMP::PDB::Raw::Utils
+GIMP::Raw::Env
 GIMP::Raw::Parasite
+GIMP::Env
 GIMP::PDB::Brush
 GIMP::PDB::Channel
 GIMP::PDB::Display
