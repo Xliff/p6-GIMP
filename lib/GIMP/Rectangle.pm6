@@ -43,7 +43,7 @@ class GIMP::Rectangle {
     my gint ($xx1, $yy1, $w1, $h1, $xx2, $yy2, $w2, $h2, $dx, $dy, $dw, $dh) = (
       $x1, $y1, $w1, $h1,
       $x2, $y2, $w2, $h2,
-        0,   0,   0    0
+        0,   0,   0,   0
     );
 
     my $rv = so gimp_rectangle_intersect(
@@ -71,7 +71,7 @@ class GIMP::Rectangle {
         $,   $,       $,        $
     );
   }
-  method union (
+  multi method union (
     Int() $x1,
     Int() $y1,
     Int() $width1,
@@ -88,7 +88,7 @@ class GIMP::Rectangle {
     my gint ($xx1, $yy1, $w1, $h1, $xx2, $yy2, $w2, $h2, $dx, $dy, $dw, $dh) = (
       $x1, $y1, $w1, $h1,
       $x2, $y2, $w2, $h2,
-        0,   0,   0    0
+        0,   0,   0,   0
     );
 
     gimp_rectangle_union(
