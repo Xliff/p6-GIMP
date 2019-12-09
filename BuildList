@@ -40,9 +40,11 @@ GIMP::PDB::Raw::Procedural
 GIMP::PDB::Raw::RC
 GIMP::PDB::Raw::Utils
 GIMP::PixPipeParams
+GIMP::Raw::Color
 GIMP::Raw::ColorProfile
 GIMP::Raw::Env
 GIMP::Raw::Parasite
+GIMP::Color
 GIMP::ColorProfile
 GIMP::Env
 GIMP::PDB::Brush
