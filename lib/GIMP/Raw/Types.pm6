@@ -1,14 +1,22 @@
 use v6;
 
+use NativeCall;
+
 use GTK::Compat::Types;
 use GIMP::Raw::Enums;
 use GIMP::Raw::Structs;
 
-package GIMP::Raw::Types {
-  constant gimp     is export = 'gimp-2.0',v0;
-  constant gimpbase is export = 'gimpbase-2.0',v0;
+use GTK::Roles::Pointers;
 
-  class GimpValueArray is repr<CPointer> does GTK::Roles::Pointers is export {}
+package GIMP::Raw::Types {
+  constant gimp      is export = 'gimp-2.0',v0;
+  constant gimpbase  is export = 'gimpbase-2.0',v0;
+  constant gimpcolor is export = 'gimpcolor-2.0',v0;
+
+  constant Babl      is export := Pointer;
+
+  class GimpValueArray   is repr<CPointer> does GTK::Roles::Pointers is export {}
+  class GimpColorProfile is repr<CPointer> does GTK::Roles::Pointers is export {}
 }
 
 sub EXPORT {

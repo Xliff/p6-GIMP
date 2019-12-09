@@ -1,8 +1,10 @@
 GLib::Object::ParamSpec
 GLib::Roles::StaticClass
+GTK::Compat::Roles::Object
 GTK::Compat::Roles::TypedBuffer
 GTK::Compat::Types
 GTK::Raw::Utils
+GTK::Roles::Pointers
 GIMP::Raw::Enums
 GIMP::Raw::Structs
 GIMP::PDB::Palette
@@ -38,8 +40,10 @@ GIMP::PDB::Raw::Procedural
 GIMP::PDB::Raw::RC
 GIMP::PDB::Raw::Utils
 GIMP::PixPipeParams
+GIMP::Raw::ColorProfile
 GIMP::Raw::Env
 GIMP::Raw::Parasite
+GIMP::ColorProfile
 GIMP::Env
 GIMP::PDB::Brush
 GIMP::PDB::Channel
