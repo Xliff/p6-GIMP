@@ -3,6 +3,8 @@ use v6;
 use GIMP::Raw::Types;
 use GIMP::Raw::Parasite;
 
+use GLib::Object::ParamSpec;
+
 use GLib::Roles::StaticClass;
 
 class GIMP::Parasite {
@@ -93,10 +95,21 @@ class GIMP::Parasite::Param {
     unstable_get_type( self.^name, &gimp_param_parasite_get_type, $n, $t );
   }
 
-  method spec_parasite (Str() $name, Str() $nick, Str() $blurb, Int() $flags) {
+  method spec_parasite (
+    Str() $name,
+    Str() $nick,
+    Str() $blurb,
+    Int() $flags,
+    :$raw = False
+  ) {
     my GParamFlags $f = $flags;
 
     # GParamSpec
-    gimp_param_spec_parasite($name, $nick, $blurb, $f);
+    my $ps = gimp_param_spec_parasite($name, $nick, $blurb, $f);
+
+    $ps ??
+      ( $raw ?? $ps !! GLib::Object::ParamSpec.new($ps) )
+      !!
+      Nil;
   }
 }

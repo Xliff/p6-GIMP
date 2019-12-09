@@ -3,6 +3,8 @@ use v6;
 use GIMP::Raw::Types;
 use GIMP::Raw::Unit;
 
+use GLib::Object::ParamSpec;
+
 use GLib::Roles::StaticClass;
 
 class GIMP::Unit {
@@ -133,14 +135,20 @@ class GIMP::Units::Param {
     Int() $allow_pixels,
     Int() $allow_percent,
     Int() $default_value,
-    Int() $flags
+    Int() $flags,
+    :$raw = False
   ) {
     my gboolean ($apix, $apct) = (so $allow_pixels, so $allow_percent)».Int;
     my GimpUnit $d = $default_value;
     my GParamFlags $f = $flags;
 
     # GParamSpec
-    gimp_param_spec_unit($name, $nick, $blurb, $apix, $apct, $d, $f);
+    my $ps = gimp_param_spec_unit($name, $nick, $blurb, $apix, $apct, $d, $f);
+
+    $ps ??
+      ( $raw ?? $ps !! GLib::Object::ParamSpec.new($ps) )
+      !!
+      Nil;
   }
 
   method get_type {

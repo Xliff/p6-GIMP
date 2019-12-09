@@ -3,6 +3,8 @@ use v6;
 use GIMP::Raw::Types;
 use GIMP::Raw::ValueArray;
 
+use GLib::Object::ParamSpec;
+
 use GLib::Roles::StaticClass;
 
 class GIMP::ValueArray {
@@ -84,11 +86,22 @@ class GIMP::ValueArray::Param {
     Str() $nick,
     Str() $blurb,
     GParamSpec $element_spec,
-    Int() $flags
+    Int() $flags,
+    :$raw = False
   ) {
     my GParamFlags $f = $flags;
+    my $ps = gimp_param_spec_value_array(
+      $name,
+      $nick,
+      $blurb,
+      $element_spec,
+      $f
+    );
 
-    gimp_param_spec_value_array($name, $nick, $blurb, $element_spec, $f);
+    $ps ??
+      ( $raw ?? $ps !! GLib::Object::ParamSpec.new($ps) )
+      !!
+      Nil;
   }
 
   method get_type {

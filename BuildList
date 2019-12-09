@@ -1,3 +1,4 @@
+GLib::Object::ParamSpec
 GLib::Roles::StaticClass
 GTK::Compat::Roles::TypedBuffer
 GTK::Compat::Types
