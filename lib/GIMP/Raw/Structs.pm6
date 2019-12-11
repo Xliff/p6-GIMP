@@ -74,17 +74,88 @@ class GimpPixelRgn is repr('CStruct') is export {
 	has gint          $.process_count is rw;
 }
 
-class GimpPlugInInfo is repr('CStruct') is export {
-	has Pointer       $!init_proc; # Typedef<GimpInitProc>->«F:void ( )*» init_proc
-	has Pointer       $!quit_proc; # Typedef<GimpQuitProc>->«F:void ( )*» quit_proc
+class GimpParamData is repr('CUnion') is export { ... }
+
+class GimpParam is repr('CStruct') is export {
+	has int32              $.type is rw;
+	has GimpParamData      $!data;
+}
+
+sub sprintf-SIGpIGpaa-i (
+  Blob,
+  Str,
+  & (Str, GimpParam, gint, CArray[Pointer[GimpParam]]),
+  gpointer
+ --> int64
+)
+    is native is symbol('sprintf') { * }
+
+class GimpPluginInfo is repr('CStruct') is export {
+	has Pointer       $!init_proc;  # Typedef<GimpInitProc>->«F:void ( )*» init_proc
+	has Pointer       $!quit_proc;  # Typedef<GimpQuitProc>->«F:void ( )*» quit_proc
 	has Pointer       $!query_proc; # Typedef<GimpQueryProc>->«F:void ( )*» query_proc
-	has Pointer       $!run_proc; # Typedef<GimpRunProc>->«F:void ( )*» run_proc
+	has Pointer       $!run_proc;   # Typedef<GimpRunProc>->«F:void ( )*» run_proc
+
+  method init_proc is rw {
+    Proxy.new:
+      FETCH => -> $ { $!init_proc },
+      STORE => -> $, \func {
+        $!init_proc := set_func_pointer( &(func), &sprintf-vv);
+      };
+  }
+
+  method quit_proc is rw {
+    Proxy.new:
+      FETCH => -> $ { $!quit_proc },
+      STORE => -> $, \func {
+        $!quit_proc := set_func_pointer( &(func), &sprintf-vv);
+      };
+  }
+
+  method query_proc is rw {
+    Proxy.new:
+      FETCH => -> $ { $!query_proc },
+      STORE => -> $, \func {
+        $!query_proc := set_func_pointer( &(func), &sprintf-vv);
+      };
+  }
+
+  method run_proc is rw {
+    Proxy.new:
+      FETCH => -> $ { $!run_proc },
+      STORE => -> $, \func {
+        $!run_proc := set_func_pointer( &(func), &sprintf-SIGpIGpaa-i);
+      };
+  }
 }
 
 class GimpParamDef is repr('CStruct') is export {
 	has int32         $.type         is rw;
 	has Str           $!name;
 	has Str           $!description;
+
+  submethod BUILD (:$!type, :$name, :$description) {
+    self.name        = $name;
+    self.description = $description;
+  }
+
+  multi method new ($type, $name, $description) {
+    self.bless(:$type, :$name, :$description);
+  }
+
+  method name is rw {
+    Proxy.new:
+      FETCH => -> $                { $!name },
+      STORE => -> $, Str() $val    { self.^attributes(:local)[1]
+                                         .set_value(self, $val)    };
+  }
+
+  method description is rw {
+    Proxy.new:
+      FETCH => -> $                { $!description },
+      STORE => -> $, Str() $val    { self.^attributes(:local)[2]
+                                         .set_value(self, $val)    };
+  }
 }
 
 class GimpParamRegion is repr('CStruct') is export {
@@ -101,7 +172,7 @@ class GimpParasite is repr('CStruct') is export {
 	has Pointer            $!data;
 }
 
-class GimpParamData is repr('CUnion') is export {
+class GimpParamData {
 	has gint32             $.d_int32; # Typedef<gint32>->«int» d_int32
 	has gint16             $.d_int16; # Typedef<gint16>->«short int» d_int16
 	has guint8             $.d_int8; # Typedef<guint8>->«unsigned char» d_int8
@@ -130,11 +201,6 @@ class GimpParamData is repr('CUnion') is export {
 	has GimpParasite       $!d_parasite; # Typedef<GimpParasite>->«_GimpParasite» d_parasite
 	has gint32             $.d_tattoo; # Typedef<gint32>->«int» d_tattoo
 	has int32              $.d_status; # Typedef<GimpPDBStatusType>->«GimpPDBStatusType» d_status
-}
-
-class GimpParam is repr('CStruct') is export {
-	has int32              $.type is rw;
-	has GimpParamData      $!data;
 }
 
 class GimpMatrix2 is repr('CStruct') is export {
