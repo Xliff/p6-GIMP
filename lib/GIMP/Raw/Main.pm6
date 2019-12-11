@@ -29,7 +29,7 @@ sub gimp_default_display ()
 { * }
 
 sub gimp_destroy_paramdefs (
-  CArray[Pointer] $paramdefs, # Array-GimpParamDef
+  Pointer $paramdefs, # Array-GimpParamDef
   gint $n_params
 )
   is native(gimp)
@@ -37,7 +37,7 @@ sub gimp_destroy_paramdefs (
 { * }
 
 sub gimp_destroy_params (
-  CArray[Pointer] $params, # Array-GimpParam
+  Pointer $params, # Array-GimpParam
   gint $n_params
 )
   is native(gimp)
@@ -85,6 +85,12 @@ sub gimp_extension_enable ()
 { * }
 
 sub gimp_extension_process (guint $timeout)
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_gamma ()
+  returns gdouble
   is native(gimp)
   is export
 { * }
@@ -146,14 +152,16 @@ sub gimp_install_temp_proc (
   gint $n_return_vals,
   Pointer $params,       # Array-GimpParamDef $params,
   Pointer $return_vals,  # Array-GimpParamDef $return_vals,
-  GimpRunProc $run_proc
+
+  # &run_proc will need to set $carray[0] ONLY! Best done with a TypedBuffer.
+  &run_proc (Str, gint, GimpParam, gint, CArray[Pointer])
 )
   is native(gimp)
   is export
 { * }
 
 sub gimp_main (
-  CArray[Pointer] $info, # Array-GimpPlugInInfo $info,
+  GimpPluginInfo $info, # Array-GimpPlugInInfo $info,
   gint $argc,
   CArray[Str] $argv
 )
@@ -183,9 +191,9 @@ sub gimp_run_procedure (
   Str $name,
   gint $n_return_vals is rw,
   gint $n_params,
-  CArray[Pointer] $params
+  Pointer $params              # Array - GParam
 )
-  returns CArray[Pointer]
+  returns Pointer              # Array - GParam
   is native(gimp)
   is export
 { * }

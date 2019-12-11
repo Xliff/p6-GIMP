@@ -43,10 +43,12 @@ GIMP::PixPipeParams
 GIMP::Raw::Color
 GIMP::Raw::ColorProfile
 GIMP::Raw::Env
+GIMP::Raw::Main
 GIMP::Raw::Parasite
 GIMP::Color
 GIMP::ColorProfile
 GIMP::Env
+GIMP::Main
 GIMP::PDB::Brush
 GIMP::PDB::Channel
 GIMP::PDB::Display

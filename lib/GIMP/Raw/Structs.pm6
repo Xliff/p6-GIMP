@@ -74,7 +74,12 @@ class GimpPixelRgn is repr('CStruct') is export {
 	has gint          $.process_count is rw;
 }
 
-class GimpParam is repr('CStruct') is export { ... };
+class GimpParamData is repr('CUnion') is export { ... }
+
+class GimpParam is repr('CStruct') is export {
+	has int32              $.type is rw;
+	has GimpParamData      $!data;
+}
 
 sub sprintf-SIGpIGpaa-i (
   Blob,
@@ -85,7 +90,7 @@ sub sprintf-SIGpIGpaa-i (
 )
     is native is symbol('sprintf') { * }
 
-class GimpPlugInInfo is repr('CStruct') is export {
+class GimpPluginInfo is repr('CStruct') is export {
 	has Pointer       $!init_proc;  # Typedef<GimpInitProc>->«F:void ( )*» init_proc
 	has Pointer       $!quit_proc;  # Typedef<GimpQuitProc>->«F:void ( )*» quit_proc
 	has Pointer       $!query_proc; # Typedef<GimpQueryProc>->«F:void ( )*» query_proc
@@ -115,11 +120,11 @@ class GimpPlugInInfo is repr('CStruct') is export {
       };
   }
 
-  method query_proc is rw {
+  method run_proc is rw {
     Proxy.new:
-      FETCH => -> $ { $!query_proc },
+      FETCH => -> $ { $!run_proc },
       STORE => -> $, \func {
-        $!query_proc := set_func_pointer( &(func), &sprintf-SIGpIGpaa-i);
+        $!run_proc := set_func_pointer( &(func), &sprintf-SIGpIGpaa-i);
       };
   }
 }
@@ -167,7 +172,7 @@ class GimpParasite is repr('CStruct') is export {
 	has Pointer            $!data;
 }
 
-class GimpParamData is repr('CUnion') is export {
+class GimpParamData {
 	has gint32             $.d_int32; # Typedef<gint32>->«int» d_int32
 	has gint16             $.d_int16; # Typedef<gint16>->«short int» d_int16
 	has guint8             $.d_int8; # Typedef<guint8>->«unsigned char» d_int8
@@ -196,11 +201,6 @@ class GimpParamData is repr('CUnion') is export {
 	has GimpParasite       $!d_parasite; # Typedef<GimpParasite>->«_GimpParasite» d_parasite
 	has gint32             $.d_tattoo; # Typedef<gint32>->«int» d_tattoo
 	has int32              $.d_status; # Typedef<GimpPDBStatusType>->«GimpPDBStatusType» d_status
-}
-
-class GimpParam {
-	has int32              $.type is rw;
-	has GimpParamData      $!data;
 }
 
 class GimpMatrix2 is repr('CStruct') is export {

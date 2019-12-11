@@ -2,16 +2,21 @@ use v6;
 
 use NativeCall;
 
+use GTK::Raw::Utils;
+
 use GIMP::Raw::Types;
+use GIMP::Raw::Main;
 
 use GLib::Roles::StaticClass;
 
+use GTK::Compat::Roles::TypedBuffer;
+
+package GIMP::MainVar {
+  our $PLUG_IN_INFO is export;
+}
+
 class GIMP::Main {
   also does GLib::Roles::StaticClass;
-
-  method attach_new_parasite (Str $name, gint $flags, gint $size, gconstpointer $data) {
-    gimp_attach_new_parasite($name, $flags, $size, $data);
-  }
 
   method check_size {
     gimp_check_size();
@@ -25,12 +30,32 @@ class GIMP::Main {
     gimp_default_display();
   }
 
-  method destroy_paramdefs (GimpParamDef $paramdefs, gint $n_params) {
-    gimp_destroy_paramdefs($paramdefs, $n_params);
+  proto method destroy_paramdefs (|)
+  { * }
+
+  multi method destroy_paramdefs (
+    GTK::Compat::Roles::TypedBuffer[GimpParamDef] $defs
+  ) {
+    samewith($defs.p, $defs.size);
+  }
+  multi method destroy_paramdefs (Pointer $paramdefs, Int() $n_params) {
+    my gint $n = $n_params;
+
+    gimp_destroy_paramdefs($paramdefs, $n);
   }
 
-  method destroy_params (GimpParam $params, gint $n_params) {
-    gimp_destroy_params($params, $n_params);
+  proto method destroy_params (|)
+  { * }
+
+  multi method destroy_params (
+    GTK::Compat::Roles::TypedBuffer[GimpParam] $defs
+  ) {
+    samewith($defs.p, $defs.size);
+  }
+  multi method destroy_params (Pointer $params, Int() $n_params) {
+    my gint $n = $n_params;
+
+    gimp_destroy_params($params, $n);
   }
 
   method display_name {
@@ -61,8 +86,10 @@ class GIMP::Main {
     gimp_extension_enable();
   }
 
-  method extension_process (guint $timeout) {
-    gimp_extension_process($timeout);
+  method extension_process (Int() $timeout) {
+    my guint $t = $timeout;
+
+    gimp_extension_process($t);
   }
 
   method gamma {
@@ -85,56 +112,198 @@ class GIMP::Main {
     gimp_icon_theme_dir();
   }
 
-  method install_cmap {
-    gimp_install_cmap();
+  proto method install_procedure (|)
+  { * }
+
+  multi method install_procedure (
+    Str() $name,
+    Str() $blurb,
+    Str() $help,
+    Str() $author,
+    Str() $copyright,
+    Str() $date,
+    Str() $menu_label,
+    Str() $image_types,
+    Int() $type,
+    @params,
+    @returns
+  ) {
+    die '@params must only contain GimpParamDef elements!'
+      unless @params.all ~~ GimpParamDef;
+    die '@returns must only contain GimpParamDef elements!'
+      unless @returns.all ~~ GimpParamDef;
+    my $p = GTK::Compat::Roles::TypedBuffer[GimpParamDef].new(@params);
+    my $r = GTK::Compat::Roles::TypedBuffer[GimpParamDef].new(@returns);
+
+    samewith(
+      $name,
+      $blurb,
+      $help,
+      $author,
+      $copyright,
+      $date,
+      $menu_label,
+      $image_types,
+      $type,
+      $p.size,
+      $r.size,
+      $p.p,
+      $r.p
+    );
   }
 
-  method install_procedure (Str $name, Str $blurb, Str $help, Str $author, Str $copyright, Str $date, Str $menu_label, Str $image_types, GimpPDBProcType $type, gint $n_params, gint $n_return_vals, GimpParamDef $params, GimpParamDef $return_vals) {
-    gimp_install_procedure($name, $blurb, $help, $author, $copyright, $date, $menu_label, $image_types, $type, $n_params, $n_return_vals, $params, $return_vals);
+  multi method install_procedure (
+    Str() $name,
+    Str() $blurb,
+    Str() $help,
+    Str() $author,
+    Str() $copyright,
+    Str() $date,
+    Str() $menu_label,
+    Str() $image_types,
+    Int() $type,
+    Int() $n_params,
+    Int() $n_return_vals,
+    Pointer $params,
+    Pointer $return_vals
+  ) {
+    my gint ($np, $nr) = ($n_params, $n_return_vals);
+    my GimpPDBProcType $t = $type;
+
+    gimp_install_procedure(
+      $name,
+      $blurb,
+      $help,
+      $author,
+      $copyright,
+      $date,
+      $menu_label,
+      $image_types,
+      $t,
+      $np,
+      $nr,
+      $params,
+      $return_vals
+    );
   }
 
-  method install_temp_proc (Str $name, Str $blurb, Str $help, Str $author, Str $copyright, Str $date, Str $menu_label, Str $image_types, GimpPDBProcType $type, gint $n_params, gint $n_return_vals, GimpParamDef $params, GimpParamDef $return_vals, GimpRunProc $run_proc) {
-    gimp_install_temp_proc($name, $blurb, $help, $author, $copyright, $date, $menu_label, $image_types, $type, $n_params, $n_return_vals, $params, $return_vals, $run_proc);
+  proto method install_temp_proc (|)
+  { * }
+
+  multi method install_temp_proc (
+    Str() $name,
+    Str() $blurb,
+    Str() $help,
+    Str() $author,
+    Str() $copyright,
+    Str() $date,
+    Str() $menu_label,
+    Str() $image_types,
+    Int() $type,
+    @params,
+    @returns
+  ) {
+    die '@params must only contain GimpParamDef elements!'
+      unless @params.all ~~ GimpParamDef;
+    die '@returns must only contain GimpParamDef elements!'
+      unless @returns.all ~~ GimpParamDef;
+    my $p = GTK::Compat::Roles::TypedBuffer[GimpParamDef].new(@params);
+    my $r = GTK::Compat::Roles::TypedBuffer[GimpParamDef].new(@returns);
+
+    samewith(
+      $name,
+      $blurb,
+      $help,
+      $author,
+      $copyright,
+      $date,
+      $menu_label,
+      $image_types,
+      $type,
+      $p.size,
+      $r.size,
+      $p.p,
+      $r.p
+    );
+  }
+  multi method install_temp_proc (
+    Str() $name,
+    Str() $blurb,
+    Str() $help,
+    Str() $author,
+    Str() $copyright,
+    Str() $date,
+    Str() $menu_label,
+    Str() $image_types,
+    Int() $type,
+    Int() $n_params,
+    Int() $n_return_vals,
+    Pointer $params,      # Array - GimpParamDef $parms
+    Pointer $return_vals, # Array -GimpParamDef $return_vals,
+    &run_proc
+  ) {
+    my gint ($np, $nr) = ($n_params, $n_return_vals);
+    my GimpPDBProcType $t = $type;
+
+    gimp_install_temp_proc(
+      $name,
+      $blurb,
+      $help,
+      $author,
+      $copyright,
+      $date,
+      $menu_label,
+      $image_types,
+      $type,
+      $np,
+      $nr,
+      $params,
+      $return_vals,
+      &run_proc
+    );
   }
 
-  method main (GimpPlugInInfo $info, gint $argc, Str $argv) {
+  multi method main (GimpPluginInfo $info, @args) {
+    samewith( $info, @args.elems, ArrayToCArray(Str, @args) );
+  }
+  multi method main (GimpPluginInfo $info, gint $argc, CArray[Str] $argv) {
     gimp_main($info, $argc, $argv);
-  }
-
-  method min_colors {
-    gimp_min_colors();
   }
 
   method monitor_number {
     gimp_monitor_number();
   }
 
-  method parasite_attach (GimpParasite $parasite) {
-    gimp_parasite_attach($parasite);
-  }
-
-  method parasite_detach (Str $name) {
-    gimp_parasite_detach($name);
-  }
-
-  method parasite_find (Str $name) {
-    gimp_parasite_find($name);
-  }
-
-  method parasite_list (gint $num_parasites, Str $parasites) {
-    gimp_parasite_list($num_parasites, $parasites);
-  }
-
   method quit {
     gimp_quit();
   }
 
-  method run_procedure (Str $name, gint $n_return_vals, ...) {
-    gimp_run_procedure($name, $n_return_vals);
-  }
+  proto method run_procedure (|)
+  { * }
 
-  method run_procedure2 (Str $name, gint $n_return_vals, gint $n_params, GimpParam $params) {
-    gimp_run_procedure2($name, $n_return_vals, $n_params, $params);
+  multi method run_procedure (
+    Str() $name,
+    @params,
+    :$raw = False
+  ) {
+    my $pb = GTK::Compat::roles::TypedBuffer[GimpParam].new(@params);
+
+    samewith($name, $, @params.elems, $pb.p);
+  }
+  multi method run_procedure (
+    Str() $name,
+    $n_return_vals is rw,
+    Int() $n_params,
+    Pointer $params,
+    :$raw = False
+  ) {
+    my gint ($np, $nr) = ($n_params, 0);
+    my $p = gimp_run_procedure($name, $nr, $np, $params);
+
+    return Nil unless $p;
+    return $p  if $raw;
+
+    GTK::Compat::Roles::TypedBuffer[GimpParam].new($p);
   }
 
   method shm_ID {
@@ -161,7 +330,7 @@ class GIMP::Main {
     gimp_tile_width();
   }
 
-  method uninstall_temp_proc (Str $name) {
+  method uninstall_temp_proc (Str() $name) {
     gimp_uninstall_temp_proc($name);
   }
 
@@ -175,9 +344,9 @@ class GIMP::Main {
 
 }
 
-sub MAIN (*@args) is export  {
+sub gimp_MAIN (*@args) is export  {
   die '$PLUG_IN_INFO is not a GimpPluginInfo structure'
     unless $PLUG_IN_INFO ~~ GimpPluginInfo;
 
-  gimp_main( $PLUG_IN_INFO, @args.elems, ArrayToCArray(@args) )
+  GIMP::Main.main( $PLUG_IN_INFO, @args )
 }
