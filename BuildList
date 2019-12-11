@@ -6,8 +6,8 @@ GTK::Compat::Types
 GTK::Raw::Utils
 GTK::Roles::Pointers
 GIMP::Raw::Enums
+GIMP::Raw::Libs
 GIMP::Raw::Structs
-GIMP::PDB::Palette
 GIMP::Raw::Types
 GIMP::Raw::Unit
 GIMP::Raw::ValueArray
@@ -20,6 +20,7 @@ GIMP::PDB::Dynamics
 GIMP::PDB::Fonts
 GIMP::PDB::GradientSelect
 GIMP::PDB::Message
+GIMP::PDB::Palette
 GIMP::PDB::PaletteSelect
 GIMP::PDB::Pattern
 GIMP::PDB::PatternSelect

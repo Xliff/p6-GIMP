@@ -10,8 +10,8 @@
     "provides": {
       "GIMP::Raw::Enums"           :  "lib/GIMP/Raw/Enums.pm6"          ,
       "GIMP::Rectangle"            :  "lib/GIMP/Rectangle.pm6"          ,
+      "GIMP::Raw::Libs"            :  "lib/GIMP/Raw/Libs.pm6"           ,
       "GIMP::Raw::Structs"         :  "lib/GIMP/Raw/Structs.pm6"        ,
-      "GIMP::PDB::Palette"         :  "lib/GIMP/PDB/Palette.pm6"        ,
       "GIMP::Raw::Types"           :  "lib/GIMP/Raw/Types.pm6"          ,
       "GIMP::Raw::Unit"            :  "lib/GIMP/Raw/Unit.pm6"           ,
       "GIMP::Raw::ValueArray"      :  "lib/GIMP/Raw/ValueArray.pm6"     ,
@@ -24,6 +24,7 @@
       "GIMP::PDB::Fonts"           :  "lib/GIMP/PDB/Fonts.pm6"          ,
       "GIMP::PDB::GradientSelect"  :  "lib/GIMP/PDB/GradientSelect.pm6" ,
       "GIMP::PDB::Message"         :  "lib/GIMP/PDB/Message.pm6"        ,
+      "GIMP::PDB::Palette"         :  "lib/GIMP/PDB/Palette.pm6"        ,
       "GIMP::PDB::PaletteSelect"   :  "lib/GIMP/PDB/PaletteSelect.pm6"  ,
       "GIMP::PDB::Pattern"         :  "lib/GIMP/PDB/Pattern.pm6"        ,
       "GIMP::PDB::PatternSelect"   :  "lib/GIMP/PDB/PatternSelect.pm6"  ,
