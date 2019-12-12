@@ -1,162 +1,314 @@
 use v6;
 
+use MONKEY-TYPING;
+
+use NativeCall;
+
+use GTK::Raw::Utils;
+
 use GIMP::Raw::Types;
 use GIMP::Raw::RGB;
 
-use MONKEY-TYPING;
+use GTK::Compat::Value;
+use GLib::Object::ParamSpec;
+
+use GLib::Roles::StaticClass;
 
 augment class GimpRGB {
-  
-  method add (GimpRGB $rgb1, GimpRGB $rgb2) {
-    gimp_rgb_add($rgb1, $rgb2);
+
+  multi method add (GimpRGB $rgb2) {
+    gimp_rgb_add(self, $rgb2);
+  }
+  multi method add (GimpRGB $rgba2, :$alpha is required) {
+    gimp_rgba_add(self, $rgba2);
   }
 
-  method clamp (GimpRGB $rgb) {
-    gimp_rgb_clamp($rgb);
+  method clamp {
+    gimp_rgb_clamp(self);
   }
 
-  method composite (GimpRGB $color1, GimpRGB $color2, GimpRGBCompositeMode $mode) {
-    gimp_rgb_composite($color1, $color2, $mode);
+  method composite (GimpRGB $color2, GimpRGBCompositeMode $mode) {
+    my GimpRGBCompositeMode $m = $mode;
+
+    gimp_rgb_composite(self, $color2, $m);
   }
 
-  method distance (GimpRGB $rgb1, GimpRGB $rgb2) {
-    gimp_rgb_distance($rgb1, $rgb2);
+  method distance (GimpRGB $rgb2) {
+    gimp_rgb_distance(self, $rgb2);
   }
 
-  method gamma (GimpRGB $rgb, gdouble $gamma) {
-    gimp_rgb_gamma($rgb, $gamma);
+  method gamma (Num() $gamma) {
+    my gdouble $g = $gamma;
+
+    gimp_rgb_gamma(self, $g);
   }
 
-  method get_pixel (GimpRGB $rgb, Babl $format, gpointer $pixel) {
-    gimp_rgb_get_pixel($rgb, $format, $pixel);
+  proto method get_pixel (|)
+  { * }
+
+  multi method get_pixel (Babl $format) {
+    my $p = Pointer.new;
+    $p = Pointer;
+
+    samewith($format, $p);
+  }
+  multi method get_pixel (Babl $format, gpointer $pixel) {
+    gimp_rgb_get_pixel(self, $format, $pixel);
+    $pixel;
+  }
+  multi method get_pixel (
+    Babl $format,
+    :$alpha is required
+  ) {
+    samewith($format, $, :alpha);
+  }
+  multi method get_pixel (
+    Babl $format,
+    gpointer $pixel,
+    :$alpha is required
+  ) {
+    gimp_rgba_get_pixel(self, $format, $pixel);
+    $pixel;
   }
 
-  method get_type () {
-    gimp_rgb_get_type();
+  method get_type {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &gimp_rgb_get_type, $n, $t );
   }
 
-  method get_uchar (GimpRGB $rgb, Str $red, Str $green, Str $blue) {
-    gimp_rgb_get_uchar($rgb, $red, $green, $blue);
+  proto method get_uchar (|)
+  { * }
+
+  multi method get_uchar {
+    samewith($, $, $);
+  }
+  multi method get_uchar ($red is rw, $green is rw, $blue is rw) {
+    my uint8 ($r, $g, $b) = 0 xx 3;
+
+    gimp_rgb_get_uchar(self, $r, $g, $b);
+    ($red, $green, $blue) = ($r, $g, $b);
+  }
+  multi method get_uchar (:$alpha is required) {
+    samewith($, $, $, $);
+  }
+  multi method get_uchar (
+    $red    is rw,
+    $green  is rw,
+    $blue   is rw,
+    $α     is rw,
+    :$alpha
+  ) {
+    my uint8 ($r, $g, $b, $a) = 0 xx 4;
+
+    gimp_rgba_get_uchar(self, $r, $g, $b, $a);
+    ($red, $green, $blue, $α) = ($r, $g, $b, $a);
   }
 
-  method gimp_param_rgb_get_type () {
-    gimp_param_rgb_get_type();
+  multi method multiply (Num() $factor) {
+    my gdouble $f = $factor;
+
+    gimp_rgb_multiply(self, $factor);
+  }
+  multi method multiply (Num() $factor, :$alpha is required) {
+    my gdouble $f = $factor;
+
+    gimp_rgba_multiply(self, $factor);
   }
 
-  method gimp_param_spec_rgb (Str $name, Str $nick, Str $blurb, gboolean $has_alpha, GimpRGB $default_value, GParamFlags $flags) {
-    gimp_param_spec_rgb($name, $nick, $blurb, $has_alpha, $default_value, $flags);
+  proto method value_get (|)
+  { * }
+
+  multi method value_get (:$raw = False) {
+    my $v = GValue.new(self.get_type);
+
+    samewith($v, :$raw);
+  }
+  multi method value_get (GValue() $value, :$raw = False) {
+    gimp_value_get_rgb($value, self);
+
+    $raw ?? $value !! GTK::Compat::Value.new($value);
   }
 
-  method gimp_param_spec_rgb_has_alpha (GParamSpec $pspec) {
-    gimp_param_spec_rgb_has_alpha($pspec);
+  method value_set (GValue() $value) {
+    gimp_value_set_rgb($value, self);
   }
 
-  method gimp_rgba_add (GimpRGB $rgba1, GimpRGB $rgba2) {
-    gimp_rgba_add($rgba1, $rgba2);
+  method intensity {
+    gimp_rgb_intensity(self);
   }
 
-  method gimp_rgba_get_pixel (GimpRGB $rgba, Babl $format, gpointer $pixel) {
-    gimp_rgba_get_pixel($rgba, $format, $pixel);
+  method intensity_uchar {
+    gimp_rgb_intensity_uchar(self);
   }
 
-  method gimp_rgba_get_uchar (GimpRGB $rgba, Str $red, Str $green, Str $blue, Str $alpha) {
-    gimp_rgba_get_uchar($rgba, $red, $green, $blue, $alpha);
+  proto method list_names (|)
+  { * }
+
+  multi method list_names {
+    samewith($, $);
+  }
+  multi method list_names ($names is rw, $colors is rw) {
+    my $n = CArray[CArray[Str]];
+    $n[0] = CArray[Str];
+
+    my $c = CArray[Pointer[GimpRGB]];
+    $c[0] = Pointer[GimpRGB];
+
+    my $num = gimp_rgb_list_names($n, $c);
+
+    # ($n, $c)».&gfree;
+    my @colors = CStringArrayToArray($n[0], $num);
+    my @rgbs = GTK::Compat::Roles::TypedBuffer.new($c[0]).Array;
+
+    ($names, $colors) = (@colors, @rgbs);
   }
 
-  method gimp_rgba_multiply (GimpRGB $rgba, gdouble $factor) {
-    gimp_rgba_multiply($rgba, $factor);
+  method luminance {
+    gimp_rgb_luminance(self);
   }
 
-  method gimp_rgba_parse_css (GimpRGB $rgba, Str $css, gint $len) {
-    gimp_rgba_parse_css($rgba, $css, $len);
+  method luminance_uchar {
+    gimp_rgb_luminance_uchar(self);
   }
 
-  method gimp_rgba_set (GimpRGB $rgba, gdouble $red, gdouble $green, gdouble $blue, gdouble $alpha) {
-    gimp_rgba_set($rgba, $red, $green, $blue, $alpha);
+  method max {
+    gimp_rgb_max(self);
   }
 
-  method gimp_rgba_set_pixel (GimpRGB $rgba, Babl $format, gconstpointer $pixel) {
-    gimp_rgba_set_pixel($rgba, $format, $pixel);
+  method min {
+    gimp_rgb_min(self);
   }
 
-  method gimp_rgba_set_uchar (GimpRGB $rgba, Str $red, Str $green, Str $blue, Str $alpha) {
-    gimp_rgba_set_uchar($rgba, $red, $green, $blue, $alpha);
+  proto method parse_css (|)
+  { * }
+
+  multi method parse_css (Str() $css, Int() $len = -1) {
+    my gint $l = $len;
+
+    so gimp_rgb_parse_css(self, $css, $l);
+  }
+  multi method parse_css (Str() $css, Int() $len = -1, :$alpha is required) {
+    my gint $l = $len;
+
+    so gimp_rgba_parse_css(self, $css, $l);
   }
 
-  method gimp_rgba_subtract (GimpRGB $rgba1, GimpRGB $rgba2) {
-    gimp_rgba_subtract($rgba1, $rgba2);
+  method parse_hex (Str() $hex, Int() $len = -1) {
+    my gint $l = $len;
+
+    gimp_rgb_parse_hex(self, $hex, $l);
   }
 
-  method gimp_value_get_rgb (GValue $value, GimpRGB $rgb) {
-    gimp_value_get_rgb($value, $rgb);
+  method parse_name (Str() $name, Int() $len = -1) {
+    my gint $l = $len;
+
+    gimp_rgb_parse_name(self, $name, $l);
   }
 
-  method gimp_value_set_rgb (GValue $value, GimpRGB $rgb) {
-    gimp_value_set_rgb($value, $rgb);
+  multi method set (Num() $red, Num() $green, Num() $blue) {
+    my gdouble ($r, $g, $b) = ($red, $green, $blue);
+
+    gimp_rgb_set(self, $r, $g, $b);
+  }
+  multi method set (
+    Num() $red,
+    Num() $green,
+    Num() $blue,
+    Num() $α,
+    :$alpha
+  ) {
+    gimp_rgba_set(self, $red, $green, $blue, $α);
   }
 
-  method intensity (GimpRGB $rgb) {
-    gimp_rgb_intensity($rgb);
+  method set_alpha (Num() $alpha) {
+    my gdouble $a = $alpha;
+
+    gimp_rgb_set_alpha(self, $a);
   }
 
-  method intensity_uchar (GimpRGB $rgb) {
-    gimp_rgb_intensity_uchar($rgb);
+  proto method set_pixel (|)
+  { * }
+
+  multi method set_pixel (Babl $format) {
+    samewith($format, $);
+  }
+  multi method set_pixel (Babl $format, gconstpointer $pixel) {
+    gimp_rgb_set_pixel(self, $format, $pixel);
+    $pixel;
+  }
+  multi method set_pixel (Babl $format, :$alpha is required) {
+    samewith($format, $, :alpha);
+  }
+  multi method set_pixel (
+    Babl $format,
+    gconstpointer $pixel,
+    :$alpha is required
+  ) {
+    gimp_rgba_set_pixel(self, $format, $pixel);
   }
 
-  method list_names (Str $names, GimpRGB $colors) {
-    gimp_rgb_list_names($names, $colors);
+  proto method set_uchar (|)
+  { * }
+
+  multi method set_uchar (Int() $red, Int() $green, Int() $blue) {
+    my guint8 ($r, $g, $b) = ($red, $green, $blue);
+
+    gimp_rgb_set_uchar(self, $r, $g, $b);
+  }
+  multi method set_uchar (
+    Int() $red,
+    Int() $green,
+    Int() $blue,
+    Int() $α,
+    :$alpha
+  ) {
+    my guint8 ($r, $g, $b, $a) = ($red, $green, $blue, $α);
+
+    gimp_rgba_set_uchar(self, $r, $g, $b, $a);
   }
 
-  method luminance (GimpRGB $rgb) {
-    gimp_rgb_luminance($rgb);
+
+  multi method subtract (GimpRGB $rgb2) {
+    gimp_rgb_subtract(self, $rgb2);
+  }
+  multi method subtract (GimpRGB $rgba2, :$alpha is required) {
+    gimp_rgba_subtract(self, $rgba2);
   }
 
-  method luminance_uchar (GimpRGB $rgb) {
-    gimp_rgb_luminance_uchar($rgb);
+}
+
+class GIMP::RGB::Param {
+  also does GLib::Roles::StaticClass;
+
+  method get_type {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &gimp_param_rgb_get_type, $n, $t );
   }
 
-  method max (GimpRGB $rgb) {
-    gimp_rgb_max($rgb);
+  method spec (
+    Str() $name,
+    Str() $nick,
+    Str() $blurb,
+    Int() $has_alpha,
+    GimpRGB $default_value,
+    Int() $flags,
+    :$raw = False
+  ) {
+    my gboolean $h = $has_alpha;
+    my GParamFlags $f = $flags;
+
+    my $ps = gimp_param_spec_rgb($name, $nick, $blurb, $h, $default_value, $f);
+
+    $ps ??
+      ( $raw ?? $ps !! GLib::Object::ParamSpec.new($ps) )
+      !!
+      Nil;
   }
 
-  method min (GimpRGB $rgb) {
-    gimp_rgb_min($rgb);
-  }
-
-  method multiply (GimpRGB $rgb1, gdouble $factor) {
-    gimp_rgb_multiply($rgb1, $factor);
-  }
-
-  method parse_css (GimpRGB $rgb, Str $css, gint $len) {
-    gimp_rgb_parse_css($rgb, $css, $len);
-  }
-
-  method parse_hex (GimpRGB $rgb, Str $hex, gint $len) {
-    gimp_rgb_parse_hex($rgb, $hex, $len);
-  }
-
-  method parse_name (GimpRGB $rgb, Str $name, gint $len) {
-    gimp_rgb_parse_name($rgb, $name, $len);
-  }
-
-  method set (GimpRGB $rgb, gdouble $red, gdouble $green, gdouble $blue) {
-    gimp_rgb_set($rgb, $red, $green, $blue);
-  }
-
-  method set_alpha (GimpRGB $rgb, gdouble $alpha) {
-    gimp_rgb_set_alpha($rgb, $alpha);
-  }
-
-  method set_pixel (GimpRGB $rgb, Babl $format, gconstpointer $pixel) {
-    gimp_rgb_set_pixel($rgb, $format, $pixel);
-  }
-
-  method set_uchar (GimpRGB $rgb, Str $red, Str $green, Str $blue) {
-    gimp_rgb_set_uchar($rgb, $red, $green, $blue);
-  }
-
-  method subtract (GimpRGB $rgb1, GimpRGB $rgb2) {
-    gimp_rgb_subtract($rgb1, $rgb2);
+  method rgb_has_alpha (GParamSpec() $pspec) {
+    so gimp_param_spec_rgb_has_alpha($pspec);
   }
 
 }

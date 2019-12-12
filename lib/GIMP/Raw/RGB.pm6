@@ -3,6 +3,10 @@ use v6;
 use NativeCall;
 
 use GTK::Compat::Types;
+use GIMP::Raw::Definitions;
+use GIMP::Raw::Enums;
+use GIMP::Raw::Libs;
+use GIMP::Raw::Structs;
 
 ### /usr/include/gimp-2.0/libgimpcolor/gimprgb.h
 
@@ -72,7 +76,7 @@ sub gimp_rgb_get_type ()
   is export
 { * }
 
-sub gimp_rgb_get_uchar (GimpRGB $rgb, Str $red, Str $green, Str $blue)
+sub gimp_rgb_get_uchar (GimpRGB $rgb, uint8 $red, uint8 $green, uint8 $blue)
   is native(gimpcolor)
   is export
 { * }
@@ -157,7 +161,7 @@ sub gimp_rgb_set_pixel (GimpRGB $rgb, Babl $format, gconstpointer $pixel)
   is export
 { * }
 
-sub gimp_rgb_set_uchar (GimpRGB $rgb, Str $red, Str $green, Str $blue)
+sub gimp_rgb_set_uchar (GimpRGB $rgb, uint8 $red, uint8 $green, uint8 $blue)
   is native(gimpcolor)
   is export
 { * }
@@ -179,10 +183,10 @@ sub gimp_rgba_get_pixel (GimpRGB $rgba, Babl $format, gpointer $pixel)
 
 sub gimp_rgba_get_uchar (
   GimpRGB $rgba,
-  Str $red,
-  Str $green,
-  Str $blue,
-  Str $alpha
+  uint8 $red,
+  uint8 $green,
+  uint8 $blue,
+  uint8 $alpha
 )
   is native(gimpcolor)
   is export
@@ -217,10 +221,10 @@ sub gimp_rgba_set_pixel (GimpRGB $rgba, Babl $format, gconstpointer $pixel)
 
 sub gimp_rgba_set_uchar (
   GimpRGB $rgba,
-  Str $red,
-  Str $green,
-  Str $blue,
-  Str $alpha
+  uint8 $red,
+  uint8 $green,
+  uint8 $blue,
+  uint8 $alpha
 )
   is native(gimpcolor)
   is export
