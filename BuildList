@@ -7,8 +7,8 @@ GTK::Compat::Value
 GTK::Raw::Utils
 GTK::Roles::Pointers
 GIMP::Raw::Enums
-GIMP::Raw::Definitions
 GIMP::Raw::Libs
+GIMP::Raw::Definitions
 GIMP::Raw::Structs
 GIMP::Raw::Types
 GIMP::Raw::Unit
@@ -49,12 +49,14 @@ GIMP::Raw::Color
 GIMP::Raw::ColorProfile
 GIMP::Raw::Env
 GIMP::Raw::Main
+GIMP::Raw::Matrix
 GIMP::Raw::Parasite
 GIMP::Raw::RGB
 GIMP::Color
 GIMP::ColorProfile
 GIMP::Env
 GIMP::Main
+GIMP::Matrix
 GIMP::PDB::Brush
 GIMP::PDB::Channel
 GIMP::PDB::Display
