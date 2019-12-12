@@ -826,3 +826,41 @@ our enum GimpRGBCompositeModeEnum is export (
     'GIMP_RGB_COMPOSITE_NORMAL',
     'GIMP_RGB_COMPOSITE_BEHIND'
 );
+
+
+# GIMPTHUMBNAIL
+
+constant GimpThumbError is export := guint32;
+our enum GimpThumbErrorEnum is export <
+    GIMP_THUMB_ERROR_OPEN
+    GIMP_THUMB_ERROR_OPEN_ENOENT
+    GIMP_THUMB_ERROR_MKDIR
+>;
+
+constant GimpThumbFileType is export := guint32;
+our enum GimpThumbFileTypeEnum is export <
+    GIMP_THUMB_FILE_TYPE_NONE
+    GIMP_THUMB_FILE_TYPE_REGULAR
+    GIMP_THUMB_FILE_TYPE_FOLDER
+    GIMP_THUMB_FILE_TYPE_SPECIAL
+>;
+
+constant GimpThumbSize is export := guint32;
+our enum GimpThumbSizeEnum is export (
+    GIMP_THUMB_SIZE_FAIL =>  0,
+    GIMP_THUMB_SIZE_NORMAL =>  128,
+    GIMP_THUMB_SIZE_LARGE =>  256,
+);
+
+constant GimpThumbState is export := guint32;
+our enum GimpThumbStateEnum is export <
+    GIMP_THUMB_STATE_UNKNOWN
+    GIMP_THUMB_STATE_REMOTE
+    GIMP_THUMB_STATE_FOLDER
+    GIMP_THUMB_STATE_SPECIAL
+    GIMP_THUMB_STATE_NOT_FOUND
+    GIMP_THUMB_STATE_EXISTS
+    GIMP_THUMB_STATE_OLD
+    GIMP_THUMB_STATE_FAILED
+    GIMP_THUMB_STATE_OK
+>;

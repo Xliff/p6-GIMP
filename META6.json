@@ -55,6 +55,8 @@
       "GIMP::Raw::Matrix"          :  "lib/GIMP/Raw/Matrix.pm6"         ,
       "GIMP::Raw::Parasite"        :  "lib/GIMP/Raw/Parasite.pm6"       ,
       "GIMP::Raw::RGB"             :  "lib/GIMP/Raw/RGB.pm6"            ,
+      "GIMP::Raw::Thumbnail"       :  "lib/GIMP/Raw/Thumbnail.pm6"      ,
+      "GIMP::Thumbnail"            :  "lib/GIMP/Thumbnail.pm6"          ,
       "GIMP::Color"                :  "lib/GIMP/Color.pm6"              ,
       "GIMP::ColorProfile"         :  "lib/GIMP/ColorProfile.pm6"       ,
       "GIMP::Env"                  :  "lib/GIMP/Env.pm6"                ,

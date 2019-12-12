@@ -1,5 +1,6 @@
 GLib::Object::ParamSpec
 GLib::Roles::StaticClass
+GTK::Compat::Pixbuf
 GTK::Compat::Roles::Object
 GTK::Compat::Roles::TypedBuffer
 GTK::Compat::Types
@@ -52,6 +53,8 @@ GIMP::Raw::Main
 GIMP::Raw::Matrix
 GIMP::Raw::Parasite
 GIMP::Raw::RGB
+GIMP::Raw::Thumbnail
+GIMP::Thumbnail
 GIMP::Color
 GIMP::ColorProfile
 GIMP::Env

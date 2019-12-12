@@ -8,8 +8,9 @@ unit package GIMP::Raw::Definitions;
 
 constant Babl      is export := Pointer;
 
-class GimpValueArray   is repr<CPointer> does GTK::Roles::Pointers is export {}
 class GimpColorProfile is repr<CPointer> does GTK::Roles::Pointers is export {}
+class GimpThumbnail    is repr<CPointer> does GTK::Roles::Pointers is export {}
+class GimpValueArray   is repr<CPointer> does GTK::Roles::Pointers is export {}
 
 constant GIMP_RGB_INTENSITY_RED   is export = 0.30;
 constant GIMP_RGB_INTENSITY_GREEN is export = 0.59;
