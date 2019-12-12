@@ -108,7 +108,7 @@ sub gimp_thumbnail_set_filename (
 
 sub gimp_thumbnail_set_from_thumb (
   GimpThumbnail $thumbnail,
-  Str $filename, 
+  Str $filename,
   CArray[Pointer[GError]] $error
 )
   returns uint32

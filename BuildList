@@ -53,7 +53,9 @@ GIMP::Raw::Main
 GIMP::Raw::Matrix
 GIMP::Raw::Parasite
 GIMP::Raw::RGB
+GIMP::Raw::Thumb
 GIMP::Raw::Thumbnail
+GIMP::Thumb
 GIMP::Thumbnail
 GIMP::Color
 GIMP::ColorProfile
