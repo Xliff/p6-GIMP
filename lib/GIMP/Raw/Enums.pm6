@@ -810,3 +810,19 @@ our enum GimpConfigPathTypeEnum is export <
     GIMP_CONFIG_PATH_DIR
     GIMP_CONFIG_PATH_DIR_LIST
 >;
+
+# GIMPCOLOR
+
+constant GimpColorTransformFlags is export := guint32;
+our enum GimpColorTransformFlagsEnum is export (
+    GIMP_COLOR_TRANSFORM_FLAGS_NOOPTIMIZE               => 0x0100,
+    GIMP_COLOR_TRANSFORM_FLAGS_GAMUT_CHECK              => 0x1000,
+    GIMP_COLOR_TRANSFORM_FLAGS_BLACK_POINT_COMPENSATION => 0x2000,
+);
+
+constant GimpRGBCompositeMode is export := guint32;
+our enum GimpRGBCompositeModeEnum is export (
+    GIMP_RGB_COMPOSITE_NONE =>  0,
+    'GIMP_RGB_COMPOSITE_NORMAL',
+    'GIMP_RGB_COMPOSITE_BEHIND'
+);

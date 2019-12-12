@@ -3,11 +3,13 @@ GLib::Roles::StaticClass
 GTK::Compat::Roles::Object
 GTK::Compat::Roles::TypedBuffer
 GTK::Compat::Types
+GTK::Compat::Value
 GTK::Raw::Utils
 GTK::Roles::Pointers
 GIMP::Raw::Enums
+GIMP::Raw::Definitions
+GIMP::Raw::Libs
 GIMP::Raw::Structs
-GIMP::PDB::Palette
 GIMP::Raw::Types
 GIMP::Raw::Unit
 GIMP::Raw::ValueArray
@@ -20,6 +22,7 @@ GIMP::PDB::Dynamics
 GIMP::PDB::Fonts
 GIMP::PDB::GradientSelect
 GIMP::PDB::Message
+GIMP::PDB::Palette
 GIMP::PDB::PaletteSelect
 GIMP::PDB::Pattern
 GIMP::PDB::PatternSelect
@@ -45,6 +48,7 @@ GIMP::Raw::ColorProfile
 GIMP::Raw::Env
 GIMP::Raw::Main
 GIMP::Raw::Parasite
+GIMP::Raw::RGB
 GIMP::Color
 GIMP::ColorProfile
 GIMP::Env
@@ -63,3 +67,4 @@ GIMP::PDB::Plugin
 GIMP::PDB::Procedural
 GIMP::PDB::RC
 GIMP::Parasite
+GIMP::RGB

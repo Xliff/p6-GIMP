@@ -4,6 +4,8 @@ use NativeCall;
 
 use GTK::Compat::Types;
 
+use GIMP::Raw::Libs;
+
 unit package GIMP::Raw::Structs;
 
 class GimpDrawable is repr<CStruct> is export { ... }
@@ -20,6 +22,28 @@ class GimpHSV is repr('CStruct') is export {
 	has gdouble      $.s is rw;
 	has gdouble      $.v is rw;
 	has gdouble      $.a is rw;
+
+  method clamp {
+    gimp_hsv_clamp(self);
+  }
+
+  method get_type {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &gimp_hsv_get_type, $n, $t );
+  }
+
+  method set (
+    Num() $hue,
+    Num() $saturation,
+    Num() $value,
+    Num() $alpha = 1e0
+  ) {
+    my gdouble ($h, $s, $v, $a) = ($hue, $saturation, $value, $alpha);
+
+    gimp_hsva_set(self, $h, $s, $v, $a);
+  }
+
 }
 
 class GimpHSL is repr('CStruct') is export {
@@ -27,6 +51,23 @@ class GimpHSL is repr('CStruct') is export {
 	has gdouble      $.s is rw;
 	has gdouble      $.l is rw;
 	has gdouble      $.a is rw;
+
+  method get_type {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &gimp_hsl_get_type, $n, $t );
+  }
+
+  method set (Num() $h, Num() $s, Num() $l) {
+    my gdouble ($hh, $ss, $ll) = ($h, $s, $l);
+
+    gimp_hsl_set(self, $hh, $ss, $ll);
+  }
+
+  method set_alpha (Num() $a) {
+    my gdouble $aa = $a;
+    gimp_hsl_set_alpha(self, $aa);
+  }
 }
 
 class GimpCMYK is repr('CStruct') is export {
@@ -258,3 +299,57 @@ class GimpPixPipeParams is repr('CStruct') is export {
   # this flag is now useless. All selection strings are allocated.
   has gboolean  $.free_selection_string          is rw;
 }
+
+
+### /usr/include/gimp-2.0/libgimpcolor/gimphsl.h
+
+sub gimp_hsl_get_type ()
+  returns GType
+  is native(gimpcolor)
+  is export
+{ * }
+
+sub gimp_hsl_set (GimpHSL $hsl, gdouble $h, gdouble $s, gdouble $l)
+  is native(gimpcolor)
+  is export
+{ * }
+
+sub gimp_hsl_set_alpha (GimpHSL $hsl, gdouble $a)
+  is native(gimpcolor)
+  is export
+{ * }
+
+### /usr/include/gimp-2.0/libgimpcolor/gimphsv.h
+
+sub gimp_hsv_clamp (GimpHSV $hsv)
+  is native(gimpcolor)
+  is export
+{ * }
+
+sub gimp_hsv_get_type ()
+  returns GType
+  is native(gimpcolor)
+  is export
+{ * }
+
+# Not currently used, but included for completeness.
+sub gimp_hsv_set (
+  GimpHSV $hsv,
+  gdouble $hue,
+  gdouble $saturation,
+  gdouble $value
+)
+  is native(gimpcolor)
+  is export
+{ * }
+
+sub gimp_hsva_set (
+  GimpHSV $hsva,
+  gdouble $hue,
+  gdouble $saturation,
+  gdouble $value,
+  gdouble $alpha
+)
+  is native(gimpcolor)
+  is export
+{ * }
