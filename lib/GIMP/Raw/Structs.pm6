@@ -245,15 +245,48 @@ class GimpParamData {
 }
 
 class GimpMatrix2 is repr('CStruct') is export {
-	HAS gdouble            @.coeff[4] is CArray; # Typedef<gdouble>->«double»[2][2] coeff
+	#HAS gdouble            @.coeff[4] is CArray; # Typedef<gdouble>->«double»[2][2] coeff
+  has gdouble $.c0 is rw;
+  has gdouble $.c1 is rw;
+  has gdouble $.c2 is rw;
+  has gdouble $.c3 is rw;
 }
 
 class GimpMatrix3 is repr('CStruct') is export {
-	HAS gdouble            @.coeff[9] is CArray; # Typedef<gdouble>->«double»[3][3] coeff
+	#HAS gdouble            @.coeff[9] is CArray; # Typedef<gdouble>->«double»[3][3] coeff
+  has gdouble $.c0 is rw;
+  has gdouble $.c1 is rw;
+  has gdouble $.c2 is rw;
+  has gdouble $.c3 is rw;
+  has gdouble $.c4 is rw;
+  has gdouble $.c5 is rw;
+  has gdouble $.c6 is rw;
+  has gdouble $.c7 is rw;
+  has gdouble $.c8 is rw;
 }
 
 class GimpMatrix4 is repr('CStruct') is export {
-	HAS gdouble            @.coeff[16] is CArray; # Typedef<gdouble>->«double»[4][4] coeff
+	#HAS gdouble            @.coeff[16] is CArray; # Typedef<gdouble>->«double»[4][4] coeff
+  has gdouble $.c0 is rw;
+  has gdouble $.c1 is rw;
+  has gdouble $.c2 is rw;
+  has gdouble $.c3 is rw;
+  has gdouble $.c4 is rw;
+  has gdouble $.c5 is rw;
+  has gdouble $.c6 is rw;
+  has gdouble $.c7 is rw;
+  has gdouble $.c8 is rw;
+  has gdouble $.c9 is rw;
+  has gdouble $.ca is rw;
+  has gdouble $.cb is rw;
+  has gdouble $.cc is rw;
+  has gdouble $.cd is rw;
+  has gdouble $.ce is rw;
+  has gdouble $.cf is rw;
+
+  method identity {
+    ($.c0, $.c5, $.ca, $.cf) = 1e0 xx 4;
+  }
 }
 
 class GimpVector2 is repr('CStruct') is export {
