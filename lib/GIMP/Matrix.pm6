@@ -24,7 +24,7 @@ augment class GIMP::Raw::Structs::GimpMatrix2 {
   }
 
   method mult (GimpMatrix2 $matrix2) {
-    gimp_matrix2_mult(self, $matrix2);
+    gimp_matrix2_mult($matrix2, self);
   }
 
 }
@@ -77,7 +77,7 @@ augment class GIMP::Raw::Structs::GimpMatrix3 {
   }
 
   method mult (GimpMatrix3 $matrix2) {
-    gimp_matrix3_mult(self, $matrix2);
+    gimp_matrix3_mult($matrix2, self);
   }
 
   method rotate (Num() $theta) {
