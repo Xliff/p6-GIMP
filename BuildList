@@ -7,6 +7,7 @@ GTK::Compat::Types
 GTK::Compat::Value
 GTK::Raw::Utils
 GTK::Roles::Pointers
+GTK::Roles::Properties
 GIMP::Raw::Enums
 GIMP::Raw::Libs
 GIMP::Raw::Definitions

@@ -120,3 +120,21 @@ sub gimp_thumbnail_set_uri (GimpThumbnail $thumbnail, Str $uri)
   is native(gimpthumb)
   is export
 { * }
+
+sub gimp_thumb_file_type_get_type ()
+  returns GType
+  is native(gimpthumb)
+  is export
+{ * }
+
+sub gimp_thumb_size_get_type ()
+  returns GType
+  is native(gimpthumb)
+  is export
+{ * }
+
+sub gimp_thumb_state_get_type ()
+  returns GType
+  is native(gimpthumb)
+  is export
+{ * }

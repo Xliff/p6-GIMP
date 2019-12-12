@@ -7,10 +7,10 @@ use GIMP::Raw::Thumbnail;
 
 use GTK::Compat::Pixbuf;
 
-use GTK::Compat::Roles::Object;
+use GTK::Roles::Properties;
 
 class GIMP::Thumbnail {
-  also does GTK::Compat::Roles::Object;
+  also does GTK::Roles::Properties;
 
   has GimpThumbnail $!t;
 
@@ -22,6 +22,177 @@ class GIMP::Thumbnail {
 
   method GIMP::Raw::Types::GimpThumbnail
   { $!t }
+
+  # Type: gint64
+  method image-filesize is rw  {
+    my GTK::Compat::Value $gv .= new( G_TYPE_INT64 );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('image-filesize', $gv)
+        );
+        $gv.int64;
+      },
+      STORE => -> $, Int() $val is copy {
+        $gv.int64 = $val;
+        self.prop_set('image-filesize', $gv);
+      }
+    );
+  }
+
+  # Type: gint
+  method image-height is rw  {
+    my GTK::Compat::Value $gv .= new( G_TYPE_INT );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('image-height', $gv)
+        );
+        $gv.int;
+      },
+      STORE => -> $, Int() $val is copy {
+        $gv.int = $val;
+        self.prop_set('image-height', $gv);
+      }
+    );
+  }
+
+  # Type: gchar
+  method image-mimetype is rw  {
+    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('image-mimetype', $gv)
+        );
+        $gv.string;
+      },
+      STORE => -> $, Str() $val is copy {
+        $gv.string = $val;
+        self.prop_set('image-mimetype', $gv);
+      }
+    );
+  }
+
+  # Type: gint64
+  method image-mtime is rw  {
+    my GTK::Compat::Value $gv .= new( G_TYPE_INT64 );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('image-mtime', $gv)
+        );
+        $gv.int64;
+      },
+      STORE => -> $, Int() $val is copy {
+        $gv.int64 = $val;
+        self.prop_set('image-mtime', $gv);
+      }
+    );
+  }
+
+  # Type: gint
+  method image-num-layers is rw  {
+    my GTK::Compat::Value $gv .= new( G_TYPE_INT );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('image-num-layers', $gv)
+        );
+        $gv.int;
+      },
+      STORE => -> $, Int() $val is copy {
+        $gv.int = $val;
+        self.prop_set('image-num-layers', $gv);
+      }
+    );
+  }
+
+  # Type: GimpThumbState
+  method image-state is rw  {
+
+    my GTK::Compat::Value $gv .= new( GIMP::Thumbnail::Enum.state_get_type );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('image-state', $gv)
+        );
+        GimpThumbStateEnum( $gv.enum );
+      },
+      STORE => -> $, Int() $val is copy {
+        $gv.int = $val;
+        self.prop_set('image-state', $gv);
+      }
+    );
+  }
+
+  # Type: gchar
+  method image-type is rw  {
+    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('image-type', $gv)
+        );
+        $gv.string;
+      },
+      STORE => -> $, Str() $val is copy {
+        $gv.string = $val;
+        self.prop_set('image-type', $gv);
+      }
+    );
+  }
+
+  # Type: gchar
+  method image-uri is rw  {
+    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('image-uri', $gv)
+        );
+        $gv.string;
+      },
+      STORE => -> $, Str() $val is copy {
+        $gv.string = $val;
+        self.prop_set('image-uri', $gv);
+      }
+    );
+  }
+
+  # Type: gint
+  method image-width is rw  {
+    my GTK::Compat::Value $gv .= new( G_TYPE_INT );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('image-width', $gv)
+        );
+        $gv.int;
+      },
+      STORE => -> $, Int() $val is copy {
+        $gv.int = $val;
+        self.prop_set('image-width', $gv);
+      }
+    );
+  }
+
+  # Type: GimpThumbState
+  method thumb-state is rw  {
+    my GTK::Compat::Value $gv .= new( GIMP::Thumbnail::Enum.state_get_type );
+    Proxy.new(
+      FETCH => -> $ {
+        $gv = GTK::Compat::Value.new(
+          self.prop_get('thumb-state', $gv)
+        );
+        GimpThumbStateEnum( $gv.enum );
+      },
+      STORE => -> $, Int() $val is copy {
+        $gv.int = $val;
+        self.prop_set('thumb-state', $gv);
+      }
+    );
+  }
 
   multi method new (GimpThumbnail $thumbnail) {
     return Nil unless $thumbnail;
@@ -140,6 +311,28 @@ class GIMP::Thumbnail {
 
   method set_uri (Str() $uri) {
     gimp_thumbnail_set_uri($!t, $uri);
+  }
+
+}
+
+class GIMP::Thumbnail::Enum {
+
+  method state_get_type {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &gimp_thumb_state_get_type, $n, $t );
+  }
+
+  method size_get_type {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &gimp_thumb_size_get_type, $n, $t );
+  }
+
+  method filetype_get_type {
+    state ($n, $t);
+
+    unstable_get_type( self.^name, &gimp_thumb_file_type_get_type, $n, $t );
   }
 
 }
