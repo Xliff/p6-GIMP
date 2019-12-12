@@ -13,8 +13,10 @@ GIMP::Raw::Structs
 GIMP::Raw::Types
 GIMP::Raw::Unit
 GIMP::Raw::ValueArray
+GIMP::Raw::Vector
 GIMP::Unit
 GIMP::ValueArray
+GIMP::Vector
 GIMP::Checks
 GIMP::CpuAccel
 GIMP::PDB::Brushes
