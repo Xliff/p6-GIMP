@@ -141,7 +141,7 @@ class GimpPluginInfo is repr('CStruct') is export {
     Proxy.new:
       FETCH => -> $ { $!init_proc },
       STORE => -> $, \func {
-        $!init_proc := set_func_pointer( &(func), &sprintf-vv);
+        $!init_proc := set_func_pointer( &(func), &sprintf-v);
       };
   }
 
@@ -149,7 +149,7 @@ class GimpPluginInfo is repr('CStruct') is export {
     Proxy.new:
       FETCH => -> $ { $!quit_proc },
       STORE => -> $, \func {
-        $!quit_proc := set_func_pointer( &(func), &sprintf-vv);
+        $!quit_proc := set_func_pointer( &(func), &sprintf-v);
       };
   }
 
@@ -157,7 +157,7 @@ class GimpPluginInfo is repr('CStruct') is export {
     Proxy.new:
       FETCH => -> $ { $!query_proc },
       STORE => -> $, \func {
-        $!query_proc := set_func_pointer( &(func), &sprintf-vv);
+        $!query_proc := set_func_pointer( &(func), &sprintf-v);
       };
   }
 
@@ -333,10 +333,10 @@ class GimpPixPipeParams is repr('CStruct') is export {
   has gint      $.rank1                          is rw;
   has gint      $.rank2                          is rw;
   has gint      $.rank3                          is rw;
-  has Str       $!selection0                     is rw;
-  has Str       $!selection1                     is rw;
-  has Str       $!selection2                     is rw;
-  has Str       $!selection3                     is rw;
+  has Str       $!selection0;
+  has Str       $!selection1;
+  has Str       $!selection2;
+  has Str       $!selection3;
   # this flag is now useless. All selection strings are allocated.
   has gboolean  $.free_selection_string          is rw;
 }
@@ -398,7 +398,7 @@ class GimpProgressVtable is repr<CStruct> is export {
     Proxy.new:
       FETCH => -> $ { $!get_window },
       STORE => -> $, \func {
-        $!get_window := set_func_pointer( &(func), &sprintf-bp);
+        $!get_window := set_func_pointer( &(func), &sprintf-P);
       };
   }
 

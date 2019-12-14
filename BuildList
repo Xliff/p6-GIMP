@@ -30,7 +30,6 @@ GIMP::PDB::Palette
 GIMP::PDB::PaletteSelect
 GIMP::PDB::Pattern
 GIMP::PDB::PatternSelect
-GIMP::PDB::Progress
 GIMP::PDB::Raw::Brush
 GIMP::PDB::Raw::Channel
 GIMP::PDB::Raw::Display
@@ -44,6 +43,7 @@ GIMP::PDB::Raw::Paint
 GIMP::PDB::Raw::Palette
 GIMP::PDB::Raw::Plugin
 GIMP::PDB::Raw::Procedural
+GIMP::PDB::Raw::Progress
 GIMP::PDB::Raw::RC
 GIMP::PDB::Raw::Utils
 GIMP::PixPipeParams
@@ -75,6 +75,7 @@ GIMP::PDB::Misc
 GIMP::PDB::Paint
 GIMP::PDB::Plugin
 GIMP::PDB::Procedural
+GIMP::PDB::Progress
 GIMP::PDB::RC
 GIMP::Parasite
 GIMP::RGB

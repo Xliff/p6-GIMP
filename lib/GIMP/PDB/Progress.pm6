@@ -3,7 +3,7 @@ use v6;
 use NativeCall;
 
 use GIMP::Raw::Types;
-use GIMP::Raw::Progress;
+use GIMP::PDB::Raw::Progress;
 
 use GLib::Roles::StaticClass;
 

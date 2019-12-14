@@ -31,7 +31,6 @@
       "GIMP::PDB::PaletteSelect"   :  "lib/GIMP/PDB/PaletteSelect.pm6"  ,
       "GIMP::PDB::Pattern"         :  "lib/GIMP/PDB/Pattern.pm6"        ,
       "GIMP::PDB::PatternSelect"   :  "lib/GIMP/PDB/PatternSelect.pm6"  ,
-      "GIMP::PDB::Progress"        :  "lib/GIMP/PDB/Progress.pm6"       ,
       "GIMP::PDB::Raw::Brush"      :  "lib/GIMP/PDB/Raw/Brush.pm6"      ,
       "GIMP::PDB::Raw::Channel"    :  "lib/GIMP/PDB/Raw/Channel.pm6"    ,
       "GIMP::PDB::Raw::Display"    :  "lib/GIMP/PDB/Raw/Display.pm6"    ,
@@ -45,6 +44,7 @@
       "GIMP::PDB::Raw::Palette"    :  "lib/GIMP/PDB/Raw/Palette.pm6"    ,
       "GIMP::PDB::Raw::Plugin"     :  "lib/GIMP/PDB/Raw/Plugin.pm6"     ,
       "GIMP::PDB::Raw::Procedural" :  "lib/GIMP/PDB/Raw/Procedural.pm6" ,
+      "GIMP::PDB::Raw::Progress"   :  "lib/GIMP/PDB/Raw/Progress.pm6"   ,
       "GIMP::PDB::Raw::RC"         :  "lib/GIMP/PDB/Raw/RC.pm6"         ,
       "GIMP::PDB::Raw::Utils"      :  "lib/GIMP/PDB/Raw/Utils.pm6"      ,
       "GIMP::PixPipeParams"        :  "lib/GIMP/PixPipeParams.pm6"      ,
@@ -76,6 +76,7 @@
       "GIMP::PDB::Paint"           :  "lib/GIMP/PDB/Paint.pm6"          ,
       "GIMP::PDB::Plugin"          :  "lib/GIMP/PDB/Plugin.pm6"         ,
       "GIMP::PDB::Procedural"      :  "lib/GIMP/PDB/Procedural.pm6"     ,
+      "GIMP::PDB::Progress"        :  "lib/GIMP/PDB/Progress.pm6"       ,
       "GIMP::PDB::RC"              :  "lib/GIMP/PDB/RC.pm6"             ,
       "GIMP::Parasite"             :  "lib/GIMP/Parasite.pm6"           ,
       "GIMP::RGB"                  :  "lib/GIMP/RGB.pm6"                
