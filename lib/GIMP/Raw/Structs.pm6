@@ -327,12 +327,91 @@ class GimpPixPipeParams is repr('CStruct') is export {
   has gint      $.cellheight                     is rw;
   has Str       $.placement                      is rw;
   has gboolean  $.free_placement_string          is rw;
-  HAS gint      @.rank[GIMP_PIXPIPE_MAXDIM]      is CArray;
-  HAS Str       @!selection[GIMP_PIXPIPE_MAXDIM] is CArray;
+  # HAS gint      @.rank[GIMP_PIXPIPE_MAXDIM]      is CArray;
+  # HAS Str       @!selection[GIMP_PIXPIPE_MAXDIM] is CArray;
+  has gint      $.rank0                          is rw;
+  has gint      $.rank1                          is rw;
+  has gint      $.rank2                          is rw;
+  has gint      $.rank3                          is rw;
+  has Str       $!selection0                     is rw;
+  has Str       $!selection1                     is rw;
+  has Str       $!selection2                     is rw;
+  has Str       $!selection3                     is rw;
   # this flag is now useless. All selection strings are allocated.
   has gboolean  $.free_selection_string          is rw;
 }
 
+class GimpProgressVtable is repr<CStruct> is export {
+  has Pointer $!start;      # void    (* start)        (const gchar *message,
+                            #                           gboolean     cancelable,
+                            #                           gpointer     user_data);
+  has Pointer $!end;        # void    (* end)          (gpointer     user_data);
+  has Pointer $!set_text;   # void    (* set_text)     (const gchar *message,
+                            #                           gpointer     user_data);
+  has Pointer $!set_value;  # void    (* set_value)    (gdouble      percentage,
+                            #                           gpointer     user_data);
+  has Pointer $!pulse;      # void    (* pulse)        (gpointer     user_data);
+
+  has Pointer $!get_window; # guint32 (* get_window)   (gpointer     user_data);
+
+  method start is rw {
+    Proxy.new:
+      FETCH => -> $ { $!start },
+      STORE => -> $, \func {
+        $!start := set_func_pointer( &(func), &sprintf-SBP);
+      };
+  }
+
+  method end is rw {
+    Proxy.new:
+      FETCH => -> $ { $!set_text },
+      STORE => -> $, \func {
+        $!set_text := set_func_pointer( &(func), &sprintf-P);
+      };
+  }
+
+  method set_text is rw {
+    Proxy.new:
+      FETCH => -> $ { $!set_text },
+      STORE => -> $, \func {
+        $!set_text := set_func_pointer( &(func), &sprintf-SP);
+      };
+  }
+
+  method set_value is rw {
+    Proxy.new:
+      FETCH => -> $ { $!set_value },
+      STORE => -> $, \func {
+        $!set_value := set_func_pointer( &(func), &sprintf-DP);
+      };
+  }
+
+  method pulse is rw {
+    Proxy.new:
+      FETCH => -> $ { $!pulse },
+      STORE => -> $, \func {
+        $!pulse := set_func_pointer( &(func), &sprintf-P);
+      };
+  }
+
+  method get_window is rw {
+    Proxy.new:
+      FETCH => -> $ { $!get_window },
+      STORE => -> $, \func {
+        $!get_window := set_func_pointer( &(func), &sprintf-bp);
+      };
+  }
+
+  # Padding for future expansion. Must be initialized with NULL! */
+  has Pointer $!gimp_reserved1;
+  has Pointer $!gimp_reserved2;
+  has Pointer $!gimp_reserved3;
+  has Pointer $!gimp_reserved4;
+  has Pointer $!gimp_reserved5;
+  has Pointer $!gimp_reserved6;
+  has Pointer $!gimp_reserved7;
+  has Pointer $!gimp_reserved8;
+}
 
 ### /usr/include/gimp-2.0/libgimpcolor/gimphsl.h
 
