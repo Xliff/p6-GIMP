@@ -8,9 +8,11 @@ use GIMP::PDB::Raw::Utils;
 use GIMP::PDB::Raw::Image;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Image {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   # Color
 
@@ -111,6 +113,9 @@ class GIMP::PDB::Image {
 }
 
 class GIMP::PDB::Image::Convert {
+  also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
+
   # Convert
 
   method grayscale (Int() $image_ID) {
@@ -165,6 +170,7 @@ class GIMP::PDB::Image::Convert {
 
 class GIMP::PDB::Image::Grid {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method get_background_color (Int() $image_ID, GimpRGB $bgcolor) {
     my gint32 $i = $image_ID;
@@ -246,6 +252,7 @@ class GIMP::PDB::Image::Grid {
 
 class GIMP::PDB::Image::Select {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method color (
     Int() $image_ID,
@@ -361,6 +368,7 @@ class GIMP::PDB::Image::Select {
 
 class GIMP::PDB::Image::Undo {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method disable (Int() $image_ID) {
     my gint32 $i = $image_ID;

@@ -8,9 +8,11 @@ use GIMP::Raw::Structs;
 use GIMP::PDB::Raw::Drawable;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Drawable {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method brightness_contrast (
     Int() $drawable_ID,

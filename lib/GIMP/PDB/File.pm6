@@ -4,12 +4,14 @@ use GTK::Compat::Types;
 
 use GIMP::Raw::Enums;
 
-use GLib::Roles::StaticClass;
-
 use GIMP::PDB::Raw::File;
+
+use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::File {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method load (Int() $run_mode, Str() $filename, Str() $raw_filename) {
     my GimpRunMode $r = $run_mode;
@@ -57,6 +59,9 @@ class GIMP::PDB::File {
 }
 
 class GIMP::PDB::File::Register {
+  also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
+  
   method file_handler_mime (Str() $procedure_name, Str() $mime_types) {
     gimp_register_file_handler_mime($procedure_name, $mime_types);
   }

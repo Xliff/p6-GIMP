@@ -9,6 +9,7 @@ GTK::Raw::Utils
 GTK::Roles::Pointers
 GTK::Roles::Properties
 GIMP::Raw::Enums
+GIMP::PDB::Roles::Assumable
 GIMP::Raw::Libs
 GIMP::Raw::Definitions
 GIMP::Raw::Structs
@@ -21,12 +22,11 @@ GIMP::ValueArray
 GIMP::Vector
 GIMP::Checks
 GIMP::CpuAccel
-GIMP::PDB::Brushes
+GIMP::PDB::BrusheSelect
 GIMP::PDB::Dynamics
-GIMP::PDB::Fonts
+GIMP::PDB::FontsSelect
 GIMP::PDB::GradientSelect
 GIMP::PDB::Message
-GIMP::PDB::Palette
 GIMP::PDB::PaletteSelect
 GIMP::PDB::Pattern
 GIMP::PDB::PatternSelect
@@ -77,6 +77,7 @@ GIMP::PDB::Image
 GIMP::PDB::Item
 GIMP::PDB::Misc
 GIMP::PDB::Paint
+GIMP::PDB::Palette
 GIMP::PDB::Plugin
 GIMP::PDB::Procedural
 GIMP::PDB::Progress

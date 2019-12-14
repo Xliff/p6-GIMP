@@ -3,13 +3,17 @@ use v6;
 use GTK::Compat::Types;
 
 use GIMP::Raw::Structs;
+use GIMP::PDB::Raw::Palette;
 
 use GLib::Roles::StaticClass;
 
 use GTK::Compat::Roles::TypedBuffer;
+use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Palette {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method new_palette (Str() $name) {
     gimp_palette_new($name);
@@ -104,8 +108,12 @@ class GIMP::PDB::Palette {
   multi method get_info (:$all = True) {
     samewith($, $, :$all);
   }
-  multi method get_info ($name is rw, $num_colors is rw) {
-    my gint $n = 0e0;
+  multi method get_info (
+    $name is rw,
+    $num_colors is rw,
+    :$all = False
+  ) {
+    my gint $n = 0;
     my $s = Str;
 
     my $rv = gimp_palette_get_info($s, $n);

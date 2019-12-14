@@ -5,9 +5,11 @@ use GTK::Compat::Types;
 use GIMP::PDB::Raw::Display;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Display {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method new_display (Int() $image_ID) {
     my guint32 $i = $image_ID;

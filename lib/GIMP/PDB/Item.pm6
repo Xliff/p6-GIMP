@@ -7,9 +7,11 @@ use GIMP::Raw::Types;
 use GIMP::PDB::Raw::Item;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Item {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method attach_parasite (Int() $image_ID, GimpParasite $parasite) {
     my gint32 $i = $image_ID;

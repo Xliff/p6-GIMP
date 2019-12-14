@@ -5,9 +5,11 @@ use NativeCall;
 use GIMP::Raw::Types;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::PatternSelect {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method close_popup (Str() $pattern_callback) {
     gimp_patterns_close_popup($pattern_callback);

@@ -5,9 +5,11 @@ use GIMP::Raw::Types;
 use GIMP::PDB::Raw::Gradient;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Gradient {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method new_gradient (Str() $name) {
     gimp_gradient_new($name);
@@ -66,6 +68,7 @@ class GIMP::PDB::Gradient {
 
 class GIMP::PDB::Gradient::Segment {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method get_blending_function (
     Str() $name,
@@ -198,6 +201,7 @@ class GIMP::PDB::Gradient::Segment {
 
 class GIMP::PDB::Graidient::Segment::Range {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method blend_colors (Str() $name, Int() $start_segment, Int() $end_segment) {
     my gint ($s, $e) = ($start_segment, $end_segment);

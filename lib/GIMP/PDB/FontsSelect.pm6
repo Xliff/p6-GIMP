@@ -7,9 +7,11 @@ use GTK::Raw::Utils;
 use GIMP::Raw::Types;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
-class GIMP::PDB::Fonts {
+class GIMP::PDB::FontSelect {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method close_popup (Str() $font_callback) {
     gimp_fonts_close_popup($font_callback);
