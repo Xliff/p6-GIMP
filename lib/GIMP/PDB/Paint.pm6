@@ -10,9 +10,11 @@ use GIMP::PDB::Raw::Utils;
 use GIMP::PDB::Raw::Paint;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Paint {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   multi method airbrush (
     Int() $drawable_ID,

@@ -26,7 +26,7 @@ class GIMP::PDB::Selection {
     Int() $non_empty,
     :$all = True
   ) {
-    samewith($image_ID, $non_empty, $, $, $ ,$);
+    samewith($image_ID, $non_empty, $, $, $ ,$, :$all);
   }
   multi method bounds (
     Int() $image_ID,

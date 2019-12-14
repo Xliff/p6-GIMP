@@ -5,9 +5,11 @@ use NativeCall;
 use GIMP::Raw::Types;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::GradientSelect {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method close_popup (Str() $gradient_callback) {
     gimp_gradients_close_popup($gradient_callback);

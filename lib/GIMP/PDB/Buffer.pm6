@@ -8,20 +8,11 @@ use GIMP::Raw::Types;
 use GIMP::PDB::Raw::Buffer;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Buffer {
   also does GLib::Roles::StaticClass;
-
-  # So you can treat a static class like an object.
-  method assume (
-    GIMP::PDB::Buffer:D:
-    Str() $buffer_name
-  ) {
-    .assuming($buffer_name) for self.^methods(:local).grep({
-      my \n := .signature.params[1].name;
-      n.defined && n eq '$buffer_name'
-    })
-  }
+  also does GIMP::PDB::Roles::Assumable;
 
   method delete (Str() $buffer_name) {
     gimp_buffer_delete($buffer_name);

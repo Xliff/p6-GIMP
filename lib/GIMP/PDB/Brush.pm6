@@ -7,9 +7,11 @@ use GIMP::Raw::Enums;
 use GIMP::PDB::Raw::Brush;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Brush {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   multi method new (Str() $name) {
     gimp_brush_new($name);

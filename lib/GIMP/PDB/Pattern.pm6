@@ -5,9 +5,11 @@ use NativeCall;
 use GIMP::Raw::Types;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Pattern {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   proto method get_info (|)
   { * }

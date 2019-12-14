@@ -5,9 +5,11 @@ use NativeCall;
 use GIMP::Raw::Types;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::PaletteSelect {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method close_popup (Str() $palette_callback) {
     so gimp_palettes_close_popup($palette_callback);

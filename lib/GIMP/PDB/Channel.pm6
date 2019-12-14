@@ -24,13 +24,13 @@ class GIMP::PDB::Channel {
   # }
 
   method combine_masks (
-    Int() $channel1_ID,
+    Int() $channel_ID,
     Int() $channel2_ID,
     Int() $operation,
     Int() $offx,
     Int() $offy
   ) {
-    my gint ($c1, $c2, $ox, $oy) = ($channel1_ID, $channel2_ID, $offx, $offy);
+    my gint ($c1, $c2, $ox, $oy) = ($channel_ID, $channel2_ID, $offx, $offy);
     my GimpChannelOps $o = $operation;
 
     gimp_channel_combine_masks($c1, $c2, $o, $ox, $oy);
@@ -54,7 +54,7 @@ class GIMP::PDB::Channel {
     gimp_channel_get_opacity($cid);
   }
 
-  method get_show_masked (gint32 $channel_ID) {
+  method get_show_masked (Int() $channel_ID) {
     my gint $cid = $channel_ID;
 
     gimp_channel_get_show_masked($cid);

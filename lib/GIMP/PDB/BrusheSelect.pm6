@@ -5,9 +5,11 @@ use NativeCall;
 use GIMP::Raw::Types;
 
 use GLib::Roles::StaticClass;
+use GIMP::PDB::Roles::Assumable;
 
-class GIMP::PDB::Brushes {
+class GIMP::PDB::BrushSelect {
   also does GLib::Roles::StaticClass;
+  also does GIMP::PDB::Roles::Assumable;
 
   method close_popup (Str() $brush_callback) {
     so gimp_brushes_close_popup($brush_callback);
