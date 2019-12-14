@@ -51,6 +51,7 @@
       "GIMP::PDB::Raw::Selection"   :  "lib/GIMP/PDB/Raw/Selection.pm6"   ,
       "GIMP::PDB::Raw::Utils"       :  "lib/GIMP/PDB/Raw/Utils.pm6"       ,
       "GIMP::PDB::Selection"        :  "lib/GIMP/PDB/Selection.pm6"       ,
+      "GIMP::PDB::TextTool"         :  "lib/GIMP/PDB/TextTool.pm6"        ,
       "GIMP::PixPipeParams"         :  "lib/GIMP/PixPipeParams.pm6"       ,
       "GIMP::Raw::Color"            :  "lib/GIMP/Raw/Color.pm6"           ,
       "GIMP::Raw::ColorProfile"     :  "lib/GIMP/Raw/ColorProfile.pm6"    ,
