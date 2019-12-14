@@ -50,6 +50,7 @@ GIMP::PDB::Raw::RC
 GIMP::PDB::Raw::Selection
 GIMP::PDB::Raw::Utils
 GIMP::PDB::Selection
+GIMP::PDB::TextTool
 GIMP::PixPipeParams
 GIMP::Raw::Color
 GIMP::Raw::ColorProfile
