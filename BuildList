@@ -31,6 +31,7 @@ GIMP::PDB::PaletteSelect
 GIMP::PDB::Pattern
 GIMP::PDB::PatternSelect
 GIMP::PDB::Raw::Brush
+GIMP::PDB::Raw::Buffer
 GIMP::PDB::Raw::Channel
 GIMP::PDB::Raw::Display
 GIMP::PDB::Raw::Drawable
@@ -66,6 +67,7 @@ GIMP::Env
 GIMP::Main
 GIMP::Matrix
 GIMP::PDB::Brush
+GIMP::PDB::Buffer
 GIMP::PDB::Channel
 GIMP::PDB::Display
 GIMP::PDB::Drawable
