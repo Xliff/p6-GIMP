@@ -35,6 +35,7 @@ GIMP::PDB::Raw::Buffer
 GIMP::PDB::Raw::Channel
 GIMP::PDB::Raw::Display
 GIMP::PDB::Raw::Drawable
+GIMP::PDB::Raw::Edit
 GIMP::PDB::Raw::File
 GIMP::PDB::Raw::Gradient
 GIMP::PDB::Raw::Image
@@ -71,6 +72,7 @@ GIMP::PDB::Buffer
 GIMP::PDB::Channel
 GIMP::PDB::Display
 GIMP::PDB::Drawable
+GIMP::PDB::Edit
 GIMP::PDB::File
 GIMP::PDB::Gradient
 GIMP::PDB::Image

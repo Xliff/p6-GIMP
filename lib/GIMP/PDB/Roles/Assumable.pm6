@@ -18,6 +18,7 @@ role GIMP::PDB::Roles::Assumable {
       when 'Display'          { 'display_ID' }
 
       when 'Drawable'       |
+           'Edit'           |
            'Paint'            { 'drawable_ID' }
 
       when 'File'             { 'run_mode' }
@@ -29,12 +30,13 @@ role GIMP::PDB::Roles::Assumable {
            'Convert'        |
            'Grid'           |
            'Select'         |
+           'Selection'      |
+           'Visible'        |
            'Undo'             { 'image_ID' }
 
       when 'PaletteSelect'    { 'palette_callback' }
       when 'PatternSelect'    { 'pattern_callback' }
       when 'Register'         { 'procedure_name' }
-      when 'Selection'        { 'image_ID' }
     }
     .assuming($buffer_name) for self.^methods(:local).grep({
       my \n := .signature.params[1].name;
