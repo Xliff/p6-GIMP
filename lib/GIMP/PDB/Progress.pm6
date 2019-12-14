@@ -26,7 +26,10 @@ class GIMP::PDB::Progress {
     gimp_progress_init($message);
   }
 
-  method install_vtable (GimpProgressVtable $vtable, gpointer $user_data) {
+  method install_vtable (
+    GimpProgressVtable $vtable,
+    gpointer $user_data = gpointer
+  ) {
     gimp_progress_install_vtable($vtable, $user_data);
   }
 
@@ -38,11 +41,13 @@ class GIMP::PDB::Progress {
     gimp_progress_set_text($message);
   }
 
-  method uninstall (Str $progress_callback) {
+  method uninstall (Str() $progress_callback) {
     gimp_progress_uninstall($progress_callback);
   }
 
-  method update (gdouble $percentage) {
+  method update (Num() $percentage) {
+    my gdouble $p = $percentage;
+
     gimp_progress_update($percentage);
   }
 
