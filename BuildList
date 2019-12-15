@@ -1,3 +1,4 @@
+Cairo
 GLib::Object::ParamSpec
 GLib::Roles::StaticClass
 GTK::Compat::Pixbuf
@@ -43,6 +44,7 @@ GIMP::PDB::Raw::File
 GIMP::PDB::Raw::Gradient
 GIMP::PDB::Raw::Image
 GIMP::PDB::Raw::Item
+GIMP::PDB::Raw::Layer
 GIMP::PDB::Raw::Misc
 GIMP::PDB::Raw::Paint
 GIMP::PDB::Raw::Palette
@@ -84,6 +86,7 @@ GIMP::PDB::File
 GIMP::PDB::Gradient
 GIMP::PDB::Image
 GIMP::PDB::Item
+GIMP::PDB::Layer
 GIMP::PDB::Misc
 GIMP::PDB::Paint
 GIMP::PDB::Palette
