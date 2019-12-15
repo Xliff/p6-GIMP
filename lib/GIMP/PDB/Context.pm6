@@ -30,6 +30,195 @@ class GIMP::PDB::Context {
       STORE => -> $, Str() \b { self.set_brush(b) };
   }
 
+  method brush_angle is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_brush_angle },
+      STORE => -> $, Num() \a { self.set_brush_angle (a) };
+  }
+
+  method brush_aspect_ratio is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_brush_aspect_ratio },
+      STORE => -> $, Num() \a { self.set_brush_aspect_ratio(a) };
+  }
+
+  method brush_force is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_brush_force },
+      STORE => -> $, Num() \f { self.set_brush_force(f) };
+  }
+
+  method brush_hardness is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_brush_hardness },
+      STORE => -> $, Num() \h { self.set_brush_hardness(h) };
+  }
+
+  method brush_size is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_brush_size },
+      STORE => -> $, Num() \s { self.set_brush_size(s) };
+  }
+
+  method brush_spacing is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_brush_spacing },
+      STORE => -> $, Num() \s { self.set_brush_spacing(s) };
+  }
+
+  method diagonal_neighbors is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_diagonal_neighbors },
+      STORE => -> $, Int() \d { self.set_diagonal_neighbors(d) };
+  }
+
+  method distance_metric is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_distance_metric },
+      STORE => -> $, Int() \d { self.set_distance_metric(b) };
+  }
+
+  method dynamics is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_dynamics },
+      STORE => -> $, Str() \d { self.set_dynamics(d) };
+  }
+
+  method feather is rw {
+  }
+
+  method feather_radius is rw {
+  }
+
+  method feather_radius is rw {
+  }
+
+  method feather_radius is rw {
+  }
+
+  method font is rw {
+  }
+
+  method foreground is rw {
+  }
+
+  method foreground is rw {
+  }
+
+  method foreground is rw {
+  }
+
+  method gradient is rw {
+  }
+
+  method gradient_blend_color_space is rw {
+  }
+
+  method gradient_repeat_mode is rw {
+  }
+
+  method gradient_reverse is rw {
+  }
+
+  method ink_angle is rw {
+  }
+
+  method ink_blob_angle is rw {
+  }
+
+  method ink_blob_aspect_ratio is rw {
+  }
+
+  method ink_blob_type is rw {
+  }
+
+  method ink_size is rw {
+  }
+
+  method ink_size_sensitivity is rw {
+  }
+
+  method ink_speed_sensitivity is rw {
+  }
+
+  method ink_tilt_sensitivity is rw {
+  }
+
+  method interpolation is rw {
+  }
+
+  method line_cap_style is rw {
+  }
+
+  method line_dash_offset is rw {
+  }
+
+  method line_dash_pattern is rw {
+  }
+
+  method line_dash_pattern is rw {
+  }
+
+  method line_dash_pattern is rw {
+  }
+
+  method line_join_style is rw {
+  }
+
+  method line_miter_limit is rw {
+  }
+
+  method line_width is rw {
+  }
+
+  method line_width_unit is rw {
+  }
+
+  method mypaint_brush is rw {
+  }
+
+  method opacity is rw {
+  }
+
+  method paint_method is rw {
+  }
+
+  method paint_mode is rw {
+  }
+
+  method palette is rw {
+  }
+
+  method pattern is rw {
+  }
+
+  method sample_criterion is rw {
+  }
+
+  method sample_merged is rw {
+  }
+
+  method sample_threshold is rw {
+  }
+
+  method sample_threshold_int is rw {
+  }
+
+  method sample_transparent is rw {
+  }
+
+  method stroke_method is rw {
+  }
+
+  method transform_direction is rw {
+  }
+
+  method transform_recursion is rw {
+  }
+
+  method transform_resize is rw {
+  }
+
   method get_antialias {
     so gimp_context_get_antialias();
   }
@@ -37,7 +226,7 @@ class GIMP::PDB::Context {
   proto method get_background (|)
   { * }
 
-  multi method get_backgound (:$all = True) {
+  multi method get_background (:$all = True) {
     samewith($, :$all);
   }
   method get_background ($background is rw, :$all = False) {
