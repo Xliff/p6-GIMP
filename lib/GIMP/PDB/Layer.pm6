@@ -4,11 +4,11 @@ use GIMP::Raw::Types;
 use GIMP::PDB::Raw::Layer;
 
 use GLib::Roles::StaticClass;
-use GTK::PDB::Roles::Assumable;
+use GIMP::PDB::Roles::Assumable;
 
 class GIMP::PDB::Layer {
   also does GLib::Roles::StaticClass;
-  also does GTK::PDB::Roles::Assumable;
+  also does GIMP::PDB::Roles::Assumable;
 
   method new_layer (
     Int() $image_ID,
@@ -25,7 +25,7 @@ class GIMP::PDB::Layer {
     my GimpLayerMode $m = $mode;
     my gdouble $o = $opacity;
 
-    gimp_layer_new($i, $n, $w, $h, $t, $o, $m);
+    gimp_layer_new($i, $name, $w, $h, $t, $o, $m);
   }
 
   method new_from_pixbuf (
@@ -41,7 +41,7 @@ class GIMP::PDB::Layer {
     my gdouble ($o, $s, $e) = ($opacity, $progress_start, $progress_end);
     my GimpLayerMode $m = $mode;
 
-    gimp_layer_new_from_pixbuf($i, $n, $p, $o, $m, $s, $e)
+    gimp_layer_new_from_pixbuf($i, $name, $pixbuf, $o, $m, $s, $e);
   }
 
   method new_from_surface (
@@ -52,8 +52,8 @@ class GIMP::PDB::Layer {
     Num() $progress_end
   ) {
     my gint32 $i = $image_ID;
-    my gdouble ($s, $e) = ($opacity, $progress_start, $progress_end);
-    my $surf = $surface ~~ Cairo::Surface ?? $surface.surface !! $surface;
+    my gdouble ($s, $e) = ($progress_start, $progress_end);
+    my $surf = ($surface ~~ Cairo::Surface) ?? $surface.surface !! $surface;
 
     gimp_layer_new_from_surface($i, $name, $surf, $s, $e);
   }
@@ -69,9 +69,69 @@ class GIMP::PDB::Layer {
     Int() $dest_image_ID,
     Str() $name
   ) {
-    my gint32 ($i, $di) = ($image_ID, $dest_image_ID);
+    my gint32 ($i, $d) = ($image_ID, $dest_image_ID);
 
     gimp_layer_new_from_visible($i, $d, $name);
+  }
+
+  method apply_mask is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_apply_mask },
+      STORE => -> $, Int() \a { self.set_apply_mask(a) };
+  }
+
+  method blend_space is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_blend_space },
+      STORE => -> $, Int() \b { self.set_blend_space(b) };
+  }
+
+  method composite_mode is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_composite_mode },
+      STORE => -> $, Int() \c { self.set_composite_mode(c) };
+  }
+
+  method composite_space is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_composite_space },
+      STORE => -> $, Int() \c { self.set_composite_space(c) };
+  }
+
+  method edit_mask is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_edit_mask },
+      STORE => -> $, Int() \e { self.set_edit_mask(e) };
+  }
+
+  method lock_alpha is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_lock_alpha },
+      STORE => -> $, Int() \a { self.set_lock_alpha(a) };
+  }
+
+  method mask is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_mask },
+      STORE => -> $, Int() \k { self.set_mask(k) };
+  }
+
+  method mode is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_mode },
+      STORE => -> $, Int() \e { self.set_mode(e) };
+  }
+
+  method opacity is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_opacity },
+      STORE => -> $, Num() \p { self.set_opacity(p) };
+  }
+
+  method show_mask is rw {
+    Proxy.new:
+      FETCH => -> $           { self.get_show_mask },
+      STORE => -> $, Int() \s { self.set_show_mask(s) };
   }
 
   method add_alpha (Int() $layer_ID) {
@@ -105,8 +165,8 @@ class GIMP::PDB::Layer {
     gimp_layer_flatten($l);
   }
 
-  method from_mask (gint32 $mask_ID) {
-    my gint32 $l = $layer_ID;
+  method from_mask (Int() $mask_ID) {
+    my gint32 $m = $mask_ID;
 
     gimp_layer_from_mask($mask_ID);
   }
@@ -120,19 +180,19 @@ class GIMP::PDB::Layer {
   method get_blend_space (Int() $layer_ID) {
     my gint32 $l = $layer_ID;
 
-    gimp_layer_get_blend_space($l);
+    GimpLayerColorSpaceEnum( gimp_layer_get_blend_space($l) );
   }
 
   method get_composite_mode (Int() $layer_ID) {
     my gint32 $l = $layer_ID;
 
-    gimp_layer_get_composite_mode($l);
+    GimpLayerCompositeModeEnum( gimp_layer_get_composite_mode($l) );
   }
 
   method get_composite_space (Int() $layer_ID) {
     my gint32 $l = $layer_ID;
 
-    gimp_layer_get_composite_space($l);
+    GimpLayerColorSpaceEnum( gimp_layer_get_composite_space($l) );
   }
 
   method get_edit_mask (Int() $layer_ID) {
@@ -156,7 +216,7 @@ class GIMP::PDB::Layer {
   method get_mode (Int() $layer_ID) {
     my gint32 $l = $layer_ID;
 
-    gimp_layer_get_mode($l);
+    GimpLayerModeEnum( gimp_layer_get_mode($l) );
   }
 
   method get_opacity (Int() $layer_ID) {
@@ -217,9 +277,9 @@ class GIMP::PDB::Layer {
   ) {
     my gint32 $l = $layer_ID;
     my gint ($w, $h) = ($new_width, $new_height);
-    my gboolean $l = (so $local_origin).Int;
+    my gboolean $lo = (so $local_origin).Int;
 
-    gimp_layer_scale($l, $w, $h, $o);
+    gimp_layer_scale($l, $w, $h, $lo);
   }
 
   method set_apply_mask (Int() $layer_ID, Int() $apply_mask) {
@@ -259,9 +319,9 @@ class GIMP::PDB::Layer {
 
   method set_lock_alpha (Int() $layer_ID, Int() $lock_alpha) {
     my gint32 $l = $layer_ID;
-    my gboolean $l = (so $lock_alpha).Int;
+    my gboolean $la = (so $lock_alpha).Int;
 
-    gimp_layer_set_lock_alpha($l, $l);
+    gimp_layer_set_lock_alpha($l, $la);
   }
 
   method set_mode (Int() $layer_ID, Int() $mode) {

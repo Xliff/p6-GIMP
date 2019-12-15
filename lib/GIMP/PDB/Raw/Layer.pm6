@@ -2,7 +2,9 @@ use v6;
 
 use NativeCall;
 
-use GIMP::PDB::Raw::Layer;
+use GIMP::Raw::Types;
+
+unit package GIMP::PDB::Raw::Layer;
 
 ### /usr/include/gimp-2.0/libgimp/gimplayer.h
 
