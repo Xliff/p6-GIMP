@@ -22,6 +22,7 @@ role GIMP::PDB::Roles::Assumable {
            'Paint'            { 'drawable_ID' }
 
       when 'File'             { 'run_mode' }
+      when 'Float'            { 'floating_sel_ID' }
       when 'FontSelect'       { 'font_callback' }
       when 'GradientSelect'   { 'gradient_callback' }
 
