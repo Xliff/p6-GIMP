@@ -189,36 +189,62 @@ class GIMP::PDB::Context {
   }
 
   method line_cap_style is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_line_cap_style },
+      STORE => -> $, Int() \l   { self.set_line_cap_style(l) };
   }
 
   method line_dash_offset is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_line_dash_offset },
+      STORE => -> $, Num() \l   { self.set_line_dash_offset(l) };
   }
 
   method line_dash_pattern is rw {
-  }
-
-  method line_dash_pattern is rw {
-  }
-
-  method line_dash_pattern is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_interpolation },
+      STORE => -> $, $p         {
+        given $p {
+          when Array  { self.set_interpolation($p);
+          when CArray { self.set_interpolation($p.elems, $p);
+        };
+      }
   }
 
   method line_join_style is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_line_join_style },
+      STORE => -> $, Int() \j   { self.set_line_join_style(j) };
   }
 
   method line_miter_limit is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_line_miter_limit },
+      STORE => -> $, Num() \l   { self.set_line_miter_limit(l) };
   }
 
   method line_width is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_line_width },
+      STORE => -> $, Num() \w   { self.set_line_width(w) };
   }
 
   method line_width_unit is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_interpolation },
+      STORE => -> $, Int() \i   { self.set_interpolation(i) };
   }
 
   method mypaint_brush is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_mypaint_brush },
+      STORE => -> $, Str() \b   { self.set_mypaint_brush(b) };
   }
 
   method opacity is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_opacity },
+      STORE => -> $, Num() \op  { self.set_opacity(op) };
   }
 
   method paint_method is rw {
@@ -777,7 +803,7 @@ class GIMP::PDB::Context {
     so gimp_context_set_line_miter_limit($m);
   }
 
-  method set_line_width (gdouble $line_width) {
+  method set_line_width (Num() $line_width) {
     my gdouble $l = $line_width;
 
     so gimp_context_set_line_width($l);
