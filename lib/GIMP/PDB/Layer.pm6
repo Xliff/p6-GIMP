@@ -11,208 +11,287 @@ class GIMP::PDB::Layer {
   also does GTK::PDB::Roles::Assumable;
 
   method new_layer (
-    gint32 $image_ID,
-    Str $name,
-    gint $width,
-    gint $height,
-    GimpImageType $type,
-    gdouble $opacity,
-    GimpLayerMode $mode
+    Int() $image_ID,
+    Str() $name,
+    Int() $width,
+    Int() $height,
+    Int() $type,
+    Num() $opacity,
+    Int() $mode
   ) {
-    gimp_layer_new($image_ID, $name, $width, $height, $type, $opacity, $mode);
+    my gint32 $i = $image_ID;
+    my gint ($w, $h) = ($width, $height);
+    my GimpImageType $t = $type;
+    my GimpLayerMode $m = $mode;
+    my gdouble $o = $opacity;
+
+    gimp_layer_new($i, $n, $w, $h, $t, $o, $m);
   }
 
   method new_from_pixbuf (
-    gint32 $image_ID,
-    Str $name,
-    GdkPixbuf $pixbuf,
-    gdouble $opacity,
-    GimpLayerMode $mode,
-    gdouble $progress_start,
-    gdouble $progress_end
+    Int() $image_ID,
+    Str() $name,
+    GdkPixbuf() $pixbuf,
+    Num() $opacity,
+    Int() $mode,
+    Num() $progress_start,
+    Num() $progress_end
   ) {
-    gimp_layer_new_from_pixbuf(
-      $image_ID,
-      $name,
-      $pixbuf,
-      $opacity,
-      $mode,
-      $progress_start,
-      $progress_end
-    );
+    my gint32 $i = $image_ID;
+    my gdouble ($o, $s, $e) = ($opacity, $progress_start, $progress_end);
+    my GimpLayerMode $m = $mode;
+
+    gimp_layer_new_from_pixbuf($i, $n, $p, $o, $m, $s, $e)
   }
 
   method new_from_surface (
-    gint32 $image_ID,
-    Str $name,
-    cairo_surface_t $surface,
-    gdouble $progress_start,
-    gdouble $progress_end
+    Int() $image_ID,
+    Str() $name,
+    CairoSurface $surface,
+    Num() $progress_start,
+    Num() $progress_end
   ) {
-    gimp_layer_new_from_surface(
-      $image_ID,
-      $name,
-      $surface,
-      $progress_start,
-      $progress_end
-    );
+    my gint32 $i = $image_ID;
+    my gdouble ($s, $e) = ($opacity, $progress_start, $progress_end);
+    my $surf = $surface ~~ Cairo::Surface ?? $surface.surface !! $surface;
+
+    gimp_layer_new_from_surface($i, $name, $surf, $s, $e);
   }
 
-  method new_from_drawable (gint32 $drawable_ID, gint32 $dest_image_ID) {
-    gimp_layer_new_from_drawable($drawable_ID, $dest_image_ID);
+  method new_from_drawable (Int() $drawable_ID, Int() $dest_image_ID) {
+    my gint32 ($d, $di) = ($drawable_ID, $dest_image_ID);
+
+    gimp_layer_new_from_drawable($d, $di);
   }
 
   method new_from_visible (
-    gint32 $image_ID,
-    gint32 $dest_image_ID,
-    Str $name
+    Int() $image_ID,
+    Int() $dest_image_ID,
+    Str() $name
   ) {
-    gimp_layer_new_from_visible($image_ID, $dest_image_ID, $name);
+    my gint32 ($i, $di) = ($image_ID, $dest_image_ID);
+
+    gimp_layer_new_from_visible($i, $d, $name);
   }
 
-  method add_alpha (gint32 $layer_ID) {
-    gimp_layer_add_alpha($layer_ID);
+  method add_alpha (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_add_alpha($l);
   }
 
-  method add_mask (gint32 $layer_ID, gint32 $mask_ID) {
-    gimp_layer_add_mask($layer_ID, $mask_ID);
+  method add_mask (Int() $layer_ID, Int() $mask_ID) {
+    my gint32 ($l, $m) = ($layer_ID, $mask_ID);
+
+    gimp_layer_add_mask($l, $mask_ID);
   }
 
-  method copy (gint32 $layer_ID) {
-    gimp_layer_copy($layer_ID);
+  method copy (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_copy($l);
   }
 
-  method create_mask (gint32 $layer_ID, GimpAddMaskType $mask_type) {
-    gimp_layer_create_mask($layer_ID, $mask_type);
+  method create_mask (Int() $layer_ID, Int() $mask_type) {
+    my gint32 $l = $layer_ID;
+    my GimpAddMaskType $m = $mask_type;
+
+    gimp_layer_create_mask($l, $mask_type);
   }
 
-  method flatten (gint32 $layer_ID) {
-    gimp_layer_flatten($layer_ID);
+  method flatten (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_flatten($l);
   }
 
   method from_mask (gint32 $mask_ID) {
+    my gint32 $l = $layer_ID;
+
     gimp_layer_from_mask($mask_ID);
   }
 
-  method get_apply_mask (gint32 $layer_ID) {
-    gimp_layer_get_apply_mask($layer_ID);
+  method get_apply_mask (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_apply_mask($l);
   }
 
-  method get_blend_space (gint32 $layer_ID) {
-    gimp_layer_get_blend_space($layer_ID);
+  method get_blend_space (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_blend_space($l);
   }
 
-  method get_composite_mode (gint32 $layer_ID) {
-    gimp_layer_get_composite_mode($layer_ID);
+  method get_composite_mode (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_composite_mode($l);
   }
 
-  method get_composite_space (gint32 $layer_ID) {
-    gimp_layer_get_composite_space($layer_ID);
+  method get_composite_space (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_composite_space($l);
   }
 
-  method get_edit_mask (gint32 $layer_ID) {
-    gimp_layer_get_edit_mask($layer_ID);
+  method get_edit_mask (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_edit_mask($l);
   }
 
-  method get_lock_alpha (gint32 $layer_ID) {
-    gimp_layer_get_lock_alpha($layer_ID);
+  method get_lock_alpha (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_lock_alpha($l);
   }
 
-  method get_mask (gint32 $layer_ID) {
-    gimp_layer_get_mask($layer_ID);
+  method get_mask (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_mask($l);
   }
 
-  method get_mode (gint32 $layer_ID) {
-    gimp_layer_get_mode($layer_ID);
+  method get_mode (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_mode($l);
   }
 
-  method get_opacity (gint32 $layer_ID) {
-    gimp_layer_get_opacity($layer_ID);
+  method get_opacity (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_opacity($l);
   }
 
-  method get_show_mask (gint32 $layer_ID) {
-    gimp_layer_get_show_mask($layer_ID);
+  method get_show_mask (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_get_show_mask($l);
   }
 
-  method group_new (gint32 $image_ID) {
-    gimp_layer_group_new($image_ID);
+  method group_new (Int() $image_ID) {
+    my gint32 $i = $image_ID;
+
+    gimp_layer_group_new($i);
   }
 
-  method is_floating_sel (gint32 $layer_ID) {
-    gimp_layer_is_floating_sel($layer_ID);
+  method is_floating_sel (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    so gimp_layer_is_floating_sel($l);
   }
 
-  method remove_mask (gint32 $layer_ID, GimpMaskApplyMode $mode) {
-    gimp_layer_remove_mask($layer_ID, $mode);
+  method remove_mask (Int() $layer_ID, Int() $mode) {
+    my gint32 $l = $layer_ID;
+    my GimpMaskApplyMode $m = $mode;
+
+    gimp_layer_remove_mask($l, $m);
   }
 
   method resize (
-    gint32 $layer_ID,
-    gint $new_width,
-    gint $new_height,
-    gint $offx,
-    gint $offy
+    Int() $layer_ID,
+    Int() $new_width,
+    Int() $new_height,
+    Int() $offx,
+    Int() $offy
   ) {
-    gimp_layer_resize($layer_ID, $new_width, $new_height, $offx, $offy);
+    my gint32 $l = $layer_ID;
+    my gint ($w, $h, $ox, $oy) = ($new_width, $new_height, $offx, $offy);
+
+    gimp_layer_resize($l, $w, $h, $ox, $oy);
   }
 
-  method resize_to_image_size (gint32 $layer_ID) {
-    gimp_layer_resize_to_image_size($layer_ID);
+  method resize_to_image_size (Int() $layer_ID) {
+    my gint32 $l = $layer_ID;
+
+    gimp_layer_resize_to_image_size($l);
   }
 
   method scale (
-    gint32 $layer_ID,
-    gint $new_width,
-    gint $new_height,
-    gboolean $local_origin
+    Int() $layer_ID,
+    Int() $new_width,
+    Int() $new_height,
+    Int() $local_origin
   ) {
-    gimp_layer_scale($layer_ID, $new_width, $new_height, $local_origin);
+    my gint32 $l = $layer_ID;
+    my gint ($w, $h) = ($new_width, $new_height);
+    my gboolean $l = (so $local_origin).Int;
+
+    gimp_layer_scale($l, $w, $h, $o);
   }
 
-  method set_apply_mask (gint32 $layer_ID, gboolean $apply_mask) {
-    gimp_layer_set_apply_mask($layer_ID, $apply_mask);
+  method set_apply_mask (Int() $layer_ID, Int() $apply_mask) {
+    my gint32 $l = $layer_ID;
+    my gboolean $a = (so $apply_mask).Int;
+
+    gimp_layer_set_apply_mask($l, $a);
   }
 
-  method set_blend_space (gint32 $layer_ID, GimpLayerColorSpace $blend_space) {
-    gimp_layer_set_blend_space($layer_ID, $blend_space);
+  method set_blend_space (Int() $layer_ID, Int() $blend_space) {
+    my gint32 $l = $layer_ID;
+    my GimpLayerColorSpace $b = $blend_space;
+
+    gimp_layer_set_blend_space($l, $b);
   }
 
-  method set_composite_mode (
-    gint32 $layer_ID,
-    GimpLayerCompositeMode $composite_mode
-  ) {
-    gimp_layer_set_composite_mode($layer_ID, $composite_mode);
+  method set_composite_mode (Int() $layer_ID, Int() $composite_mode) {
+    my gint32 $l = $layer_ID;
+    my GimpLayerCompositeMode $c = $composite_mode;
+
+    gimp_layer_set_composite_mode($l, $c);
   }
 
-  method set_composite_space (
-    gint32 $layer_ID,
-    GimpLayerColorSpace $composite_space
-  ) {
-    gimp_layer_set_composite_space($layer_ID, $composite_space);
+  method set_composite_space (Int() $layer_ID, Int() $composite_space) {
+    my gint32 $l = $layer_ID;
+    my GimpLayerColorSpace $c = $composite_space;
+
+    gimp_layer_set_composite_space($l, $c);
   }
 
-  method set_edit_mask (gint32 $layer_ID, gboolean $edit_mask) {
-    gimp_layer_set_edit_mask($layer_ID, $edit_mask);
+  method set_edit_mask (Int() $layer_ID, Int() $edit_mask) {
+    my gint32 $l = $layer_ID;
+    my gboolean $e = (so $edit_mask).Int;
+
+    gimp_layer_set_edit_mask($l, $e);
   }
 
-  method set_lock_alpha (gint32 $layer_ID, gboolean $lock_alpha) {
-    gimp_layer_set_lock_alpha($layer_ID, $lock_alpha);
+  method set_lock_alpha (Int() $layer_ID, Int() $lock_alpha) {
+    my gint32 $l = $layer_ID;
+    my gboolean $l = (so $lock_alpha).Int;
+
+    gimp_layer_set_lock_alpha($l, $l);
   }
 
-  method set_mode (gint32 $layer_ID, GimpLayerMode $mode) {
-    gimp_layer_set_mode($layer_ID, $mode);
+  method set_mode (Int() $layer_ID, Int() $mode) {
+    my gint32 $l = $layer_ID;
+    my GimpLayerMode $m = $mode;
+
+    gimp_layer_set_mode($l, $m);
   }
 
-  method set_offsets (gint32 $layer_ID, gint $offx, gint $offy) {
-    gimp_layer_set_offsets($layer_ID, $offx, $offy);
+  method set_offsets (Int() $layer_ID, Int() $offx, Int() $offy) {
+    my gint32 $l = $layer_ID;
+    my gint ($ox, $oy) = ($offx, $offy);
+
+    gimp_layer_set_offsets($l, $ox, $oy);
   }
 
-  method set_opacity (gint32 $layer_ID, gdouble $opacity) {
-    gimp_layer_set_opacity($layer_ID, $opacity);
+  method set_opacity (Int() $layer_ID, Num() $opacity) {
+    my gint32 $l = $layer_ID;
+    my gdouble $o = $opacity;
+
+    gimp_layer_set_opacity($l, $o);
   }
 
-  method set_show_mask (gint32 $layer_ID, gboolean $show_mask) {
-    gimp_layer_set_show_mask($layer_ID, $show_mask);
+  method set_show_mask (Int() $layer_ID, Int() $show_mask) {
+    my gint32 $l = $layer_ID;
+    my gboolean $s = $show_mask;
+
+    gimp_layer_set_show_mask($l, $);
   }
 
 }
+
+constant Layer is export := GIMP::PDB::Layer;
