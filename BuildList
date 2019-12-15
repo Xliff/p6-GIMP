@@ -25,6 +25,7 @@ GIMP::Checks
 GIMP::CpuAccel
 GIMP::PDB::BrusheSelect
 GIMP::PDB::Dynamics
+GIMP::PDB::Float
 GIMP::PDB::FontsSelect
 GIMP::PDB::GradientSelect
 GIMP::PDB::Message
@@ -50,8 +51,10 @@ GIMP::PDB::Raw::Procedural
 GIMP::PDB::Raw::Progress
 GIMP::PDB::Raw::RC
 GIMP::PDB::Raw::Selection
+GIMP::PDB::Raw::Text
 GIMP::PDB::Raw::Utils
 GIMP::PDB::Selection
+GIMP::PDB::Text
 GIMP::PDB::TextTool
 GIMP::PixPipeParams
 GIMP::Raw::Color
