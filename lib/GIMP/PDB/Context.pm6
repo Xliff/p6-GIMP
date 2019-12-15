@@ -9,8 +9,6 @@ use GIMP::PDB::Raw::Context;
 
 use GLib::Roles::StaticClass;
 
-constant Context is export := GIMP::PDB::Context;
-
 class GIMP::PDB::Context {
   also does GLib::Roles::StaticClass;
 
@@ -35,7 +33,7 @@ class GIMP::PDB::Context {
   method brush_angle is rw {
     Proxy.new:
       FETCH => -> $             { self.get_brush_angle },
-      STORE => -> $, Num() \a   { self.set_brush_angle (a) };
+      STORE => -> $, Num() \a   { self.set_brush_angle(a) };
   }
 
   method brush_aspect_ratio is rw {
@@ -77,7 +75,7 @@ class GIMP::PDB::Context {
   method distance_metric is rw {
     Proxy.new:
       FETCH => -> $             { self.get_distance_metric },
-      STORE => -> $, Int() \d   { self.set_distance_metric(b) };
+      STORE => -> $, Int() \d   { self.set_distance_metric(d) };
   }
 
   method dynamics is rw {
@@ -95,7 +93,7 @@ class GIMP::PDB::Context {
   method feather_radius is rw {
     Proxy.new:
       FETCH => -> $             { self.get_feather_radius },
-      STORE => -> $, Num() \r   { self.set_feather_radius(d) };
+      STORE => -> $, Num() \r   { self.set_feather_radius(r) };
   }
 
   method font is rw {
@@ -155,7 +153,7 @@ class GIMP::PDB::Context {
   method ink_blob_type is rw {
     Proxy.new:
       FETCH => -> $             { self.get_ink_blob_type },
-      STORE => -> $, Int() \t   { self.set_ink_blob_type(f) };
+      STORE => -> $, Int() \t   { self.set_ink_blob_type(t) };
   }
 
   method ink_size is rw {
@@ -205,9 +203,9 @@ class GIMP::PDB::Context {
       FETCH => -> $             { self.get_interpolation },
       STORE => -> $, $p         {
         given $p {
-          when Array  { self.set_interpolation($p);
-          when CArray { self.set_interpolation($p.elems, $p);
-        };
+          when Array  { self.set_interpolation($p) }
+          when CArray { self.set_interpolation($p.elems, $p) }
+        }
       }
   }
 
@@ -329,11 +327,11 @@ class GIMP::PDB::Context {
   multi method get_background (:$all = True) {
     samewith($, :$all);
   }
-  method get_background ($background is rw, :$all = False) {
+  multi method get_background ($background is rw, :$all = False) {
     my $b = GimpRGB.new;
     my $rv = so gimp_context_get_background($b);
 
-    $all.not $rv ?? ($rv, $rv ?? $background = $b !! Nil);
+    $all.not ?? $rv !! ($rv, $rv ?? ($background = $b) !! Nil);
   }
 
   method get_brush {
@@ -391,7 +389,7 @@ class GIMP::PDB::Context {
     $feather_radius_y is rw,
     :$all = False
   ) {
-    my gdouble ($rx, $ty) = 0e0 xx 2;
+    my gdouble ($rx, $ry) = 0e0 xx 2;
     my $rv = gimp_context_get_feather_radius($rx, $ry);
 
     ($feather_radius_x, $feather_radius_y) = ($rx, $ry);
@@ -408,11 +406,11 @@ class GIMP::PDB::Context {
   multi method get_foreground (:$all = True) {
     samewith($, :$all);
   }
-  multi method get_foreground ($foreground is rw) {
+  multi method get_foreground ($foreground is rw, :$all = False) {
     my $f = GimpRGB.new;
     my $rv = gimp_context_get_foreground($f);
 
-    $all.not ?? $rv !! ($rv, $rv ?? $foreground = $f !! Nil)
+    $all.not ?? $rv !! ($rv, $rv ?? ($foreground = $f) !! Nil)
   }
 
   method get_gradient {
@@ -483,7 +481,7 @@ class GIMP::PDB::Context {
   multi method get_line_dash_pattern (:$all = True) {
     samewith($, $, :$all)
   }
-  method get_line_dash_pattern (
+  multi method get_line_dash_pattern (
     $num_dashes is rw,
     $dashes is rw,
     :$all = False
@@ -580,7 +578,7 @@ class GIMP::PDB::Context {
     :$all = False
   ) {
     my gint $n = 0;
-    my $ma = CArray[CArray[Str].new;
+    my $ma = CArray[CArray[Str]].new;
     $ma[0] = CArray[Str];
 
     my $rv = gimp_context_list_paint_methods($n, $ma);
@@ -909,7 +907,7 @@ class GIMP::PDB::Context {
   }
 
   method set_transform_direction (Int() $transform_direction) {
-    my GimpTransformDirection $t = $transform_direction
+    my GimpTransformDirection $t = $transform_direction;
 
     so gimp_context_set_transform_direction($t);
   }
@@ -925,3 +923,5 @@ class GIMP::PDB::Context {
   }
 
 }
+
+constant Context is export := GIMP::PDB::Context;

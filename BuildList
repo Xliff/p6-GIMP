@@ -8,8 +8,9 @@ GTK::Compat::Value
 GTK::Raw::Utils
 GTK::Roles::Pointers
 GTK::Roles::Properties
-GIMP::Raw::Enums
 GIMP::PDB::Roles::Assumable
+GIMP::Compat::GEGL_Enums
+GIMP::Raw::Enums
 GIMP::Raw::Libs
 GIMP::Raw::Definitions
 GIMP::Raw::Structs
@@ -33,6 +34,7 @@ GIMP::PDB::PatternSelect
 GIMP::PDB::Raw::Brush
 GIMP::PDB::Raw::Buffer
 GIMP::PDB::Raw::Channel
+GIMP::PDB::Raw::Context
 GIMP::PDB::Raw::Display
 GIMP::PDB::Raw::Drawable
 GIMP::PDB::Raw::Edit
@@ -71,6 +73,7 @@ GIMP::Matrix
 GIMP::PDB::Brush
 GIMP::PDB::Buffer
 GIMP::PDB::Channel
+GIMP::PDB::Context
 GIMP::PDB::Display
 GIMP::PDB::Drawable
 GIMP::PDB::Edit

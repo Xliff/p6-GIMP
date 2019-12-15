@@ -1,6 +1,8 @@
 use v6;
 
-unit package GIMP::Raw::GEGL_Enums;
+use GTK::Compat::Types;
+
+unit package GIMP::Compat::GEGL_Enums;
 
 constant GeglBlitFlags is export := guint32;
 our enum GeglBlitFlagsEnum is export (

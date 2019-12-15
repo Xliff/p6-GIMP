@@ -2,6 +2,8 @@ use v6.c;
 
 use GTK::Compat::Types;
 
+use GIMP::Compat::GEGL_Enums;
+
 package GIMP::Raw::Enums {
 
   # GIMP
@@ -869,7 +871,7 @@ package GIMP::Raw::Enums {
 
 sub EXPORT {
   %(
-    GIMP::Raw::Enums::EXPORT::DEFAULT::,
-    GIMP::Raw::Compat::GEGL_Enums::EXPORT::DEFAULT::
+    #GIMP::Raw::Enums::EXPORT::DEFAULT::,
+    GIMP::Compat::GEGL_Enums::EXPORT::DEFAULT::
   )
 }
