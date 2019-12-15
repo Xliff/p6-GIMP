@@ -17,7 +17,7 @@ class GIMP::PDB::Context {
   method antialias is rw {
     Proxy.new:
       FETCH => -> $             { self.get_antialias },
-      STORE => -> $, \a         { self.set_antialias(a) };
+      STORE => -> $, Int() \a   { self.set_antialias(a) };
   }
 
   method background is rw {
@@ -248,42 +248,75 @@ class GIMP::PDB::Context {
   }
 
   method paint_method is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_opacity },
+      STORE => -> $, Num() \op  { self.set_opacity(op) };
   }
 
   method paint_mode is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_paint_mode },
+      STORE => -> $, Int() \me  { self.set_paint_mode(me) };
   }
 
   method palette is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_palette },
+      STORE => -> $, Str() \p   { self.set_palette(p) };
   }
 
   method pattern is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_pattern },
+      STORE => -> $, Str() \p   { self.set_pattern(p) };
   }
 
   method sample_criterion is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_sample_criterion },
+      STORE => -> $, Int() \c   { self.set_sample_criterion(c) };
   }
 
   method sample_merged is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_sample_merged },
+      STORE => -> $, Int() \s   { self.set_sample_merged(s) };
   }
 
   method sample_threshold is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_sample_threshold },
+      STORE => -> $, Num() \s   { self.set_sample_threshold(s) };
   }
 
   method sample_threshold_int is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_sample_threshold_int },
+      STORE => -> $, Int() \s   { self.set_sample_threshold_int(s) };
   }
 
   method sample_transparent is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_sample_transparent },
+      STORE => -> $, Int() \t   { self.set_sample_transparent(t) };
   }
 
   method stroke_method is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_stroke_method },
+      STORE => -> $, Int() \sm  { self.set_stroke_method(sm) };
   }
 
   method transform_direction is rw {
-  }
-
-  method transform_recursion is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_transform_direction },
+      STORE => -> $, Int() \d   { self.set_transform_direction(d) };
   }
 
   method transform_resize is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_transform_resize },
+      STORE => -> $, Int() \r   { self.set_transform_resize(r) };
   }
 
   method get_antialias {
@@ -529,10 +562,6 @@ class GIMP::PDB::Context {
 
   method get_transform_direction {
     GimpTransformDirectionEnum( gimp_context_get_transform_direction() );
-  }
-
-  method get_transform_recursion {
-    gimp_context_get_transform_recursion();
   }
 
   method get_transform_resize {
@@ -883,12 +912,6 @@ class GIMP::PDB::Context {
     my GimpTransformDirection $t = $transform_direction
 
     so gimp_context_set_transform_direction($t);
-  }
-
-  method set_transform_recursion (Int() $transform_recursion) {
-    my gint $t = $transform_recursion;
-
-    so gimp_context_set_transform_recursion($t);
   }
 
   method set_transform_resize (Int() $transform_resize) {
