@@ -209,3 +209,31 @@ sub gimp_drawable_edit_stroke_selection (gint32 $drawable_ID)
   is native(gimp)
   is export
 { * }
+
+### /usr/include/gimp-2.0/libgimp/gimppixbuf.h
+
+sub gimp_drawable_get_sub_thumbnail (
+  gint32 $drawable_ID,
+  gint $src_x,
+  gint $src_y,
+  gint $src_width,
+  gint $src_height,
+  gint $dest_width,
+  gint $dest_height,
+  GimpPixbufTransparency $alpha
+)
+  returns GdkPixbuf
+  is native(gimp)
+  is export
+{ * }
+
+sub gimp_drawable_get_thumbnail (
+  gint32 $drawable_ID,
+  gint $width,
+  gint $height,
+  GimpPixbufTransparency $alpha
+)
+  returns GdkPixbuf
+  is native(gimp)
+  is export
+{ * }

@@ -353,3 +353,16 @@ sub gimp_image_undo_thaw (gint32 $image_ID)
   is native(gimp)
   is export
 { * }
+
+### /usr/include/gimp-2.0/libgimp/gimppixbuf.h
+
+sub gimp_image_get_thumbnail (
+  gint32 $image_ID,
+  gint $width,
+  gint $height,
+  GimpPixbufTransparency $alpha
+)
+  returns GdkPixbuf
+  is native(gimp)
+  is export
+{ * }

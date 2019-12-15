@@ -7,6 +7,8 @@ use GIMP::Raw::Types;
 use GIMP::PDB::Raw::Utils;
 use GIMP::PDB::Raw::Image;
 
+use GTK::Compat::Pixbuf;
+
 use GLib::Roles::StaticClass;
 use GIMP::PDB::Roles::Assumable;
 
@@ -44,43 +46,47 @@ class GIMP::PDB::Image {
     my gint32 $i = $image_ID;
     my gint $y = $yposition;
 
-    gimp_image_add_hguide($image_ID, $yposition);
+    gimp_image_add_hguide($i, $y);
   }
 
   method add_vguide (Int() $image_ID, Int() $xposition) {
     my gint32 $i = $image_ID;
     my gint $x = $xposition;
 
-    gimp_image_add_vguide($image_ID, $xposition);
+    gimp_image_add_vguide($i, $x);
   }
 
   method delete_guide (Int() $image_ID, Int() $guide_ID) {
     my gint32 ($i, $g) = ($image_ID, $guide_ID);
 
-    gimp_image_delete_guide($image_ID, $guide_ID);
+    gimp_image_delete_guide($i, $g);
   }
 
   method find_next_guide (Int() $image_ID, Int() $guide_ID) {
     my gint32 ($i, $g) = ($image_ID, $guide_ID);
 
-    gimp_image_find_next_guide($image_ID, $guide_ID);
+    gimp_image_find_next_guide($i, $g);
   }
 
   method get_guide_orientation (Int() $image_ID, Int() $guide_ID) {
     my gint32 ($i, $g) = ($image_ID, $guide_ID);
 
-    gimp_image_get_guide_orientation($image_ID, $guide_ID);
+    gimp_image_get_guide_orientation($i, $g);
   }
 
   method get_guide_position (Int() $image_ID, Int() $guide_ID) {
     my gint32 ($i, $g) = ($image_ID, $guide_ID);
 
-    gimp_image_get_guide_position($image_ID, $guide_ID);
+    gimp_image_get_guide_position($i, $g);
   }
 
   # Sample Points
 
-  method add_sample_point (Int() $image_ID, Int() $position_x, Int() $position_y) {
+  method add_sample_point (
+    Int() $image_ID,
+    Int() $position_x,
+    Int() $position_y
+  ) {
     my gint32 $i = $image_ID;
     my gint ($x, $y) = ($position_x, $position_y);
 
@@ -109,6 +115,28 @@ class GIMP::PDB::Image {
 
     gimp_image_get_sample_point_position($i, $s, $y);
   }
+
+  # Pixbuf
+
+  method gimp_image_get_thumbnail (
+    Int() $image_ID,
+    Int() $width,
+    Int() $height,
+    Int() $alpha,
+    :$raw = False
+  ) {
+    my gint32 $i = $image_ID;
+    my gint ($w, $h) = ($width, $height);
+    my GimpPixbufTransparency $a = $alpha;
+
+    my $p = gimp_image_get_thumbnail($image_ID, $w, $h, $a);
+
+    $p ??
+      ( $raw ?? $p !! GTK::Compat::Pixbuf.new($p) )
+      !!
+      Nil;
+  }
+
 
 }
 

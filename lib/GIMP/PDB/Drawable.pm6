@@ -279,4 +279,55 @@ class GIMP::PDB::Drawable {
     gimp_drawable_edit_stroke_selection($drawable_ID);
   }
 
+  method get_sub_thumbnail (
+    Int() $drawable_ID,
+    Int() $src_x,
+    Int() $src_y,
+    Int() $src_width,
+    Int() $src_height,
+    Int() $dest_width,
+    Int() $dest_height,
+    Int() $alpha,
+    :$raw = False
+  ) {
+    my gint32 $d = $drawable_ID;
+    my gint ($sx, $sy, $sw, $sh, $dw, $dh) = (
+      $src_x,
+      $src_y,
+      $src_width,
+      $src_height,
+      $dest_width,
+      $dest_height,
+    );
+    my GimpPixbufTransparency $a = $alpha;
+
+    my $p =
+      gimp_drawable_get_sub_thumbnail($d, $sx, $sy, $sw, $sh, $dw, $dh, $a);
+
+    $p ??
+      ( $raw ?? $p !! GTK::Compat::Pixbuf.new($p) )
+      !!
+      Nil;
+  }
+
+  method get_thumbnail (
+    Num() $drawable_ID,
+    Num() $width,
+    Num() $height,
+    Num() $alpha,
+    :$raw = False
+  ) {
+    my gint32 $d = $drawable_ID;
+    my gint ($w, $h) = ($width, $height);
+    my GimpPixbufTransparency $a = $alpha;
+
+    my $p = gimp_drawable_get_thumbnail($d, $w, $h, $a);
+
+    $p ??
+      ( $raw ?? $p !! GTK::Compat::Pixbuf.new($p) )
+      !!
+      Nil;
+  }
+
+
 }
