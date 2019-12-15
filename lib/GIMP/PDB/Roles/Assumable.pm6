@@ -38,6 +38,7 @@ role GIMP::PDB::Roles::Assumable {
       when 'PaletteSelect'    { 'palette_callback' }
       when 'PatternSelect'    { 'pattern_callback' }
       when 'Register'         { 'procedure_name' }
+      when 'Text'           | { 'layer_ID' }
     }
     .assuming($buffer_name) for self.^methods(:local).grep({
       my \n := .signature.params[1].name;
