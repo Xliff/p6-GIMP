@@ -14,8 +14,8 @@ class GIMP::PDB::Context {
 
   method antialias is rw {
     Proxy.new:
-      FETCH => -> $     { self.get_antialias },
-      STORE => -> $, \a { self.set_antialias(a) };
+      FETCH => -> $             { self.get_antialias },
+      STORE => -> $, \a         { self.set_antialias(a) };
   }
 
   method background is rw {
@@ -26,86 +26,86 @@ class GIMP::PDB::Context {
 
   method brush is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_brush },
-      STORE => -> $, Str() \b { self.set_brush(b) };
+      FETCH => -> $             { self.get_brush },
+      STORE => -> $, Str() \b   { self.set_brush(b) };
   }
 
   method brush_angle is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_brush_angle },
-      STORE => -> $, Num() \a { self.set_brush_angle (a) };
+      FETCH => -> $             { self.get_brush_angle },
+      STORE => -> $, Num() \a   { self.set_brush_angle (a) };
   }
 
   method brush_aspect_ratio is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_brush_aspect_ratio },
-      STORE => -> $, Num() \a { self.set_brush_aspect_ratio(a) };
+      FETCH => -> $             { self.get_brush_aspect_ratio },
+      STORE => -> $, Num() \a   { self.set_brush_aspect_ratio(a) };
   }
 
   method brush_force is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_brush_force },
-      STORE => -> $, Num() \f { self.set_brush_force(f) };
+      FETCH => -> $             { self.get_brush_force },
+      STORE => -> $, Num() \f   { self.set_brush_force(f) };
   }
 
   method brush_hardness is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_brush_hardness },
-      STORE => -> $, Num() \h { self.set_brush_hardness(h) };
+      FETCH => -> $             { self.get_brush_hardness },
+      STORE => -> $, Num() \h   { self.set_brush_hardness(h) };
   }
 
   method brush_size is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_brush_size },
-      STORE => -> $, Num() \s { self.set_brush_size(s) };
+      FETCH => -> $             { self.get_brush_size },
+      STORE => -> $, Num() \s   { self.set_brush_size(s) };
   }
 
   method brush_spacing is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_brush_spacing },
-      STORE => -> $, Num() \s { self.set_brush_spacing(s) };
+      FETCH => -> $             { self.get_brush_spacing },
+      STORE => -> $, Num() \s   { self.set_brush_spacing(s) };
   }
 
   method diagonal_neighbors is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_diagonal_neighbors },
-      STORE => -> $, Int() \d { self.set_diagonal_neighbors(d) };
+      FETCH => -> $             { self.get_diagonal_neighbors },
+      STORE => -> $, Int() \d   { self.set_diagonal_neighbors(d) };
   }
 
   method distance_metric is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_distance_metric },
-      STORE => -> $, Int() \d { self.set_distance_metric(b) };
+      FETCH => -> $             { self.get_distance_metric },
+      STORE => -> $, Int() \d   { self.set_distance_metric(b) };
   }
 
   method dynamics is rw {
     Proxy.new:
-      FETCH => -> $           { self.get_dynamics },
-      STORE => -> $, Str() \d { self.set_dynamics(d) };
+      FETCH => -> $             { self.get_dynamics },
+      STORE => -> $, Str() \d   { self.set_dynamics(d) };
   }
 
   method feather is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_feather },
+      STORE => -> $, Int() \f   { self.set_feather(f) };
   }
 
   method feather_radius is rw {
-  }
-
-  method feather_radius is rw {
-  }
-
-  method feather_radius is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_feather_radius },
+      STORE => -> $, Num() \r   { self.set_feather_radius(d) };
   }
 
   method font is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_font },
+      STORE => -> $, Str() \f   { self.set_font(f) };
   }
 
   method foreground is rw {
-  }
-
-  method foreground is rw {
-  }
-
-  method foreground is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_dynamics },
+      STORE => -> $, GimpRGB \f { self.set_dynamics(f) };
   }
 
   method gradient is rw {
