@@ -11,6 +11,7 @@ use GIMP::Raw::Libs;
 sub EXPORT {
   %(
     GTK::Compat::Types::EXPORT::DEFAULT::,
+    GIMP::Compat::GEGL_Enums::EXPORT::DEFAULT::,
     GIMP::Raw::Definitions::EXPORT::DEFAULT::,
     GIMP::Raw::Enums::EXPORT::DEFAULT::,
     GIMP::Raw::Libs::EXPORT::DEFAULT::,
