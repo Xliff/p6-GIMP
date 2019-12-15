@@ -269,7 +269,7 @@ class GIMP::PDB::Context {
   }
 
   method get_distance_metric {
-    gimp_context_get_distance_metric();
+    GeglDistanceMetric( gimp_context_get_distance_metric() )
   }
 
   method get_dynamics {
@@ -320,11 +320,13 @@ class GIMP::PDB::Context {
   }
 
   method get_gradient_blend_color_space {
-    gimp_context_get_gradient_blend_color_space();
+    GimpGradientBlendColorSpaceEnum(
+      gimp_context_get_gradient_blend_color_space()
+    );
   }
 
   method get_gradient_repeat_mode {
-    gimp_context_get_gradient_repeat_mode();
+    GimpRepeatModeEnum( gimp_context_get_gradient_repeat_mode() );
   }
 
   method get_gradient_reverse {
@@ -344,7 +346,7 @@ class GIMP::PDB::Context {
   }
 
   method get_ink_blob_type {
-    gimp_context_get_ink_blob_type();
+    GimpInkBlobTypeEnum( gimp_context_get_ink_blob_type() );
   }
 
   method get_ink_size {
@@ -364,11 +366,11 @@ class GIMP::PDB::Context {
   }
 
   method get_interpolation {
-    gimp_context_get_interpolation();
+    GimpInterpolationTypeEnum( gimp_context_get_interpolation() );
   }
 
   method get_line_cap_style {
-    gimp_context_get_line_cap_style();
+    GimpCapStyleEnum( gimp_context_get_line_cap_style() );
   }
 
   method get_line_dash_offset {
@@ -395,7 +397,7 @@ class GIMP::PDB::Context {
   }
 
   method get_line_join_style {
-    gimp_context_get_line_join_style();
+    GimpJoinStyleEnum( gimp_context_get_line_join_style() );
   }
 
   method get_line_miter_limit {
@@ -423,7 +425,7 @@ class GIMP::PDB::Context {
   }
 
   method get_paint_mode {
-    gimp_context_get_paint_mode();
+    GimpLayerModeEnum( gimp_context_get_paint_mode() );
   }
 
   method get_palette {
@@ -435,7 +437,7 @@ class GIMP::PDB::Context {
   }
 
   method get_sample_criterion {
-    gimp_context_get_sample_criterion();
+    GimpSelectCriterionEnum( gimp_context_get_sample_criterion() );
   }
 
   method get_sample_merged {
@@ -455,11 +457,11 @@ class GIMP::PDB::Context {
   }
 
   method get_stroke_method {
-    gimp_context_get_stroke_method();
+    GimpStrokeMethod( gimp_context_get_stroke_method() );
   }
 
   method get_transform_direction {
-    gimp_context_get_transform_direction();
+    GimpTransformDirectionEnum( gimp_context_get_transform_direction() );
   }
 
   method get_transform_recursion {
@@ -467,7 +469,7 @@ class GIMP::PDB::Context {
   }
 
   method get_transform_resize {
-    gimp_context_get_transform_resize();
+    GimpTransformResizeEnum( gimp_context_get_transform_resize() );
   }
 
   proto method list_paint_methods (|)

@@ -14,6 +14,7 @@ sub EXPORT {
     GIMP::Raw::Definitions::EXPORT::DEFAULT::,
     GIMP::Raw::Enums::EXPORT::DEFAULT::,
     GIMP::Raw::Libs::EXPORT::DEFAULT::,
-    GIMP::Raw::Structs::EXPORT::DEFAULT::
+    GIMP::Raw::Structs::EXPORT::DEFAULT::,
+    GIMP::Raw::Compat::GEGL_Enums::EXPORT::DEFAULT::
   )
 }
