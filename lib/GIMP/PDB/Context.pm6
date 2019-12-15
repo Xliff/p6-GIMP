@@ -384,7 +384,9 @@ class GIMP::PDB::Context {
     gimp_context_set_diagonal_neighbors($d);
   }
 
-  method set_distance_metric (GeglDistanceMetric $metric) {
+  method set_distance_metric (Int() $metric) {
+    my GeglDistanceMetric $m = $metric;
+
     gimp_context_set_distance_metric($metric);
   }
 
@@ -392,132 +394,187 @@ class GIMP::PDB::Context {
     gimp_context_set_dynamics($name);
   }
 
-  method set_feather (gboolean $feather) {
-    gimp_context_set_feather($feather);
+  method set_feather (Int() $feather) {
+    my gboolean $f = $feather;
+
+    gimp_context_set_feather($f);
   }
 
-  method set_feather_radius (gdouble $feather_radius_x, gdouble $feather_radius_y) {
-    gimp_context_set_feather_radius($feather_radius_x, $feather_radius_y);
+  method set_feather_radius (
+    Num() $feather_radius_x,
+    Num() $feather_radius_y
+  ) {
+    my gdouble ($fx, $fy) = ($feather_radius_x, $feather_radius_y);
+
+    so gimp_context_set_feather_radius($fx, $fy);
   }
 
-  method set_font (Str $name) {
-    gimp_context_set_font($name);
+  method set_font (Str() $name) {
+    so gimp_context_set_font($name);
   }
 
   method set_foreground (GimpRGB $foreground) {
-    gimp_context_set_foreground($foreground);
+    so gimp_context_set_foreground($foreground);
   }
 
-  method set_gradient (Str $name) {
-    gimp_context_set_gradient($name);
+  method set_gradient (Str() $name) {
+    so gimp_context_set_gradient($name);
   }
 
-  method set_gradient_blend_color_space (GimpGradientBlendColorSpace $blend_color_space) {
-    gimp_context_set_gradient_blend_color_space($blend_color_space);
+  method set_gradient_blend_color_space (Int() $blend_color_space) {
+    my GimpGradientBlendColorSpace $b = $blend_color_space;
+
+    so gimp_context_set_gradient_blend_color_space($b);
   }
 
   method set_gradient_fg_bg_hsv_ccw {
-    gimp_context_set_gradient_fg_bg_hsv_ccw();
+    so gimp_context_set_gradient_fg_bg_hsv_ccw();
   }
 
   method set_gradient_fg_bg_hsv_cw {
-    gimp_context_set_gradient_fg_bg_hsv_cw();
+    so gimp_context_set_gradient_fg_bg_hsv_cw();
   }
 
   method set_gradient_fg_bg_rgb {
-    gimp_context_set_gradient_fg_bg_rgb();
+    so gimp_context_set_gradient_fg_bg_rgb();
   }
 
   method set_gradient_fg_transparent {
-    gimp_context_set_gradient_fg_transparent();
+    so gimp_context_set_gradient_fg_transparent();
   }
 
-  method set_gradient_repeat_mode (GimpRepeatMode $repeat_mode) {
-    gimp_context_set_gradient_repeat_mode($repeat_mode);
+  method set_gradient_repeat_mode (Int() $repeat_mode) {
+    my GimpRepeatMode $r = $repeat_mode;
+
+    so gimp_context_set_gradient_repeat_mode($r);
   }
 
-  method set_gradient_reverse (gboolean $reverse) {
-    gimp_context_set_gradient_reverse($reverse);
+  method set_gradient_reverse (Int() $reverse) {
+    my gboolean $r = (so $reverse).Int;
+
+    gimp_context_set_gradient_reverse($r);
   }
 
-  method set_ink_angle (gdouble $angle) {
-    gimp_context_set_ink_angle($angle);
+  method set_ink_angle (Num() $angle) {
+    my gdouble $a = $angle;
+
+    so gimp_context_set_ink_angle($a);
   }
 
-  method set_ink_blob_angle (gdouble $angle) {
-    gimp_context_set_ink_blob_angle($angle);
+  method set_ink_blob_angle (Num() $angle) {
+    my gdouble $a = $angle;
+
+    so gimp_context_set_ink_blob_angle($angle);
   }
 
-  method set_ink_blob_aspect_ratio (gdouble $aspect) {
-    gimp_context_set_ink_blob_aspect_ratio($aspect);
+  method set_ink_blob_aspect_ratio (Num() $aspect) {
+    my gdouble $a = $aspect;
+
+    so gimp_context_set_ink_blob_aspect_ratio($aspect);
   }
 
-  method set_ink_blob_type (GimpInkBlobType $type) {
-    gimp_context_set_ink_blob_type($type);
+  method set_ink_blob_type (Int() $type) {
+    my GimpInkBlobType $t = $type;
+
+    so gimp_context_set_ink_blob_type($t);
   }
 
-  method set_ink_size (gdouble $size) {
-    gimp_context_set_ink_size($size);
+  method set_ink_size (Num() $size) {
+    my gdouble $s = $size;
+
+    so gimp_context_set_ink_size($s);
   }
 
-  method set_ink_size_sensitivity (gdouble $size) {
-    gimp_context_set_ink_size_sensitivity($size);
+  method set_ink_size_sensitivity (Num() $size) {
+    my gdouble $s = $size;
+
+    so gimp_context_set_ink_size_sensitivity($s);
   }
 
-  method set_ink_speed_sensitivity (gdouble $speed) {
-    gimp_context_set_ink_speed_sensitivity($speed);
+  method set_ink_speed_sensitivity (Num() $speed) {
+    my gdouble $s = $speed;
+
+    so gimp_context_set_ink_speed_sensitivity($s);
   }
 
-  method set_ink_tilt_sensitivity (gdouble $tilt) {
-    gimp_context_set_ink_tilt_sensitivity($tilt);
+  method set_ink_tilt_sensitivity (Num() $tilt) {
+    so gimp_context_set_ink_tilt_sensitivity($tilt);
   }
 
-  method set_interpolation (GimpInterpolationType $interpolation) {
-    gimp_context_set_interpolation($interpolation);
+  method set_interpolation (Int() $interpolation) {
+    my GimpInterpolationType $i = $interpolation;
+
+    so gimp_context_set_interpolation($i);
   }
 
-  method set_line_cap_style (GimpCapStyle $cap_style) {
-    gimp_context_set_line_cap_style($cap_style);
+  method set_line_cap_style (Int() $cap_style) {
+    my GimpCapStyle $c = $cap_style;
+
+    gimp_context_set_line_cap_style($c);
   }
 
   method set_line_dash_offset (gdouble $dash_offset) {
-    gimp_context_set_line_dash_offset($dash_offset);
+    my gdouble $d = $dash_offset;
+
+    so gimp_context_set_line_dash_offset($d);
   }
 
-  method set_line_dash_pattern (gint $num_dashes, gdouble $dashes is rw) {
-    gimp_context_set_line_dash_pattern($num_dashes, $dashes is rw);
+  proto method set_line_dash_pattern (|)
+  { * }
+
+  multi method set_line_dash_pattern (@dashes) {
+    my $da = CArray[gdouble].new;
+    samewith( @dashes.elems, ArrayToCArray(gdouble, @dashes) );
+  }
+  multi method set_line_dash_pattern (
+    $num_dashes,
+    CArray[gdouble] $dashes
+  ) {
+    so gimp_context_set_line_dash_pattern($num_dashes, $dashes);
   }
 
-  method set_line_join_style (GimpJoinStyle $join_style) {
-    gimp_context_set_line_join_style($join_style);
+  method set_line_join_style (Int() $join_style) {
+    my GimpJoinStyle $j = $join_style;
+
+    so gimp_context_set_line_join_style($j);
   }
 
-  method set_line_miter_limit (gdouble $miter_limit) {
-    gimp_context_set_line_miter_limit($miter_limit);
+  method set_line_miter_limit (Num() $miter_limit) {
+    my gdouble $m = $miter_limit;
+
+    so gimp_context_set_line_miter_limit($m);
   }
 
   method set_line_width (gdouble $line_width) {
-    gimp_context_set_line_width($line_width);
+    my gdouble $l = $line_width;
+
+    so gimp_context_set_line_width($l);
   }
 
-  method set_line_width_unit (GimpUnit $line_width_unit) {
-    gimp_context_set_line_width_unit($line_width_unit);
+  method set_line_width_unit (Int() $line_width_unit) {
+    my GimpUnit $l = $line_width_unit;
+
+    gimp_context_set_line_width_unit($l);
   }
 
-  method set_mypaint_brush (Str $name) {
+  method set_mypaint_brush (Str() $name) {
     gimp_context_set_mypaint_brush($name);
   }
 
-  method set_opacity (gdouble $opacity) {
+  method set_opacity (Num() $opacity) {
+    my gdouble $o = $opacity;
+
     gimp_context_set_opacity($opacity);
   }
 
   method set_paint_method (Str() $name) {
-    gimp_context_set_paint_method($name);
+    so gimp_context_set_paint_method($name);
   }
 
-  method set_paint_mode (GimpLayerMode $paint_mode) {
-    gimp_context_set_paint_mode($paint_mode);
+  method set_paint_mode (Int() $paint_mode) {
+    my GimpLayerMode $p = $paint_mode;
+
+    so gimp_context_set_paint_mode($p);
   }
 
   method set_palette (Str() $name) {
@@ -528,40 +585,58 @@ class GIMP::PDB::Context {
     gimp_context_set_pattern($name);
   }
 
-  method set_sample_criterion (GimpSelectCriterion $sample_criterion) {
-    gimp_context_set_sample_criterion($sample_criterion);
+  method set_sample_criterion (Int() $sample_criterion) {
+    my GimpSelectCriterion $s = $sample_criterion;
+
+    so gimp_context_set_sample_criterion($s);
   }
 
-  method set_sample_merged (gboolean $sample_merged) {
-    gimp_context_set_sample_merged($sample_merged);
+  method set_sample_merged (Int() $sample_merged) {
+    my $s = (so $sample_merged).Int;
+
+    so gimp_context_set_sample_merged($s);
   }
 
-  method set_sample_threshold (gdouble $sample_threshold) {
-    gimp_context_set_sample_threshold($sample_threshold);
+  method set_sample_threshold (Num() $sample_threshold) {
+    my gdouble $s = $sample_threshold;
+
+    so gimp_context_set_sample_threshold($s);
   }
 
-  method set_sample_threshold_int (gint $sample_threshold) {
-    gimp_context_set_sample_threshold_int($sample_threshold);
+  method set_sample_threshold_int (Int() $sample_threshold) {
+    my gint $s = $sample_threshold;
+
+    so gimp_context_set_sample_threshold_int($s);
   }
 
-  method set_sample_transparent (gboolean $sample_transparent) {
-    gimp_context_set_sample_transparent($sample_transparent);
+  method set_sample_transparent (Int() $sample_transparent) {
+    my gboolean $s = (so $sample_transparent).Int;
+
+    so gimp_context_set_sample_transparent($s);
   }
 
-  method set_stroke_method (GimpStrokeMethod $stroke_method) {
-    gimp_context_set_stroke_method($stroke_method);
+  method set_stroke_method (Int() $stroke_method) {
+    my GimpStrokeMethod $s = $stroke_method;
+
+    so gimp_context_set_stroke_method($stroke_method);
   }
 
-  method set_transform_direction (GimpTransformDirection $transform_direction) {
-    gimp_context_set_transform_direction($transform_direction);
+  method set_transform_direction (Int() $transform_direction) {
+    my GimpTransformDirection $t = $transform_direction
+
+    so gimp_context_set_transform_direction($t);
   }
 
-  method set_transform_recursion (gint $transform_recursion) {
-    gimp_context_set_transform_recursion($transform_recursion);
+  method set_transform_recursion (Int() $transform_recursion) {
+    my gint $t = $transform_recursion;
+
+    so gimp_context_set_transform_recursion($t);
   }
 
-  method set_transform_resize (GimpTransformResize $transform_resize) {
-    gimp_context_set_transform_resize($transform_resize);
+  method set_transform_resize (Int() $transform_resize) {
+    my GimpTransformResize $t = $transform_resize;
+
+    so gimp_context_set_transform_resize($t);
   }
 
   method swap_colors {
