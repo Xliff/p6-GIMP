@@ -9,6 +9,8 @@ use GIMP::PDB::Raw::Context;
 
 use GLib::Roles::StaticClass;
 
+constant Context is export := GIMP::PDB::Context;
+
 class GIMP::PDB::Context {
   also does GLib::Roles::StaticClass;
 
@@ -104,47 +106,86 @@ class GIMP::PDB::Context {
 
   method foreground is rw {
     Proxy.new:
-      FETCH => -> $             { self.get_dynamics },
-      STORE => -> $, GimpRGB \f { self.set_dynamics(f) };
+      FETCH => -> $             { self.get_foreground },
+      STORE => -> $, GimpRGB \f { self.set_foreground(f) };
   }
 
   method gradient is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_gradient },
+      STORE => -> $, Str() \g   { self.set_gradient(g) };
   }
 
   method gradient_blend_color_space is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_gradient_blend_color_space },
+      STORE => -> $, Int() \c   { self.set_gradient_blend_color_space(c) };
   }
 
   method gradient_repeat_mode is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_repeat_mode },
+      STORE => -> $, Int() \r   { self.set_repeat_mode(r) };
   }
 
   method gradient_reverse is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_gradient_repeat },
+      STORE => -> $, Int() \r   { self.set_gradient_repeat(r) };
   }
 
   method ink_angle is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_ink_angle },
+      STORE => -> $, Num() \a   { self.set_ink_angle(a) };
   }
 
   method ink_blob_angle is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_ink_blob_angle },
+      STORE => -> $, Num() \a   { self.set_ink_blob_angle(a) };
   }
 
   method ink_blob_aspect_ratio is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_ink_blob_aspect_ratio },
+      STORE => -> $, Num() \a   { self.set_ink_blob_aspect_ratio(a) };
   }
 
   method ink_blob_type is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_ink_blob_type },
+      STORE => -> $, Int() \t   { self.set_ink_blob_type(f) };
   }
 
   method ink_size is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_ink_size },
+      STORE => -> $, Num() \s   { self.set_ink_size(s) };
   }
 
   method ink_size_sensitivity is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_ink_size_sensitivity },
+      STORE => -> $, Num() \s   { self.set_ink_size_sensitivity(s) };
   }
 
   method ink_speed_sensitivity is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_ink_speed_sensitivity },
+      STORE => -> $, Num() \s   { self.set_ink_speed_sensitivity(s) };
   }
 
   method ink_tilt_sensitivity is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_ink_tilt_sensitivity },
+      STORE => -> $, Num() \s   { self.set_ink_tilt_sensitivity(s) };
   }
 
   method interpolation is rw {
+    Proxy.new:
+      FETCH => -> $             { self.get_interpolation },
+      STORE => -> $, Int() \i   { self.set_interpolation(i) };
   }
 
   method line_cap_style is rw {
