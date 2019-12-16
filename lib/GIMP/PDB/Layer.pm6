@@ -74,66 +74,6 @@ class GIMP::PDB::Layer {
     gimp_layer_new_from_visible($i, $d, $name);
   }
 
-  method apply_mask is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_apply_mask },
-      STORE => -> $, Int() \a { self.set_apply_mask(a) };
-  }
-
-  method blend_space is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_blend_space },
-      STORE => -> $, Int() \b { self.set_blend_space(b) };
-  }
-
-  method composite_mode is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_composite_mode },
-      STORE => -> $, Int() \c { self.set_composite_mode(c) };
-  }
-
-  method composite_space is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_composite_space },
-      STORE => -> $, Int() \c { self.set_composite_space(c) };
-  }
-
-  method edit_mask is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_edit_mask },
-      STORE => -> $, Int() \e { self.set_edit_mask(e) };
-  }
-
-  method lock_alpha is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_lock_alpha },
-      STORE => -> $, Int() \a { self.set_lock_alpha(a) };
-  }
-
-  method mask is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_mask },
-      STORE => -> $, Int() \k { self.set_mask(k) };
-  }
-
-  method mode is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_mode },
-      STORE => -> $, Int() \e { self.set_mode(e) };
-  }
-
-  method opacity is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_opacity },
-      STORE => -> $, Num() \p { self.set_opacity(p) };
-  }
-
-  method show_mask is rw {
-    Proxy.new:
-      FETCH => -> $           { self.get_show_mask },
-      STORE => -> $, Int() \s { self.set_show_mask(s) };
-  }
-
   method add_alpha (Int() $layer_ID) {
     my gint32 $l = $layer_ID;
 
