@@ -216,7 +216,7 @@ sub gimp_image_find_next_sample_point (
 sub gimp_image_get_sample_point_position (
   gint32 $image_ID,
   gint32 $sample_point_ID,
-  gint $position_y
+  gint $position_y is rw
 )
   returns gint
   is native(gimp)

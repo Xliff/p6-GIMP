@@ -127,15 +127,25 @@ class GIMP::PDB::Image {
     gimp_image_find_next_sample_point($i, $s);
   }
 
-  method get_sample_point_position (
+  proto method get_sample_point (|)
+  { * }
+
+  multi method get_sample_point_position (
+    Int() $image_ID,
+    Int() $sample_point_ID
+  ) {
+    samewith($image_ID, $sample_point_ID, $);
+  }
+  multi method get_sample_point_position (
     Int() $image_ID,
     Int() $sample_point_ID,
-    Int() $position_y
+    $position_y is rw
   ) {
     my gint32 ($i, $s) = ($image_ID, $sample_point_ID);
-    my gint $y = $position_y;
+    my gint $y = 0;
 
     gimp_image_get_sample_point_position($i, $s, $y);
+    $position_y = $y;
   }
 
   # Pixbuf
