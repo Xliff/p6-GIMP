@@ -11,7 +11,7 @@ unit package GIMP::Widget::Raw::Preview;
 ### /usr/include/gimp-2.0/libgimpwidgets/gimppreview.h
 
 sub gimp_preview_draw (GimpPreview $preview)
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
@@ -20,19 +20,19 @@ sub gimp_preview_draw_buffer (
   Str $buffer,
   gint $rowstride
 )
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
 sub gimp_preview_get_area (GimpPreview $preview)
   returns GtkWidget
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
 sub gimp_preview_get_controls (GimpPreview $preview)
   returns GtkWidget
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
@@ -41,7 +41,7 @@ sub gimp_preview_get_position (
   gint $x is rw,
   gint $y is rw
 )
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
@@ -50,24 +50,24 @@ sub gimp_preview_get_size (
   gint $width is rw,
   gint $height is rw
 )
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
 sub gimp_preview_get_type ()
   returns GType
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
 sub gimp_preview_get_update (GimpPreview $preview)
   returns uint32
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
 sub gimp_preview_invalidate (GimpPreview $preview)
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
@@ -78,17 +78,17 @@ sub gimp_preview_set_bounds (
   gint $xmax,
   gint $ymax
 )
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
 sub gimp_preview_set_default_cursor (GimpPreview $preview, GdkCursor $cursor)
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
 sub gimp_preview_set_update (GimpPreview $preview, gboolean $update)
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
@@ -99,7 +99,7 @@ sub gimp_preview_transform (
   gint $dest_x is rw,
   gint $dest_y is rw
 )
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }
 
@@ -110,6 +110,6 @@ sub gimp_preview_untransform (
   gint $dest_x is rw,
   gint $dest_y is rw
 )
-  is native(gimp)
+  is native(gimpwidget)
   is export
 { * }

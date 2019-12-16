@@ -25,6 +25,15 @@ class GIMP::Widget::Preview is GTK::Box {
     default                    { }
   }
 
+  proto method new (|)
+  { * }
+
+  multi method new (GimpPreview $preview) {
+    return Nil unless $preview;
+
+    self.bless( :$preview );
+  }
+
   method setPreview (GimpPreviewAncestry $_) {
     my $to-parent;
     $!gp = do {
