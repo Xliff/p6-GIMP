@@ -12,6 +12,8 @@ GTK::Raw::Types
 GTK::Raw::Utils
 GTK::Roles::Pointers
 GTK::Roles::Properties
+GTK::Widget
+Method::Also
 GIMP::PDB::Roles::Assumable
 GIMP::Compat::GEGL_Enums
 GIMP::Raw::Enums
@@ -27,6 +29,7 @@ GIMP::ValueArray
 GIMP::Vector
 GIMP::Raw::Widgets
 GIMP::Widget::ProgressBar
+GIMP::Widget::Raw::Preview
 GIMP::Widget::SelectButton
 GIMP::Checks
 GIMP::CpuAccel
@@ -76,6 +79,7 @@ GIMP::Raw::Thumb
 GIMP::Raw::Thumbnail
 GIMP::Thumb
 GIMP::Thumbnail
+GIMP::Widget::Preview
 GIMP::Color
 GIMP::ColorProfile
 GIMP::Env
