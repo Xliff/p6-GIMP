@@ -90,7 +90,7 @@ class GIMP::PDB::Image {
     my gint32 $i = $image_ID;
     my gint ($x, $y) = ($position_x, $position_y);
 
-    gimp_image_add_sample_point($image_ID, $x, $y);
+    gimp_image_add_sample_point($i, $x, $y);
   }
 
   method delete_sample_point (Int() $image_ID, Int() $sample_point_ID) {
@@ -129,7 +129,7 @@ class GIMP::PDB::Image {
     my gint ($w, $h) = ($width, $height);
     my GimpPixbufTransparency $a = $alpha;
 
-    my $p = gimp_image_get_thumbnail($image_ID, $w, $h, $a);
+    my $p = gimp_image_get_thumbnail($i, $w, $h, $a);
 
     $p ??
       ( $raw ?? $p !! GTK::Compat::Pixbuf.new($p) )
@@ -142,115 +142,116 @@ class GIMP::PDB::Image {
   method attach_parasite (Int() $image_ID, GimpParasite $parasite) {
     my gint32 $i = $image_ID;
 
-    gimp_image_attach_parasite($image_ID, $parasite);
+    gimp_image_attach_parasite($i, $parasite);
   }
 
   method base_type (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_base_type($image_ID);
+    gimp_image_base_type($i);
   }
 
   method clean_all (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_clean_all($image_ID);
+    gimp_image_clean_all($i);
   }
 
   method delete (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_delete($image_ID);
+    gimp_image_delete($i);
   }
 
   method detach_parasite (Int() $image_ID, Str() $name) {
     my gint32 $i = $image_ID;
 
-    gimp_image_detach_parasite($image_ID, $name);
+    gimp_image_detach_parasite($i, $name);
   }
 
   method duplicate (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_duplicate($image_ID);
+    gimp_image_duplicate($i);
   }
 
   method flatten (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_flatten($image_ID);
+    gimp_image_flatten($i);
   }
 
   method floating_sel_attached_to (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_floating_sel_attached_to($image_ID);
+    gimp_image_floating_sel_attached_to($i);
   }
 
   method freeze_channels (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_freeze_channels($image_ID);
+    gimp_image_freeze_channels($i);
   }
 
   method freeze_layers (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_freeze_layers($image_ID);
+    gimp_image_freeze_layers($i);
   }
 
   method freeze_vectors (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_freeze_vectors($image_ID);
+    gimp_image_freeze_vectors($i);
   }
 
   method get_active_channel (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_active_channel($image_ID);
+    gimp_image_get_active_channel($i);
   }
 
   method get_active_drawable (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_active_drawable($image_ID);
+    gimp_image_get_active_drawable($i);
   }
 
   method get_active_layer (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_active_layer($image_ID);
+    gimp_image_get_active_layer($i);
   }
 
   method get_active_vectors (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_active_vectors($image_ID);
+    gimp_image_get_active_vectors($i);
   }
 
   method get_channel_by_name (Int() $image_ID, Str() $name) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_channel_by_name($image_ID, $name);
+    gimp_image_get_channel_by_name($i, $name);
   }
 
-  method get_channel_by_tattoo (Int() $image_ID, gint $tattoo) {
+  method get_channel_by_tattoo (Int() $image_ID, Int() $tattoo) {
     my gint32 $i = $image_ID;
+    my gint $t = $tattoo;
 
-    gimp_image_get_channel_by_tattoo($image_ID, $tattoo);
+    gimp_image_get_channel_by_tattoo($i, $t);
   }
 
   proto method get_channels (|)
   { * }
 
   multi method get_channels (Int() $image_ID) {
-    samewith($image_ID, $);
+    samewith($i, $);
   }
   multi method get_channels (Int() $image_ID, $num_channels is rw) {
     my gint32 $i = $image_ID;
     my gint $n = 0;
-    my $cl = gimp_image_get_channels($image_ID, $n);
+    my $cl = gimp_image_get_channels($i, $n);
 
     $num_channels = $n;
     CArrayToArray($cl, $n);
@@ -258,74 +259,83 @@ class GIMP::PDB::Image {
 
   method get_component_active (
     Int() $image_ID,
-    GimpChannelType $component
+    Int() $component
   ) {
     my gint32 $i = $image_ID;
+    my GimpChannelType $c = $component;
 
-    gimp_image_get_component_active($image_ID, $component);
+    gimp_image_get_component_active($i, $c);
   }
 
   method get_component_visible (
     Int() $image_ID,
-    GimpChannelType $component
+    Int() $component
   ) {
     my gint32 $i = $image_ID;
+    my GimpChannelType $c = $component;
 
-    gimp_image_get_component_visible($image_ID, $component);
+    gimp_image_get_component_visible($i, $c);
   }
 
   method get_default_new_layer_mode (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_default_new_layer_mode($image_ID);
+    gimp_image_get_default_new_layer_mode($i);
   }
 
   method get_exported_uri (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_exported_uri($image_ID);
+    gimp_image_get_exported_uri($i);
   }
 
   method get_filename (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_filename($image_ID);
+    gimp_image_get_filename($i);
   }
 
   method get_floating_sel (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_floating_sel($image_ID);
+    gimp_image_get_floating_sel($i);
   }
 
   method get_imported_uri (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_imported_uri($image_ID);
+    gimp_image_get_imported_uri($i);
   }
 
-  method get_item_position (Int() $image_ID, gint32 $item_ID) {
-    my gint32 $i = $image_ID;
+  method get_item_position (Int() $image_ID, Int() $item_ID) {
+    my gint32 ($i, $ii) = ($image_ID, $item_ID);
 
-    gimp_image_get_item_position($image_ID, $item_ID);
+    gimp_image_get_item_position($i, $item_ID);
   }
 
   method get_layer_by_name (Int() $image_ID, Str() $name) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_layer_by_name($image_ID, $name);
+    gimp_image_get_layer_by_name($i, $name);
   }
 
-  method get_layer_by_tattoo (Int() $image_ID, gint $tattoo) {
+  method get_layer_by_tattoo (Int() $image_ID, Int() $tattoo) {
     my gint32 $i = $image_ID;
+    my gint $t = $tattoo;
 
-    gimp_image_get_layer_by_tattoo($image_ID, $tattoo);
+    gimp_image_get_layer_by_tattoo($i, $tattoo);
   }
 
-  method get_layers (Int() $image_ID, $num_layers is rw) {
+  proto method get_layers (|)
+  { * }
+
+  multi method get_layers (Int() $image_ID) {
+    samewith($i, $);
+  }
+  multi method get_layers (Int() $image_ID, $num_layers is rw) {
     my gint32 $i = $image_ID;
     my gint $n = 0;
-    my $ll = gimp_image_get_layers($image_ID, $num_layers is rw);
+    my $ll = gimp_image_get_layers($i, $num_layers is rw);
 
     $num_layers = $n;
     CArrayToArray($ll, $n);
@@ -334,19 +344,19 @@ class GIMP::PDB::Image {
   method get_name (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_name($image_ID);
+    gimp_image_get_name($i);
   }
 
-  method get_parasite (Int() $image_ID, Str $name) {
+  method get_parasite (Int() $image_ID, Str() $name) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_parasite($image_ID, $name);
+    gimp_image_get_parasite($i, $name);
   }
 
   method get_parasite_list (Int() $image_ID, $num_parasites is rw) {
     my gint32 $i = $image_ID;
     my gint $n = 0;
-    my $pl = gimp_image_get_parasite_list($image_ID, $n);
+    my $pl = gimp_image_get_parasite_list($i, $n);
 
     $num_parasites = $n;
     CArrayToArray($pl, $n);
@@ -355,54 +365,61 @@ class GIMP::PDB::Image {
   method get_precision (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_precision($image_ID);
+    gimp_image_get_precision($i);
   }
 
-  method get_resolution (
-    gint32 $image_ID,
+  proto method get_resolution (|)
+  { * }
+
+  multi method get_resolution {
+    samewith($, $);
+  }
+  multi method get_resolution (
+    Int() $image_ID,
     $xresolution is rw,
     $yresolution is rw
   ) {
     my gint32 $i = $image_ID;
     my gdouble ($xr, $yr) = 0e0 xx 2;
 
-    gimp_image_get_resolution($image_ID, $xresolution, $yresolution);
+    gimp_image_get_resolution($i, $xr, $yr);
+    ($xresolution, $yresolution) = ($xr, $yr);
   }
 
   method get_selection (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_selection($image_ID);
+    gimp_image_get_selection($i);
   }
 
   method get_tattoo_state (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_tattoo_state($image_ID);
+    gimp_image_get_tattoo_state($i);
   }
 
   method get_unit (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_unit($image_ID);
+    GimpUnitEnum( gimp_image_get_unit($i) );
   }
 
   method get_uri (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_uri($image_ID);
+    gimp_image_get_uri($i);
   }
 
   proto method get_vectors (|)
   { * }
 
   multi method get_vectors (Int() $image_ID) {
-    samewith($image_ID, $);
+    samewith($i, $);
   }
   multi method get_vectors (Int() $image_ID, $num_vectors is rw) {
     my gint32 $i = $image_ID;
     my gint $n = 0;
-    my $ia = gimp_image_get_vectors($image_ID, $n);
+    my $ia = gimp_image_get_vectors($i, $n);
 
     $num_vectors = $n;
     CArrayToArray($ia, $num_vectors);
@@ -411,70 +428,73 @@ class GIMP::PDB::Image {
   method get_vectors_by_name (Int() $image_ID, Str() $name) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_vectors_by_name($image_ID, $name);
+    gimp_image_get_vectors_by_name($i, $name);
   }
 
-  method get_vectors_by_tattoo (Int() $image_ID, gint $tattoo) {
+  method get_vectors_by_tattoo (Int() $image_ID, Int() $tattoo) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_vectors_by_tattoo($image_ID, $tattoo);
+    gimp_image_get_vectors_by_tattoo($i, $tattoo);
   }
 
   method get_xcf_uri (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_get_xcf_uri($image_ID);
+    gimp_image_get_xcf_uri($i);
   }
 
   method height (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_height($image_ID);
+    gimp_image_height($i);
   }
 
   method insert_channel (
     Int() $image_ID,
-    gint32 $channel_ID,
-    gint32 $parent_ID,
-    gint $position
+    Int() $channel_ID,
+    Int() $parent_ID,
+    Int() $position
   ) {
-    my gint32 $i = $image_ID;
+    my gint32 ($i, $c, $p) = ($image_ID, $channel_ID, $parent_ID);
+    my gint $pos = $position;
 
-    gimp_image_insert_channel($image_ID, $channel_ID, $parent_ID, $position);
+    gimp_image_insert_channel($i, $c, $p, $pos);
   }
 
   method insert_layer (
     Int() $image_ID,
-    gint32 $layer_ID,
-    gint32 $parent_ID,
-    gint $position
+    Int() $channel_ID,
+    Int() $parent_ID,
+    Int() $position
   ) {
-    my gint32 $i = $image_ID;
+    my gint32 ($i, $c, $p) = ($image_ID, $channel_ID, $parent_ID);
+    my gint $pos = $position;
 
-    gimp_image_insert_layer($image_ID, $layer_ID, $parent_ID, $position);
+    gimp_image_insert_layer($i, $c, $p, $pos);
   }
 
   method insert_vectors (
     Int() $image_ID,
-    gint32 $vectors_ID,
-    gint32 $parent_ID,
-    gint $position
+    Int() $channel_ID,
+    Int() $parent_ID,
+    Int() $position
   ) {
-    my gint32 $i = $image_ID;
+    my gint32 ($i, $c, $p) = ($image_ID, $channel_ID, $parent_ID);
+    my gint $pos = $position;
 
-    gimp_image_insert_vectors($image_ID, $vectors_ID, $parent_ID, $position);
+    gimp_image_insert_vectors($i, $c, $p, $pos);
   }
 
   method is_dirty (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    so gimp_image_is_dirty($image_ID);
+    so gimp_image_is_dirty($i);
   }
 
   method is_valid (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    so gimp_image_is_valid($image_ID);
+    so gimp_image_is_valid($i);
   }
 
   proto method list (|)
@@ -492,35 +512,37 @@ class GIMP::PDB::Image {
     CArrayToArray($il, $n);
   }
 
-  method lower_item (Int() $image_ID, gint32 $item_ID) {
-    my gint32 $i = $image_ID;
+  method lower_item (Int() $image_ID, Int() $item_ID) {
+    my gint32 ($i, $ii) = ($image_ID, $item_ID);
 
-    gimp_image_lower_item($image_ID, $item_ID);
+    gimp_image_lower_item($i, $item_ID);
   }
 
-  method lower_item_to_bottom (Int() $image_ID, gint32 $item_ID) {
-    my gint32 $i = $image_ID;
+  method lower_item_to_bottom (Int() $image_ID, Int() $item_ID) {
+    my gint32 ($i, $ii) = ($image_ID, $item_ID);
 
-    gimp_image_lower_item_to_bottom($image_ID, $item_ID);
+    gimp_image_lower_item_to_bottom($i, $item_ID);
   }
 
   method merge_down (
     Int() $image_ID,
-    gint32 $merge_layer_ID,
-    GimpMergeType $merge_type
+    Int() $merge_layer_ID,
+    Int() $merge_type
   ) {
-    my gint32 $i = $image_ID;
+    my gint32 ($i, $m) = ($image_ID, $merge_layer_ID)
+    my GimpMergeType $t = $merge_type;
 
-    gimp_image_merge_down($image_ID, $merge_layer_ID, $merge_type);
+    gimp_image_merge_down($i, $m, $t);
   }
 
   method merge_visible_layers (
     Int() $image_ID,
-    GimpMergeType $merge_type
+    Int() $merge_type
   ) {
     my gint32 $i = $image_ID;
+    my GimpMergeType $t = $merge_type;
 
-    gimp_image_merge_visible_layers($image_ID, $merge_type);
+    gimp_image_merge_visible_layers($i, $t);
   }
 
   method new (gint $width, gint $height, GimpImageBaseType $type) {
@@ -563,144 +585,152 @@ class GIMP::PDB::Image {
   method pick_correlate_layer (Int() $image_ID, gint $x, gint $y) {
     my gint32 $i = $image_ID;
 
-    gimp_image_pick_correlate_layer($image_ID, $x, $y);
+    gimp_image_pick_correlate_layer($i, $x, $y);
   }
 
-  method raise_item (Int() $image_ID, gint32 $item_ID) {
-    my gint32 $i = $image_ID;
+  method raise_item (Int() $image_ID, Int() $item_ID) {
+    my gint32 ($i, $ii) = ($image_ID, $item_ID);
 
-    gimp_image_raise_item($image_ID, $item_ID);
+    gimp_image_raise_item($i, $ii);
   }
 
-  method raise_item_to_top (Int() $image_ID, gint32 $item_ID) {
-    my gint32 $i = $image_ID;
+  method raise_item_to_top (Int() $image_ID, Int() $item_ID) {
+    my gint32 ($i, $ii) = ($image_ID, $item_ID);
 
-    gimp_image_raise_item_to_top($image_ID, $item_ID);
+    gimp_image_raise_item_to_top($i, $ii);
   }
 
-  method remove_channel (Int() $image_ID, gint32 $channel_ID) {
-    my gint32 $i = $image_ID;
+  method remove_channel (Int() $image_ID, Int() $channel_ID) {
+    my gint32 ($i, $c) = ($image_ID, $channel_ID);
 
-    gimp_image_remove_channel($image_ID, $channel_ID);
+    gimp_image_remove_channel($i, $c);
   }
 
-  method remove_layer (Int() $image_ID, gint32 $layer_ID) {
-    my gint32 $i = $image_ID;
+  method remove_layer (Int() $image_ID, Int() $layer_ID) {
+    my gint32 ($i, $l) = ($image_ID, $layer_ID);
 
-    gimp_image_remove_layer($image_ID, $layer_ID);
+    gimp_image_remove_layer($i, $l);
   }
 
-  method remove_vectors (Int() $image_ID, gint32 $vectors_ID) {
-    my gint32 $i = $image_ID;
+  method remove_vectors (Int() $image_ID, Int() $vectors_ID) {
+    my gint32 ($i, $v) = ($image_ID, $vectors_ID);
 
-    gimp_image_remove_vectors($image_ID, $vectors_ID);
+    gimp_image_remove_vectors($i, $v);
   }
 
   method reorder_item (
     Int() $image_ID,
-    gint32 $item_ID,
-    gint32 $parent_ID,
-    gint $position
+    Int() $item_ID,
+    Int() $parent_ID,
+    Int() $position
   ) {
-    my gint32 $i = $image_ID;
+    my gint32 ($i, $c, $p) = ($image_ID, $channel_ID, $parent_ID);
+    my gint $pos = $position;
 
-    gimp_image_reorder_item($image_ID, $item_ID, $parent_ID, $position);
+    gimp_image_reorder_item($i, $c, $p, $pos);
   }
 
-  method set_active_channel (Int() $image_ID, gint32 $active_channel_ID) {
-    my gint32 $i = $image_ID;
+  method set_active_channel (Int() $image_ID, Int() $active_channel_ID) {
+    my gint32 ($i, $a) = ($image_ID, $active_channel_ID);
 
-    gimp_image_set_active_channel($image_ID, $active_channel_ID);
+    gimp_image_set_active_channel($i, $a);
   }
 
-  method set_active_layer (Int() $image_ID, gint32 $active_layer_ID) {
-    my gint32 $i = $image_ID;
+  method set_active_layer (Int() $image_ID, Int() $active_layer_ID) {
+    my gint32 ($i, $a) = ($image_ID, $active_layer_ID);
 
-    gimp_image_set_active_layer($image_ID, $active_layer_ID);
+    gimp_image_set_active_layer($i, $a);
   }
 
-  method set_active_vectors (Int() $image_ID, gint32 $active_vectors_ID) {
-    my gint32 $i = $image_ID;
+  method set_active_vectors (Int() $image_ID, Int() $active_vectors_ID) {
+    my gint32 ($i, $a) = ($image_ID, $active_vectors_ID);
 
-    gimp_image_set_active_vectors($image_ID, $active_vectors_ID);
+    gimp_image_set_active_vectors($i, $a);
   }
 
   method set_component_active (
     Int() $image_ID,
-    GimpChannelType $component,
-    gboolean $active
+    Int() $component,
+    Int() $active
   ) {
     my gint32 $i = $image_ID;
+    my GimpChannelType $c = $component;
+    my gboolean $a = (so $active).Int;
 
-    gimp_image_set_component_active($image_ID, $component, $active);
+    gimp_image_set_component_active($i, $c, $a);
   }
 
   method set_component_visible (
     Int() $image_ID,
-    GimpChannelType $component,
-    gboolean $visible
+    Int() $component,
+    Int() $visible
   ) {
     my gint32 $i = $image_ID;
+    my GimpChannelType $c = $component;
+    my gboolean $v = (so $visible).Int;
 
-    gimp_image_set_component_visible($image_ID, $component, $visible);
+    gimp_image_set_component_visible($i, $c, $v);
   }
 
-  method set_filename (Int() $image_ID, Str $filename) {
+  method set_filename (Int() $image_ID, Str() $filename) {
     my gint32 $i = $image_ID;
 
-    gimp_image_set_filename($image_ID, $filename);
+    gimp_image_set_filename($i, $filename);
   }
 
   method set_resolution (
     Int() $image_ID,
-    gdouble $xresolution,
-    gdouble $yresolution
+    Num() $xresolution,
+    Num() $yresolution
   ) {
     my gint32 $i = $image_ID;
+    my gdouble ($xr, $yr) = ($xresolution, $yresolution);
 
-    gimp_image_set_resolution($image_ID, $xresolution, $yresolution);
+    gimp_image_set_resolution($i, $xr, $yr);
   }
 
-  method set_tattoo_state (Int() $image_ID, gint $tattoo_state) {
+  method set_tattoo_state (Int() $image_ID, Int() $tattoo_state) {
     my gint32 $i = $image_ID;
+    my gint $t = $tattoo_state;
 
-    gimp_image_set_tattoo_state($image_ID, $tattoo_state);
+    gimp_image_set_tattoo_state($i, $t);
   }
 
-  method set_unit (Int() $image_ID, GimpUnit $unit) {
+  method set_unit (Int() $image_ID, Int() $unit) {
     my gint32 $i = $image_ID;
+    my GimpUnit $u = $unit;
 
-    gimp_image_set_unit($image_ID, $unit);
+    gimp_image_set_unit($i, $u);
   }
 
   method thaw_channels (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_thaw_channels($image_ID);
+    gimp_image_thaw_channels($i);
   }
 
   method thaw_layers (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_thaw_layers($image_ID);
+    gimp_image_thaw_layers($i);
   }
 
   method thaw_vectors (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_thaw_vectors($image_ID);
+    gimp_image_thaw_vectors($i);
   }
 
   method unset_active_channel (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_unset_active_channel($image_ID);
+    gimp_image_unset_active_channel($i);
   }
 
   method width (Int() $image_ID) {
     my gint32 $i = $image_ID;
 
-    gimp_image_width($image_ID);
+    gimp_image_width($i);
   }
 
 }
@@ -789,7 +819,7 @@ class GIMP::PDB::Image::Grid {
   { * }
 
   multi method get_spacing (Int() $image_ID) {
-    samewith($image_ID, $, $);
+    samewith($i, $, $);
   }
   multi method get_spacing (
     Int() $image_ID,
