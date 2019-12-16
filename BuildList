@@ -1,11 +1,14 @@
 Cairo
 GLib::Object::ParamSpec
 GLib::Roles::StaticClass
+GTK::Box
 GTK::Compat::Pixbuf
 GTK::Compat::Roles::Object
 GTK::Compat::Roles::TypedBuffer
 GTK::Compat::Types
 GTK::Compat::Value
+GTK::ProgressBar
+GTK::Raw::Types
 GTK::Raw::Utils
 GTK::Roles::Pointers
 GTK::Roles::Properties
@@ -22,6 +25,9 @@ GIMP::Raw::Vector
 GIMP::Unit
 GIMP::ValueArray
 GIMP::Vector
+GIMP::Raw::Widgets
+GIMP::Widget::ProgressBar
+GIMP::Widget::SelectButton
 GIMP::Checks
 GIMP::CpuAccel
 GIMP::PDB::BrusheSelect
