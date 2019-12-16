@@ -2,6 +2,8 @@ use v6;
 
 use NativeCall;
 
+use GTK::Raw::Utils;
+
 use GIMP::Raw::Types;
 
 use GIMP::PDB::Raw::Utils;
@@ -15,6 +17,26 @@ use GIMP::PDB::Roles::Assumable;
 class GIMP::PDB::Image {
   also does GLib::Roles::StaticClass;
   also does GIMP::PDB::Roles::Assumable;
+
+  method new_image (Int() $width, Int() $height, Int() $type) {
+    my gint ($w, $h) = ($width, $height);
+    my GimpImageBaseType $t = $type;
+
+    gimp_image_new($w, $h, $t);
+  }
+
+  method new_image_with_precision (
+    Int() $width,
+    Int() $height,
+    Int() $type,
+    Int() $precision
+  ) {
+    my gint ($w, $h) = ($width, $height);
+    my GimpImageBaseType $t = $type;
+    my GimpPrecision $p = $precision;
+
+    gimp_image_new_with_precision($w, $h, $t, $p);
+  }
 
   # Color
 
@@ -246,7 +268,7 @@ class GIMP::PDB::Image {
   { * }
 
   multi method get_channels (Int() $image_ID) {
-    samewith($i, $);
+    samewith($image_ID, $);
   }
   multi method get_channels (Int() $image_ID, $num_channels is rw) {
     my gint32 $i = $image_ID;
@@ -330,12 +352,12 @@ class GIMP::PDB::Image {
   { * }
 
   multi method get_layers (Int() $image_ID) {
-    samewith($i, $);
+    samewith($image_ID, $);
   }
   multi method get_layers (Int() $image_ID, $num_layers is rw) {
     my gint32 $i = $image_ID;
     my gint $n = 0;
-    my $ll = gimp_image_get_layers($i, $num_layers is rw);
+    my $ll = gimp_image_get_layers($i, $n);
 
     $num_layers = $n;
     CArrayToArray($ll, $n);
@@ -353,7 +375,13 @@ class GIMP::PDB::Image {
     gimp_image_get_parasite($i, $name);
   }
 
-  method get_parasite_list (Int() $image_ID, $num_parasites is rw) {
+  proto method get_parasite_list (Int() $image_ID)
+  { * }
+
+  multi method get_parasite_list(Int() $image_ID) {
+    samewith($image_ID, $);
+  }
+  multi method get_parasite_list (Int() $image_ID, $num_parasites is rw) {
     my gint32 $i = $image_ID;
     my gint $n = 0;
     my $pl = gimp_image_get_parasite_list($i, $n);
@@ -371,8 +399,8 @@ class GIMP::PDB::Image {
   proto method get_resolution (|)
   { * }
 
-  multi method get_resolution {
-    samewith($, $);
+  multi method get_resolution(Int() $image_ID) {
+    samewith($image_ID, $, $);
   }
   multi method get_resolution (
     Int() $image_ID,
@@ -414,7 +442,7 @@ class GIMP::PDB::Image {
   { * }
 
   multi method get_vectors (Int() $image_ID) {
-    samewith($i, $);
+    samewith($image_ID, $);
   }
   multi method get_vectors (Int() $image_ID, $num_vectors is rw) {
     my gint32 $i = $image_ID;
@@ -504,7 +532,6 @@ class GIMP::PDB::Image {
     samewith($);
   }
   multi method list ($num_images is rw) {
-    my gint32 $i = $image_ID;
     my gint $n = 0;
     my $il = gimp_image_list($n);
 
@@ -529,7 +556,7 @@ class GIMP::PDB::Image {
     Int() $merge_layer_ID,
     Int() $merge_type
   ) {
-    my gint32 ($i, $m) = ($image_ID, $merge_layer_ID)
+    my gint32 ($i, $m) = ($image_ID, $merge_layer_ID);
     my GimpMergeType $t = $merge_type;
 
     gimp_image_merge_down($i, $m, $t);
@@ -545,47 +572,28 @@ class GIMP::PDB::Image {
     gimp_image_merge_visible_layers($i, $t);
   }
 
-  method new (gint $width, gint $height, GimpImageBaseType $type) {
-    gimp_image_new($width, $height, $type);
-  }
-
-  method new_with_precision (
-    gint $width,
-    gint $height,
-    GimpImageBaseType $type,
-    GimpPrecision $precision
-  ) {
-    gimp_image_new_with_precision($width, $height, $type, $precision);
-  }
-
   method pick_color (
     Int() $image_ID,
-    gint32 $drawable_ID,
-    gdouble $x,
-    gdouble $y,
-    gboolean $sample_merged,
-    gboolean $sample_average,
-    gdouble $average_radius,
+    Int() $drawable_ID,
+    Num() $x,
+    Num() $y,
+    Int() $sample_merged,
+    Int() $sample_average,
+    Num() $average_radius,
     GimpRGB $color
   ) {
-    my gint32 $i = $image_ID;
+    my gint32 ($i, $d) = ($image_ID, $drawable_ID);
+    my gdouble ($xx, $yy, $r) = ($x, $y, $average_radius);
+    my gboolean ($m, $a) = ($sample_merged, $sample_average).map( *.so.Int );
 
-    gimp_image_pick_color(
-      $image_ID,
-      $drawable_ID,
-      $x,
-      $y,
-      $sample_merged,
-      $sample_average,
-      $average_radius,
-      $color
-    );
+    gimp_image_pick_color($i, $d, $xx, $yy, $m, $a, $r, $color);
   }
 
-  method pick_correlate_layer (Int() $image_ID, gint $x, gint $y) {
+  method pick_correlate_layer (Int() $image_ID, Int() $x, Int() $y) {
     my gint32 $i = $image_ID;
+    my gint ($xx, $yy) = ($x, $y);
 
-    gimp_image_pick_correlate_layer($i, $x, $y);
+    gimp_image_pick_correlate_layer($i, $xx, $yy);
   }
 
   method raise_item (Int() $image_ID, Int() $item_ID) {
@@ -624,10 +632,10 @@ class GIMP::PDB::Image {
     Int() $parent_ID,
     Int() $position
   ) {
-    my gint32 ($i, $c, $p) = ($image_ID, $channel_ID, $parent_ID);
+    my gint32 ($i, $ii, $p) = ($image_ID, $item_ID, $parent_ID);
     my gint $pos = $position;
 
-    gimp_image_reorder_item($i, $c, $p, $pos);
+    gimp_image_reorder_item($i, $ii, $p, $pos);
   }
 
   method set_active_channel (Int() $image_ID, Int() $active_channel_ID) {
@@ -819,7 +827,7 @@ class GIMP::PDB::Image::Grid {
   { * }
 
   multi method get_spacing (Int() $image_ID) {
-    samewith($i, $, $);
+    samewith($image_ID, $, $);
   }
   multi method get_spacing (
     Int() $image_ID,
@@ -1036,3 +1044,9 @@ class GIMP::PDB::Image::Undo {
   }
 
 }
+
+constant Image        is export := GIMP::PDB::Image;
+constant ImageConvert is export := GIMP::PDB::Image::Convert;
+constant ImageGrid    is export := GIMP::PDB::Image::Grid;
+constant ImageSelect  is export := GIMP::PDB::Image::Select;
+constant ImageUndo    is export := GIMP::PDB::Image::Undo;
