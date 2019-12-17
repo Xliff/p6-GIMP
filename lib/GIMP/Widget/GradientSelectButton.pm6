@@ -51,7 +51,17 @@ class GIMP::Widget::GradientSelectButton is GIMP::Widget::SelectButton {
     is also<GimpGradientSelectButton>
   { $!ggsb }
 
-  method new (Str() $title, Str() $gradient_name) {
+  proto method new (|)
+  { * }
+
+  multi method new (
+    GimpGradientSelectButtonAncestry $gradient-select-button
+  ) {
+    return Nil unless $gradient-select-button;
+
+    self.bless( :$gradient-select-button );
+  }
+  multi method new (Str() $title, Str() $gradient_name) {
     my $gradient-select-button =
       gimp_gradient_select_button_new($title, $gradient_name);
 
