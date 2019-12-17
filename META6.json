@@ -102,7 +102,8 @@
       "GIMP::PDB::Progress"                :  "lib/GIMP/PDB/Progress.pm6"               ,
       "GIMP::PDB::RC"                      :  "lib/GIMP/PDB/RC.pm6"                     ,
       "GIMP::Parasite"                     :  "lib/GIMP/Parasite.pm6"                   ,
-      "GIMP::RGB"                          :  "lib/GIMP/RGB.pm6"                        
+      "GIMP::RGB"                          :  "lib/GIMP/RGB.pm6"                        ,
+      "GIMP::Widget::AspectPreview"        :  "lib/GIMP/Widget/AspectPreview.pm6"       
     },
     "name": "p6-GIMP",
     "perl": "6.c",

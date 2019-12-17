@@ -108,3 +108,4 @@ GIMP::PDB::Progress
 GIMP::PDB::RC
 GIMP::Parasite
 GIMP::RGB
+GIMP::Widget::AspectPreview
