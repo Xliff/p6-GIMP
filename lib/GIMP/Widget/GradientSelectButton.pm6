@@ -10,10 +10,14 @@ use GTK::Compat::Value;
 
 use GIMP::Widget::SelectButton;
 
+use GIMP::Widget::Roles::Signals::GradientSelectButton;
+
 our subset GimpGradientSelectButtonAncestry is export of Mu
   where GimpGradientSelectButton | GimpSelectButtonAncestry;
 
 class GIMP::Widget::GradientSelectButton is GIMP::Widget::SelectButton {
+  also does GIMP::Widget::Roles::Signals::GradientSelectButton;
+  
   has GimpGradientSelectButton $!ggsb;
 
   submethod BUILD (:$gimp-progress) {

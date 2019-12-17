@@ -11,12 +11,16 @@ use GIMP::Widget::Raw::Preview;
 use GTK::Box;
 use GTK::Widget;
 
+use GTK::Roles::Signals::Generic;
+
 our subset GimpPreviewAncestry is export of Mu
   where GimpPreview | BoxAncestry;
 
 # Abstract
 
 class GIMP::Widget::Preview is GTK::Box {
+  also does GTK::Roles::Signals::Generic;
+
   has GimpPreview $!gp;
 
   submethod BUILD (:$preview) {
@@ -58,6 +62,12 @@ class GIMP::Widget::Preview is GTK::Box {
     Proxy.new:
       FETCH => -> $           { self.get_update },
       STORE => -> $, Int() \u { self.set_update(u) };
+  }
+
+  # Is originally:
+  # GimpPreview, gpointer --> void
+  method invalidated {
+    self.connect($!w, 'invalidated');
   }
 
   method draw {
