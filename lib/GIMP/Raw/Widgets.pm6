@@ -12,3 +12,5 @@ class GimpPreview            is repr<CPointer> is export does GTK::Roles::Pointe
 class GimpProgressBar        is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpScrolledPreview    is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpSelectButton       is repr<CPointer> is export does GTK::Roles::Pointers {}
+class GimpZoomModel          is repr<CPointer> is export does GTK::Roles::Pointers {}
+class GimpZoomPreview        is repr<CPointer> is export does GTK::Roles::Pointers {}

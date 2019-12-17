@@ -867,6 +867,105 @@ package GIMP::Raw::Enums {
       GIMP_THUMB_STATE_OK
   >;
 
+  # GIMPWIDGETS
+
+  constant GimpAspectType is export := guint32;
+  our enum GimpAspectTypeEnum is export <
+      GIMP_ASPECT_SQUARE
+      GIMP_ASPECT_PORTRAIT
+      GIMP_ASPECT_LANDSCAPE
+  >;
+
+  constant GimpChainPosition is export := guint32;
+  our enum GimpChainPositionEnum is export <
+      GIMP_CHAIN_TOP
+      GIMP_CHAIN_LEFT
+      GIMP_CHAIN_BOTTOM
+      GIMP_CHAIN_RIGHT
+  >;
+
+  constant GimpColorAreaType is export := guint32;
+  our enum GimpColorAreaTypeEnum is export (
+      GIMP_COLOR_AREA_FLAT =>  0,
+      'GIMP_COLOR_AREA_SMALL_CHECKS',
+      'GIMP_COLOR_AREA_LARGE_CHECKS'
+  );
+
+  constant GimpColorSelectorChannel is export := guint32;
+  our enum GimpColorSelectorChannelEnum is export <
+      GIMP_COLOR_SELECTOR_HUE
+      GIMP_COLOR_SELECTOR_SATURATION
+      GIMP_COLOR_SELECTOR_VALUE
+      GIMP_COLOR_SELECTOR_RED
+      GIMP_COLOR_SELECTOR_GREEN
+      GIMP_COLOR_SELECTOR_BLUE
+      GIMP_COLOR_SELECTOR_ALPHA
+      GIMP_COLOR_SELECTOR_LCH_LIGHTNESS
+      GIMP_COLOR_SELECTOR_LCH_CHROMA
+      GIMP_COLOR_SELECTOR_LCH_HUE
+  >;
+
+  constant GimpColorSelectorModel is export := guint32;
+  our enum GimpColorSelectorModelEnum is export <
+      GIMP_COLOR_SELECTOR_MODEL_RGB
+      GIMP_COLOR_SELECTOR_MODEL_LCH
+      GIMP_COLOR_SELECTOR_MODEL_HSV
+  >;
+
+  constant GimpControllerEventType is export := guint32;
+  our enum GimpControllerEventTypeEnum is export <
+      GIMP_CONTROLLER_EVENT_TRIGGER
+      GIMP_CONTROLLER_EVENT_VALUE
+  >;
+
+  constant GimpIntComboBoxLayout is export := guint32;
+  our enum GimpIntComboBoxLayoutEnum is export <
+      GIMP_INT_COMBO_BOX_LAYOUT_ICON_ONLY
+      GIMP_INT_COMBO_BOX_LAYOUT_ABBREVIATED
+      GIMP_INT_COMBO_BOX_LAYOUT_FULL
+  >;
+
+  constant GimpIntStoreColumns is export := guint32;
+  our enum GimpIntStoreColumnsEnum is export (
+      'GIMP_INT_STORE_VALUE',
+      'GIMP_INT_STORE_LABEL',
+      'GIMP_INT_STORE_ICON_NAME',
+      'GIMP_INT_STORE_PIXBUF',
+      'GIMP_INT_STORE_USER_DATA',
+      'GIMP_INT_STORE_ABBREV',
+      'GIMP_INT_STORE_NUM_COLUMNS',
+      GIMP_INT_STORE_STOCK_ID => 2 # GIMP_INT_STORE_ICON_NAME,
+  );
+
+  constant GimpPageSelectorTarget is export := guint32;
+  our enum GimpPageSelectorTargetEnum is export <
+      GIMP_PAGE_SELECTOR_TARGET_LAYERS
+      GIMP_PAGE_SELECTOR_TARGET_IMAGES
+  >;
+
+  constant GimpSizeEntryUpdatePolicy is export := guint32;
+  our enum GimpSizeEntryUpdatePolicyEnum is export (
+      GIMP_SIZE_ENTRY_UPDATE_NONE       => 0,
+      GIMP_SIZE_ENTRY_UPDATE_SIZE       => 1,
+      GIMP_SIZE_ENTRY_UPDATE_RESOLUTION => 2,
+  );
+
+  constant GimpWidgetsError is export := guint32;
+  our enum GimpWidgetsErrorEnum is export <
+      GIMP_WIDGETS_PARSE_ERROR
+  >;
+
+  constant GimpZoomType is export := guint32;
+  our enum GimpZoomTypeEnum is export <
+      GIMP_ZOOM_IN
+      GIMP_ZOOM_OUT
+      GIMP_ZOOM_IN_MORE
+      GIMP_ZOOM_OUT_MORE
+      GIMP_ZOOM_IN_MAX
+      GIMP_ZOOM_OUT_MAX
+      GIMP_ZOOM_TO
+  >;
+
 }
 
 sub EXPORT {

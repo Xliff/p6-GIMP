@@ -47,6 +47,9 @@ class GIMP::Widget::ScrolledPreview is GIMP::Widget::Preview {
     self.setPreview($to-parent);
   }
 
+  method GIMP::Raw::Widgets::ScrolledPreview
+  { $!gsp }
+
   method freeze {
     gimp_scrolled_preview_freeze($!gsp);
   }

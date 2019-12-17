@@ -31,6 +31,7 @@ GIMP::Raw::Widgets
 GIMP::Widget::ProgressBar
 GIMP::Widget::Raw::Preview
 GIMP::Widget::Raw::ScrolledPreview
+GIMP::Widget::Raw::ZoomPreview
 GIMP::Widget::SelectButton
 GIMP::Checks
 GIMP::CpuAccel
@@ -82,6 +83,7 @@ GIMP::Thumb
 GIMP::Thumbnail
 GIMP::Widget::Preview
 GIMP::Widget::ScrolledPreview
+GIMP::Widget::ZoomPreview
 GIMP::Color
 GIMP::ColorProfile
 GIMP::Env
