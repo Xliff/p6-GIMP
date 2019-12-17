@@ -2,22 +2,23 @@ use v6;
 
 use NativeCall;
 
+use GTK::Raw::Types;
 use GIMP::Raw::Types;
 use GIMP::Raw::Widgets;
 
 use GTK::Box;
 
-our GimpSelectButtonAncestry is export of Mu
-  where GimpProgressBar | BoxAncestry
+our subset GimpSelectButtonAncestry is export of Mu
+  where GimpProgressBar | BoxAncestry;
 
 # ABSTRACT
 
-class GIMP::Widget::ProgressBar is GTK::Box {
+class GIMP::Widget::SelectButton is GTK::Box {
   has GimpSelectButton $!gs;
 
   submethod BUILD (:$gimp-progress) {
     given $gimp-progress {
-      where GimpSelectButtonAncestry {
+      when GimpSelectButtonAncestry {
         self.setGimpSelectButton($gimp-progress);
       }
 
@@ -32,7 +33,7 @@ class GIMP::Widget::ProgressBar is GTK::Box {
   method setGimpSelectButton (GimpSelectButtonAncestry $_) {
     my $to-parent;
 
-    $!gp = do {
+    $!gs = do {
       when GimpSelectButton {
         $to-parent = cast(GtkBox, $_);
         $_;

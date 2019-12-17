@@ -32,6 +32,7 @@ GIMP::Widget::ProgressBar
 GIMP::Widget::Raw::Preview
 GIMP::Widget::Raw::ScrolledPreview
 GIMP::Widget::Raw::ZoomPreview
+GIMP::Widget::Roles::Signals::GradientSelectButton
 GIMP::Widget::SelectButton
 GIMP::Checks
 GIMP::CpuAccel
@@ -81,6 +82,7 @@ GIMP::Raw::Thumb
 GIMP::Raw::Thumbnail
 GIMP::Thumb
 GIMP::Thumbnail
+GIMP::Widget::GradientSelectButton
 GIMP::Widget::Preview
 GIMP::Widget::ScrolledPreview
 GIMP::Widget::ZoomPreview
