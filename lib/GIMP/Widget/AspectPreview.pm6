@@ -79,7 +79,7 @@ sub gimp_aspect_preview_get_type ()
 { * }
 
 sub gimp_aspect_preview_new_from_drawable_id (gint32 $drawable_ID)
-  returns GtkWidget
+  returns GimpAspectPreview
   is native(gimp)
   is export
 { * }

@@ -4,9 +4,9 @@ use GTK::Raw::Types;
 use GIMP::Raw::Types;
 use GIMP::Raw::Widgets;
 
-use GIMP::Widget::Raw::ScrolledPreview;
-
 use GIMP::Widget::Preview;
+
+use GIMP::Widget::Raw::ScrolledPreview;
 
 our subset GimpScrolledPreviewAncestry is export of Mu
   where GimpScrolledPreview | GimpPreviewAncestry;

@@ -81,7 +81,7 @@ GIMP::Raw::Thumbnail
 GIMP::Thumb
 GIMP::Thumbnail
 GIMP::Widget::Preview
-GIMP::Widget::ScrolledWindow
+GIMP::Widget::ScrolledPreview
 GIMP::Color
 GIMP::ColorProfile
 GIMP::Env
@@ -109,3 +109,4 @@ GIMP::PDB::RC
 GIMP::Parasite
 GIMP::RGB
 GIMP::Widget::AspectPreview
+GIMP::Widget::DrawablePreview

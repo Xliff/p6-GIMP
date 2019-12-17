@@ -76,7 +76,7 @@
       "GIMP::Thumb"                        :  "lib/GIMP/Thumb.pm6"                      ,
       "GIMP::Thumbnail"                    :  "lib/GIMP/Thumbnail.pm6"                  ,
       "GIMP::Widget::Preview"              :  "lib/GIMP/Widget/Preview.pm6"             ,
-      "GIMP::Widget::ScrolledWindow"       :  "lib/GIMP/Widget/ScrolledWindow.pm6"      ,
+      "GIMP::Widget::ScrolledPreview"      :  "lib/GIMP/Widget/ScrolledPreview.pm6"     ,
       "GIMP::Color"                        :  "lib/GIMP/Color.pm6"                      ,
       "GIMP::ColorProfile"                 :  "lib/GIMP/ColorProfile.pm6"               ,
       "GIMP::Env"                          :  "lib/GIMP/Env.pm6"                        ,
@@ -103,7 +103,8 @@
       "GIMP::PDB::RC"                      :  "lib/GIMP/PDB/RC.pm6"                     ,
       "GIMP::Parasite"                     :  "lib/GIMP/Parasite.pm6"                   ,
       "GIMP::RGB"                          :  "lib/GIMP/RGB.pm6"                        ,
-      "GIMP::Widget::AspectPreview"        :  "lib/GIMP/Widget/AspectPreview.pm6"       
+      "GIMP::Widget::AspectPreview"        :  "lib/GIMP/Widget/AspectPreview.pm6"       ,
+      "GIMP::Widget::DrawablePreview"      :  "lib/GIMP/Widget/DrawablePreview.pm6"     
     },
     "name": "p6-GIMP",
     "perl": "6.c",
