@@ -17,13 +17,13 @@ our subset GimpGradientSelectButtonAncestry is export of Mu
 
 class GIMP::Widget::GradientSelectButton is GIMP::Widget::SelectButton {
   also does GIMP::Widget::Roles::Signals::GradientSelectButton;
-  
+
   has GimpGradientSelectButton $!ggsb;
 
-  submethod BUILD (:$gimp-progress) {
-    given $gimp-progress {
+  submethod BUILD (:$gradient-select) {
+    given $gradient-select {
       when GimpGradientSelectButtonAncestry {
-        self.setGimpGradientSelectButton($gimp-progress);
+        self.setGimpGradientSelectButton($gradient-select);
       }
 
       when GIMP::Widget::GradientSelectButton {
@@ -58,18 +58,16 @@ class GIMP::Widget::GradientSelectButton is GIMP::Widget::SelectButton {
   proto method new (|)
   { * }
 
-  multi method new (
-    GimpGradientSelectButtonAncestry $gradient-select-button
-  ) {
-    return Nil unless $gradient-select-button;
+  multi method new (GimpGradientSelectButtonAncestry $gradient-select) {
+    return Nil unless $gradient-select;
 
-    self.bless( :$gradient-select-button );
+    self.bless( :$gradient-select );
   }
   multi method new (Str() $title, Str() $gradient_name) {
-    my $gradient-select-button =
+    my $gradient-select =
       gimp_gradient_select_button_new($title, $gradient_name);
 
-    $gradient-select-button ?? self.bless( :$gradient-select-button ) !! Nil;
+    $gradient-select ?? self.bless( :$gradient-select ) !! Nil;
   }
 
   # Type: gchar

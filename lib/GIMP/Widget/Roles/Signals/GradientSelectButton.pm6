@@ -5,7 +5,7 @@ use NativeCall;
 use GIMP::Raw::Types;
 use GIMP::Raw::Widgets;
 
-role GIMP::Widget::Roles::Signal::GradientSelectButton {
+role GIMP::Widget::Roles::Signals::GradientSelectButton {
   has %!signals-ggsb;
 
   # GimpGradientSelectButton, gchar, gint, gpointer, gboolean, gpointer
