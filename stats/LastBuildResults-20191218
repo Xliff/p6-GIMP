@@ -1,0 +1,2176 @@
+Dependency Generation
+=====================
+real 0.87
+user 1.36
+sys 0.04
+ === Cairo ===
+Stage start      :   0.000
+Stage parse      :   1.097
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GLib::Object::ParamSpec ===
+Stage start      :   0.000
+Stage parse      :   1.445
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GLib::Roles::StaticClass ===
+Stage start      :   0.000
+Stage parse      :   1.196
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Box ===
+Stage start      :   0.000
+Stage parse      :   2.960
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Compat::Pixbuf ===
+Stage start      :   0.000
+Stage parse      :   1.499
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Compat::Roles::Object ===
+Stage start      :   0.000
+Stage parse      :   1.399
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Compat::Roles::TypedBuffer ===
+Stage start      :   0.000
+Stage parse      :   1.222
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Compat::Types ===
+Stage start      :   0.000
+Stage parse      :   1.174
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.006
+Stage mast       :   0.053
+Stage mbc        :   0.004
+Stage moar       :   0.000
+ === GTK::Compat::Value ===
+Stage start      :   0.000
+Stage parse      :   1.380
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Dialog ===
+Stage start      :   0.000
+Stage parse      :   3.291
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.004
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::ProgressBar ===
+Stage start      :   0.000
+Stage parse      :   2.899
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Raw::Types ===
+Stage start      :   0.000
+Stage parse      :   1.314
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.003
+Stage mast       :   0.008
+Stage mbc        :   0.003
+Stage moar       :   0.000
+ === GTK::Raw::Utils ===
+Stage start      :   0.000
+Stage parse      :   1.178
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Roles::Pointers ===
+Stage start      :   0.000
+Stage parse      :   1.097
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Roles::Properties ===
+Stage start      :   0.000
+Stage parse      :   1.429
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Roles::Signals::Generic ===
+Stage start      :   0.000
+Stage parse      :   1.424
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GTK::Widget ===
+Stage start      :   0.000
+Stage parse      :   2.748
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === Method::Also ===
+Stage start      :   0.000
+Stage parse      :   0.965
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Roles::Assumable ===
+Stage start      :   0.000
+Stage parse      :   0.966
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Compat::GEGL_Enums ===
+Stage start      :   0.000
+Stage parse      :   1.204
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::Enums ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Enums.pm6
+    Stage start      :   0.000
+    Use of Nil in string context
+      in any type_declarator at /home/cbwood/Projects/rakudobrew/versions/moar-blead/install/share/perl6/lib/Perl6/Grammar.moarvm line 1
+    Stage parse      :   5.935
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.034
+    Stage mast       :   0.499
+    Stage mbc        :   0.010
+Stage parse      :   7.577
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.004
+Stage mast       :   0.008
+Stage mbc        :   0.004
+Stage moar       :   0.000
+ === GIMP::Raw::Libs ===
+Stage start      :   0.000
+Stage parse      :   1.016
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIMP::Raw::Definitions ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Definitions.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.225
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.002
+    Stage mast       :   0.022
+    Stage mbc        :   0.000
+Stage parse      :   2.272
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIMP::Raw::Structs ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Structs.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.971
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.109
+    Stage mast       :   0.174
+    Stage mbc        :   0.007
+Stage parse      :   3.376
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIMP::Raw::Types ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Types.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.179
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.011
+    Stage mast       :   0.071
+    Stage mbc        :   0.007
+Stage parse      :   2.902
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.009
+Stage mast       :   0.014
+Stage mbc        :   0.006
+Stage moar       :   0.000
+ === GIMP::Raw::Unit ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Unit.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.318
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.024
+    Stage mast       :   0.106
+    Stage mbc        :   0.007
+Stage parse      :   5.187
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::ValueArray ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/ValueArray.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.555
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.060
+    Stage mbc        :   0.006
+Stage parse      :   4.272
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::Vector ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Vector.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.330
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.035
+    Stage mast       :   0.143
+    Stage mbc        :   0.006
+Stage parse      :   6.101
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Unit ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Unit.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.381
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.025
+    Stage mast       :   0.093
+    Stage mbc        :   0.009
+Stage parse      :   3.280
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::ValueArray ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/ValueArray.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.276
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.087
+    Stage mbc        :   0.022
+Stage parse      :   3.178
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Vector ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Vector.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.234
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.033
+    Stage mast       :   0.090
+    Stage mbc        :   0.009
+Stage parse      :   3.012
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::Widgets ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Widgets.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.078
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.002
+    Stage mast       :   0.030
+    Stage mbc        :   0.001
+Stage parse      :   2.148
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.003
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIMP::Widget::ProgressBar ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/ProgressBar.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.112
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.179
+    Stage mbc        :   0.009
+Stage parse      :   4.706
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Raw::Dialog ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Raw/Dialog.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.905
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.114
+    Stage mbc        :   0.008
+Stage parse      :   3.832
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Raw::Preview ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Raw/Preview.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.159
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.021
+    Stage mast       :   0.090
+    Stage mbc        :   0.009
+Stage parse      :   5.056
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Raw::ScrolledPreview ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Raw/ScrolledPreview.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.744
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.053
+    Stage mbc        :   0.006
+Stage parse      :   3.695
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Raw::ZoomPreview ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Raw/ZoomPreview.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.995
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.070
+    Stage mbc        :   0.006
+Stage parse      :   3.821
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Roles::Signals::BrushSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Roles/Signals/BrushSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.529
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.061
+    Stage mbc        :   0.006
+Stage parse      :   3.291
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Roles::Signals::FontSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Roles/Signals/FontSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.435
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.059
+    Stage mbc        :   0.008
+Stage parse      :   3.201
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Roles::Signals::GradientSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Roles/Signals/GradientSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.447
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.057
+    Stage mbc        :   0.006
+Stage parse      :   3.198
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Roles::Signals::PaletteSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Roles/Signals/PaletteSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.458
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.056
+    Stage mbc        :   0.006
+Stage parse      :   3.213
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Roles::Signals::PatternSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Roles/Signals/PatternSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.410
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.057
+    Stage mbc        :   0.009
+Stage parse      :   3.159
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::SelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/SelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.241
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.024
+    Stage mast       :   0.183
+    Stage mbc        :   0.013
+Stage parse      :   4.955
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Checks ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Checks.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.332
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.059
+    Stage mbc        :   0.006
+Stage parse      :   3.112
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::CpuAccel ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/CpuAccel.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.416
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.055
+    Stage mbc        :   0.006
+Stage parse      :   3.157
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::BrusheSelect ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/BrusheSelect.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.505
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.063
+    Stage mbc        :   0.006
+Stage parse      :   3.286
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Dynamics ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Dynamics.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.485
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.060
+    Stage mbc        :   0.006
+Stage parse      :   3.313
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Float ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Float.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.760
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.021
+    Stage mast       :   0.062
+    Stage mbc        :   0.006
+Stage parse      :   3.557
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::FontsSelect ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/FontsSelect.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.936
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.070
+    Stage mbc        :   0.007
+Stage parse      :   3.872
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.003
+Stage moar       :   0.000
+ === GIMP::PDB::GradientSelect ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/GradientSelect.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.623
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.061
+    Stage mbc        :   0.006
+Stage parse      :   3.466
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Message ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Message.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.699
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.083
+    Stage mbc        :   0.008
+Stage parse      :   3.661
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::PaletteSelect ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/PaletteSelect.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.599
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.060
+    Stage mbc        :   0.006
+Stage parse      :   3.432
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Pattern ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Pattern.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.600
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.068
+    Stage mbc        :   0.006
+Stage parse      :   3.574
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::PatternSelect ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/PatternSelect.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.574
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.014
+    Stage mast       :   0.065
+    Stage mbc        :   0.006
+Stage parse      :   3.398
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Brush ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Brush.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.268
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.081
+    Stage mbc        :   0.007
+Stage parse      :   5.208
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Buffer ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Buffer.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.050
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.064
+    Stage mbc        :   0.006
+Stage parse      :   4.094
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Channel ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Channel.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.357
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.069
+    Stage mbc        :   0.006
+Stage parse      :   4.285
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Context ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Context.pm6
+    Stage start      :   0.000
+    Stage parse      :  13.747
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.051
+    Stage mast       :   0.240
+    Stage mbc        :   0.011
+Stage parse      :  15.888
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.004
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Display ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Display.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.925
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.063
+    Stage mbc        :   0.006
+Stage parse      :   3.805
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Drawable ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Drawable.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.785
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.032
+    Stage mast       :   0.121
+    Stage mbc        :   0.008
+Stage parse      :   5.717
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Edit ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Edit.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.384
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.083
+    Stage mbc        :   0.006
+Stage parse      :   4.291
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::File ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/File.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.763
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.080
+    Stage mbc        :   0.007
+Stage parse      :   4.644
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Gradient ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Gradient.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.784
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.034
+    Stage mast       :   0.131
+    Stage mbc        :   0.008
+Stage parse      :   6.782
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Image ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Image.pm6
+    Stage start      :   0.000
+    Stage parse      :  14.754
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.082
+    Stage mast       :   0.316
+    Stage mbc        :   0.013
+Stage parse      :  16.999
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Item ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Item.pm6
+    Stage start      :   0.000
+    Stage parse      :   6.045
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.039
+    Stage mast       :   0.139
+    Stage mbc        :   0.009
+Stage parse      :   8.034
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Layer ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Layer.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.576
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.039
+    Stage mast       :   0.142
+    Stage mbc        :   0.008
+Stage parse      :   7.528
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Misc ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Misc.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.422
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.067
+    Stage mbc        :   0.007
+Stage parse      :   4.244
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Paint ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Paint.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.235
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.096
+    Stage mbc        :   0.007
+Stage parse      :   5.141
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Palette ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Palette.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.055
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.117
+    Stage mbc        :   0.007
+Stage parse      :   5.022
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Plugin ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Plugin.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.346
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.058
+    Stage mast       :   0.071
+    Stage mbc        :   0.006
+Stage parse      :   4.273
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Procedural ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Procedural.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.221
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.070
+    Stage mbc        :   0.007
+Stage parse      :   4.082
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Progress ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Progress.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.387
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.021
+    Stage mast       :   0.068
+    Stage mbc        :   0.007
+Stage parse      :   4.223
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::RC ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/RC.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.305
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.074
+    Stage mbc        :   0.007
+Stage parse      :   4.184
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Selection ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Selection.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.107
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.086
+    Stage mbc        :   0.007
+Stage parse      :   5.059
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Text ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Text.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.781
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.031
+    Stage mast       :   0.108
+    Stage mbc        :   0.008
+Stage parse      :   6.795
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Raw::Utils ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Raw/Utils.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.305
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.017
+    Stage mast       :   0.060
+    Stage mbc        :   0.007
+Stage parse      :   3.226
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Selection ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Selection.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.411
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.107
+    Stage mbc        :   0.010
+Stage parse      :   3.413
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Text ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Text.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.472
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.046
+    Stage mast       :   0.103
+    Stage mbc        :   0.011
+Stage parse      :   3.523
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::TextTool ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/TextTool.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.663
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.076
+    Stage mbc        :   0.006
+Stage parse      :   3.573
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PixPipeParams ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PixPipeParams.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.829
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.070
+    Stage mbc        :   0.010
+Stage parse      :   3.782
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::Color ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Color.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.103
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.025
+    Stage mast       :   0.100
+    Stage mbc        :   0.007
+Stage parse      :   5.135
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::ColorProfile ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/ColorProfile.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.625
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.110
+    Stage mbc        :   0.008
+Stage parse      :   6.628
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::Env ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Env.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.927
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.015
+    Stage mast       :   0.086
+    Stage mbc        :   0.007
+Stage parse      :   4.904
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::Main ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Main.pm6
+    Stage start      :   0.000
+    Stage parse      :   4.962
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.116
+    Stage mbc        :   0.007
+Stage parse      :   6.952
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::Matrix ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Matrix.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.153
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.027
+    Stage mast       :   0.112
+    Stage mbc        :   0.005
+Stage parse      :   5.071
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::Parasite ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Parasite.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.072
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.104
+    Stage mbc        :   0.007
+Stage parse      :   5.015
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::RGB ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/RGB.pm6
+    Stage start      :   0.000
+    Stage parse      :   5.303
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.041
+    Stage mast       :   0.131
+    Stage mbc        :   0.008
+Stage parse      :   7.216
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.002
+Stage mbc        :   0.001
+Stage moar       :   0.000
+ === GIMP::Raw::Thumb ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Thumb.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.775
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.077
+    Stage mbc        :   0.007
+Stage parse      :   4.687
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Raw::Thumbnail ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Raw/Thumbnail.pm6
+    Stage start      :   0.000
+    Stage parse      :   3.186
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.090
+    Stage mbc        :   0.007
+Stage parse      :   5.092
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Thumb ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Thumb.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.325
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.024
+    Stage mast       :   0.084
+    Stage mbc        :   0.011
+Stage parse      :   3.161
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Thumbnail ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Thumbnail.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.573
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.032
+    Stage mast       :   0.188
+    Stage mbc        :   0.010
+Stage parse      :   3.666
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::BrushSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/BrushSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.581
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.025
+    Stage mast       :   0.229
+    Stage mbc        :   0.007
+Adding alias in GIMP::Widget::BrushSelectButton for GimpBrushSelectButton...
+Stage parse      :   5.401
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::Dialog ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Dialog.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.236
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.036
+    Stage mast       :   0.236
+    Stage mbc        :   0.012
+Adding alias in GIMP::Dialog for GimpDialog...
+Stage parse      :   5.311
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in GIMP::Dialog for help_func...
+Adding alias in GIMP::Dialog for help_id...
+Adding alias in GIMP::Dialog for add-buttons...
+Adding alias in GIMP::Dialog for add-button...
+Adding alias in GIMP::Dialog for get-type...
+ === GIMP::Widget::FontSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/FontSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.538
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.025
+    Stage mast       :   0.214
+    Stage mbc        :   0.010
+Adding alias in GIMP::Widget::FontSelectButton for GimpFontSelectButton...
+Stage parse      :   5.290
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in GIMP::Widget::FontSelectButton for font_name...
+Adding alias in GIMP::Widget::FontSelectButton for font_set...
+Adding alias in GIMP::Widget::FontSelectButton for get-font...
+Adding alias in GIMP::Widget::FontSelectButton for get-type...
+Adding alias in GIMP::Widget::FontSelectButton for set-font...
+ === GIMP::Widget::GradientSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/GradientSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.647
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.207
+    Stage mbc        :   0.007
+Adding alias in GIMP::Widget::GradientSelectButton for GimpGradientSelectButton...
+Stage parse      :   5.442
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in GIMP::Widget::GradientSelectButton for gradient-name...
+Adding alias in GIMP::Widget::GradientSelectButton for get-gradient...
+Adding alias in GIMP::Widget::GradientSelectButton for get-type...
+Adding alias in GIMP::Widget::GradientSelectButton for set-gradient...
+ === GIMP::Widget::PaletteSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/PaletteSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.520
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.203
+    Stage mbc        :   0.007
+Adding alias in GIMP::Widget::PaletteSelectButton for GimpPaletteSelectButton...
+Stage parse      :   5.319
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in GIMP::Widget::PaletteSelectButton for palette-name...
+Adding alias in GIMP::Widget::PaletteSelectButton for palette_set...
+Adding alias in GIMP::Widget::PaletteSelectButton for get-palette...
+Adding alias in GIMP::Widget::PaletteSelectButton for get-type...
+Adding alias in GIMP::Widget::PaletteSelectButton for set-palette...
+ === GIMP::Widget::PatternSelectButton ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/PatternSelectButton.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.527
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.023
+    Stage mast       :   0.204
+    Stage mbc        :   0.007
+Adding alias in GIMP::Widget::PatternSelectButton for GimpPatternSelectButton...
+Stage parse      :   5.293
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in GIMP::Widget::PatternSelectButton for pattern-name...
+Adding alias in GIMP::Widget::PatternSelectButton for get-palette...
+Adding alias in GIMP::Widget::PatternSelectButton for get-type...
+Adding alias in GIMP::Widget::PatternSelectButton for set-palette...
+ === GIMP::Widget::Preview ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/Preview.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.132
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.030
+    Stage mast       :   0.254
+    Stage mbc        :   0.012
+Adding alias in GIMP::Widget::Preview for GimpPreview...
+Stage parse      :   5.034
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in GIMP::Widget::Preview for draw-buffer...
+Adding alias in GIMP::Widget::Preview for get-area...
+Adding alias in GIMP::Widget::Preview for get-controls...
+Adding alias in GIMP::Widget::Preview for get-position...
+Adding alias in GIMP::Widget::Preview for get-size...
+Adding alias in GIMP::Widget::Preview for get-type...
+Adding alias in GIMP::Widget::Preview for get-update...
+Adding alias in GIMP::Widget::Preview for set-bounds...
+Adding alias in GIMP::Widget::Preview for set-default-cursor...
+Adding alias in GIMP::Widget::Preview for set-update...
+ === GIMP::Widget::ScrolledPreview ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/ScrolledPreview.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.056
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.193
+    Stage mbc        :   0.012
+Stage parse      :   4.962
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::ZoomPreview ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/ZoomPreview.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.191
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.205
+    Stage mbc        :   0.009
+Stage parse      :   5.008
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Color ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Color.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.326
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.021
+    Stage mast       :   0.081
+    Stage mbc        :   0.010
+Stage parse      :   3.154
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::ColorProfile ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/ColorProfile.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.437
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.033
+    Stage mast       :   0.118
+    Stage mbc        :   0.011
+Stage parse      :   3.420
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Env ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Env.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.347
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.024
+    Stage mast       :   0.083
+    Stage mbc        :   0.010
+Stage parse      :   3.196
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Main ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Main.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.462
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.036
+    Stage mast       :   0.136
+    Stage mbc        :   0.011
+Stage parse      :   3.450
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.001
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Matrix ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Matrix.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.372
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.025
+    Stage mast       :   0.088
+    Stage mbc        :   0.006
+Stage parse      :   3.258
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Brush ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Brush.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.292
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.024
+    Stage mast       :   0.071
+    Stage mbc        :   0.009
+Stage parse      :   3.133
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Buffer ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Buffer.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.300
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.012
+    Stage mast       :   0.078
+    Stage mbc        :   0.007
+Stage parse      :   3.183
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Channel ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Channel.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.263
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.072
+    Stage mbc        :   0.008
+Stage parse      :   3.072
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Context ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Context.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.551
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.066
+    Stage mast       :   0.194
+    Stage mbc        :   0.012
+Stage parse      :   3.639
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Display ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Display.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.257
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.052
+    Stage mbc        :   0.004
+Stage parse      :   3.084
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Drawable ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Drawable.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.415
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.050
+    Stage mast       :   0.112
+    Stage mbc        :   0.008
+Stage parse      :   3.286
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.002
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Edit ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Edit.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.302
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.022
+    Stage mast       :   0.069
+    Stage mbc        :   0.008
+Stage parse      :   3.138
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::File ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/File.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.314
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.026
+    Stage mast       :   0.098
+    Stage mbc        :   0.008
+Stage parse      :   3.143
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Gradient ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Gradient.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.384
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.042
+    Stage mast       :   0.120
+    Stage mbc        :   0.010
+Stage parse      :   3.315
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Image ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Image.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.185
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.125
+    Stage mast       :   0.329
+    Stage mbc        :   0.015
+Stage parse      :   4.612
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Item ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Item.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.459
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.046
+    Stage mast       :   0.132
+    Stage mbc        :   0.010
+Stage parse      :   3.446
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Layer ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Layer.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.456
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.038
+    Stage mast       :   0.115
+    Stage mbc        :   0.011
+Stage parse      :   3.343
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Misc ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Misc.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.298
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.073
+    Stage mbc        :   0.009
+Stage parse      :   3.197
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Paint ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Paint.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.493
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.039
+    Stage mast       :   0.140
+    Stage mbc        :   0.020
+Stage parse      :   3.503
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Palette ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Palette.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.327
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.084
+    Stage mbc        :   0.005
+Stage parse      :   3.214
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Plugin ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Plugin.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.344
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.013
+    Stage mast       :   0.084
+    Stage mbc        :   0.007
+Stage parse      :   3.315
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.004
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Procedural ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Procedural.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.354
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.103
+    Stage mbc        :   0.010
+Stage parse      :   3.288
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::Progress ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/Progress.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.295
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.019
+    Stage mast       :   0.077
+    Stage mbc        :   0.009
+Stage parse      :   3.085
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::PDB::RC ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/PDB/RC.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.261
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.016
+    Stage mast       :   0.060
+    Stage mbc        :   0.008
+Stage parse      :   3.070
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.003
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Parasite ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Parasite.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.418
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.020
+    Stage mast       :   0.117
+    Stage mbc        :   0.008
+Stage parse      :   3.398
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::RGB ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/RGB.pm6
+    Stage start      :   0.000
+    Stage parse      :   1.526
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.044
+    Stage mast       :   0.154
+    Stage mbc        :   0.013
+Stage parse      :   3.622
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+ === GIMP::Widget::AspectPreview ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/AspectPreview.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.441
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.024
+    Stage mast       :   0.214
+    Stage mbc        :   0.007
+Adding alias in GIMP::Widget::AspectPreview for GimpAspectPreview...
+Stage parse      :   5.433
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in GIMP::Widget::AspectPreview for new-from-drawable-id...
+Adding alias in GIMP::Widget::AspectPreview for get-type...
+ === GIMP::Widget::DrawablePreview ===
+Stage start      :   0.000
+
+    precomp lib/GIMP/Widget/DrawablePreview.pm6
+    Stage start      :   0.000
+    Stage parse      :   2.970
+    Stage syntaxcheck:   0.000
+    Stage ast        :   0.000
+    Stage optimize   :   0.018
+    Stage mast       :   0.309
+    Stage mbc        :   0.007
+Adding alias in GIMP::Widget::DrawablePreview for GimpDrawablePreview...
+Stage parse      :   6.297
+Stage syntaxcheck:   0.000
+Stage ast        :   0.000
+Stage optimize   :   0.000
+Stage mast       :   0.001
+Stage mbc        :   0.000
+Stage moar       :   0.000
+Adding alias in GIMP::Widget::DrawablePreview for new-from-drawable-id...
+Adding alias in GIMP::Widget::DrawablePreview for draw-region...
+Adding alias in GIMP::Widget::DrawablePreview for get-drawable-id...
+Adding alias in GIMP::Widget::DrawablePreview for drawable_id...
+Adding alias in GIMP::Widget::DrawablePreview for drawable-id...
+Adding alias in GIMP::Widget::DrawablePreview for get-type...
+
+real 513.63
+user 648.20
+sys 27.69
