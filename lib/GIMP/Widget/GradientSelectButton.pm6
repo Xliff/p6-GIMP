@@ -34,7 +34,7 @@ class GIMP::Widget::GradientSelectButton is GIMP::Widget::SelectButton {
     }
   }
 
-  method setGimpSelectButton (GimpGradientSelectButtonAncestry $_) {
+  method setGimpGradientSelectButton (GimpGradientSelectButtonAncestry $_) {
     my $to-parent;
 
     $!ggsb = do {

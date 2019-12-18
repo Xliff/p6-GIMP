@@ -33,7 +33,7 @@ class GIMP::Widget::FontSelectButton is GIMP::Widget::SelectButton {
     }
   }
 
-  method setGimpSelectButton (GimpFontSelectButtonAncestry $_) {
+  method setGimpFontSelectButton (GimpFontSelectButtonAncestry $_) {
     my $to-parent;
 
     $!gfsb = do {

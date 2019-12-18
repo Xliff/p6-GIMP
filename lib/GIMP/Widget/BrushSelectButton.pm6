@@ -34,7 +34,7 @@ class GIMP::Widget::BrushSelectButton is GIMP::Widget::SelectButton {
     }
   }
 
-  method setGimpSelectButton (GimpBrushSelectButtonAncestry $_) {
+  method setGimpBrushSelectButton (GimpBrushSelectButtonAncestry $_) {
     my $to-parent;
 
     $!gbsb = do {
