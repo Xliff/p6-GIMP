@@ -18,6 +18,7 @@ class GimpGradientSelectButton  is repr<CPointer> is export does GTK::Roles::Poi
 class GimpPaletteSelectButton   is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpPatternSelectButton   is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpPreview               is repr<CPointer> is export does GTK::Roles::Pointers {}
+class GimpProcBrowserDialog     is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpProgressBar           is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpScrolledPreview       is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpSelectButton          is repr<CPointer> is export does GTK::Roles::Pointers {}

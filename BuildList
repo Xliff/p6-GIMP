@@ -96,6 +96,7 @@ GIMP::Widget::GradientSelectButton
 GIMP::Widget::PaletteSelectButton
 GIMP::Widget::PatternSelectButton
 GIMP::Widget::Preview
+GIMP::Widget::ProcBrowserDialog
 GIMP::Widget::ScrolledPreview
 GIMP::Widget::ZoomPreview
 GIMP::Color

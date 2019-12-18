@@ -13,7 +13,7 @@ use GTK::Dialog;
 our subset GimpDialogAncestry is export of Mu
   where GimpDialog | DialogAncestry;
 
-class GIMP::Dialog is GTK::Dialog {
+class GIMP::Widget::Dialog is GTK::Dialog {
   has GimpDialog $!gd;
 
   method bless(*%attrinit) {
@@ -24,9 +24,9 @@ class GIMP::Dialog is GTK::Dialog {
 
   submethod BUILD(:$gimp-dialog) {
     given $gimp-dialog {
-      when GimpDialogAncestry { self.setGimpDialog($gimp-dialog) }
-      when GIMP::Dialog       { }
-      default                 { }
+      when GimpDialogAncestry   { self.setGimpDialog($gimp-dialog) }
+      when GIMP::Widget::Dialog { }
+      default                   { }
     }
   }
 
@@ -132,7 +132,10 @@ class GIMP::Dialog is GTK::Dialog {
     self.add_button( .key, .value ) for @buttons;
   }
 
-  method add_button (Str() $button_text, Int() $response_id)
+  proto method add_button (|)
+  { * }
+
+  multi method add_button (Str() $button_text, Int() $response_id)
     is also<add-button>
   {
     my gint $r = $response_id;

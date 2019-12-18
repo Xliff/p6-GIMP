@@ -89,6 +89,7 @@
       "GIMP::Widget::PaletteSelectButton"                  :  "lib/GIMP/Widget/PaletteSelectButton.pm6"                ,
       "GIMP::Widget::PatternSelectButton"                  :  "lib/GIMP/Widget/PatternSelectButton.pm6"                ,
       "GIMP::Widget::Preview"                              :  "lib/GIMP/Widget/Preview.pm6"                            ,
+      "GIMP::Widget::ProcBrowserDialog"                    :  "lib/GIMP/Widget/ProcBrowserDialog.pm6"                  ,
       "GIMP::Widget::ScrolledPreview"                      :  "lib/GIMP/Widget/ScrolledPreview.pm6"                    ,
       "GIMP::Widget::ZoomPreview"                          :  "lib/GIMP/Widget/ZoomPreview.pm6"                        ,
       "GIMP::Color"                                        :  "lib/GIMP/Color.pm6"                                     ,
