@@ -81,8 +81,8 @@ class GIMP::Widget::GradientSelectButton is GIMP::Widget::SelectButton {
         $gv.string;
       },
       STORE => -> $, Str() $val is copy {
-        $gv.string = $val;
-        self.prop_set('title', $gv);
+        warn "{ self.^name }.title can only be set at creation time."
+          if $DEBUG;
       }
     );
   }

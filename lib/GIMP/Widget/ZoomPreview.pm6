@@ -97,8 +97,9 @@ class GIMP::Widget::ZoomPreview is GIMP::Widget::ScrolledPreview {
   ) {
     my gint ($w, $h, $b) = 0 xx 3;
     my $rv = gimp_zoom_preview_get_source($!gzp, $w, $h, $b);
+    ($width, $height, $bpp) = ($w, $h, $b);
 
-    $all.not ?? $rv !! ($rv, $width = $w, $height = $h, $bpp = $b);
+    $all.not ?? $rv !! ($rv, $width, $height, $bpp);
   }
 
   method get_type {

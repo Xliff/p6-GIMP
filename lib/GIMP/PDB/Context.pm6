@@ -26,7 +26,8 @@ class GIMP::PDB::Context {
     my $b = GimpRGB.new;
     my $rv = so gimp_context_get_background($b);
 
-    $all.not ?? $rv !! ($rv, $rv ?? ($background = $b) !! Nil);
+    $background = $rv ?? $b !! Nil;
+    $all.not ?? $rv !! ($rv, $background);
   }
 
   method get_brush {
@@ -105,7 +106,8 @@ class GIMP::PDB::Context {
     my $f = GimpRGB.new;
     my $rv = gimp_context_get_foreground($f);
 
-    $all.not ?? $rv !! ($rv, $rv ?? ($foreground = $f) !! Nil)
+    $foreground = $rv ?? $f !! Nil;
+    $all.not ?? $rv !! ($rv, $foreground);
   }
 
   method get_gradient {
@@ -186,7 +188,9 @@ class GIMP::PDB::Context {
     $da[0] = CArray[gdouble];
 
     my $rv = gimp_context_get_line_dash_pattern($n, $da);
-    $all.not ?? $rv !! ($rv, $rv ?? CArrayToArray($da[0], $n) !! Nil);
+    $dashes = $rv ?? CArrayToArray($da[0], $n) !! Nil;
+    $num_dashes = $dashes.elems;
+    $all.not ?? $rv !! ($rv, $dashes);
   }
 
   method get_line_join_style {
@@ -277,7 +281,9 @@ class GIMP::PDB::Context {
     $ma[0] = CArray[Str];
 
     my $rv = gimp_context_list_paint_methods($n, $ma);
-    $all.not ?? $rv !! ($rv ?? CStringArrayToArray($ma, $n) !! Nil)
+    $paint_methods = $rv ?? CStringArrayToArray($ma, $n) !! Nil;
+    $num_paint_methods = $paint_methods.elems;
+    $all.not ?? $rv !! ($rv, $paint_methods);
   }
 
   method pop {
@@ -493,7 +499,7 @@ class GIMP::PDB::Context {
     gimp_context_set_line_cap_style($c);
   }
 
-  method set_line_dash_offset (gdouble $dash_offset) {
+  method set_line_dash_offset (Num() $dash_offset) {
     my gdouble $d = $dash_offset;
 
     so gimp_context_set_line_dash_offset($d);

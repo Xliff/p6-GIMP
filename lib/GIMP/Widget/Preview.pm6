@@ -67,7 +67,7 @@ class GIMP::Widget::Preview is GTK::Box {
   # Is originally:
   # GimpPreview, gpointer --> void
   method invalidated {
-    self.connect($!w, 'invalidated');
+    self.connect($!gp, 'invalidated');
   }
 
   method draw {

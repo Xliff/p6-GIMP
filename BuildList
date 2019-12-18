@@ -33,6 +33,7 @@ GIMP::Widget::ProgressBar
 GIMP::Widget::Raw::Preview
 GIMP::Widget::Raw::ScrolledPreview
 GIMP::Widget::Raw::ZoomPreview
+GIMP::Widget::Roles::Signals::BrushSelectButton
 GIMP::Widget::Roles::Signals::FontSelectButton
 GIMP::Widget::Roles::Signals::GradientSelectButton
 GIMP::Widget::SelectButton
@@ -84,6 +85,7 @@ GIMP::Raw::Thumb
 GIMP::Raw::Thumbnail
 GIMP::Thumb
 GIMP::Thumbnail
+GIMP::Widget::BrushSelectButton
 GIMP::Widget::FontSelectButton
 GIMP::Widget::GradientSelectButton
 GIMP::Widget::Preview
