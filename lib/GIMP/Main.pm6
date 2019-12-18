@@ -126,7 +126,7 @@ class GIMP::Main {
     Str() $image_types,
     Int() $type,
     @params,
-    @returns
+    @returns = ()
   ) {
     die '@params must only contain GimpParamDef elements!'
       unless @params.all ~~ GimpParamDef;
@@ -145,10 +145,10 @@ class GIMP::Main {
       $menu_label,
       $image_types,
       $type,
-      $p.size,
-      $r.size,
-      $p.p,
-      $r.p
+      $p ?? $p.size !! 0,
+      $r ?? $r.size !! 0,
+      $p ?? $p.p    !! Pointer,
+      $r ?? $r.p    !! Pointer
     );
   }
 
@@ -344,9 +344,24 @@ class GIMP::Main {
 
 }
 
-sub gimp_MAIN (*@args) is export  {
+sub gimp_MAIN (@args) is export {
+
+  # Allows for lazy declaration and a lil-bit-o-magic!
+  unless $PLUG_IN_INFO {
+    my %info;
+    for <init quit query run> {
+      %info{$_} = ::("\&{$_}") if ::("\&{$_}");
+    }
+    $PLUG_IN_INFO = GimpPluginInfo.new( |%info );
+
+    die "Must have a query and a run sub defined!"
+      unless $PLUG_IN_INFO<query run>
+  }
+
+  # Make the check ANYWAY.
   die '$PLUG_IN_INFO is not a GimpPluginInfo structure'
     unless $PLUG_IN_INFO ~~ GimpPluginInfo;
 
-  GIMP::Main.main( $PLUG_IN_INFO, @args )
+  GIMP::Main.main( $PLUG_IN_INFO, @args );
+
 }

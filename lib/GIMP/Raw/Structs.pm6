@@ -115,57 +115,107 @@ class GimpPixelRgn is repr('CStruct') is export {
 	has gint          $.process_count is rw;
 }
 
-class GimpParamData is repr('CUnion') is export { ... }
+class GimpParamRegion is repr('CStruct') is export {
+	has gint32        $.x      is rw;
+	has gint32        $.y      is rw;
+	has gint32        $.width  is rw;
+	has gint32        $.height is rw;
+}
+
+class GimpParasite is repr('CStruct') is export {
+	has Str                $!name;
+	has guint32            $.flags is rw;
+	has guint32            $.size  is rw;
+	has Pointer            $!data;
+}
+
+class GimpParamData is repr('CStruct') is export {
+	has gint32             $.d_int32; # Typedef<gint32>->«int» d_int32
+	has gint16             $.d_int16; # Typedef<gint16>->«short int» d_int16
+	has guint8             $.d_int8; # Typedef<guint8>->«unsigned char» d_int8
+	has gdouble            $.d_float; # Typedef<gdouble>->«double» d_float
+	has Str                $!d_string; # Typedef<gchar>->«char»* d_string
+	has CArray[gint32]     $!d_int32array; # Typedef<gint32>->«int»* d_int32array
+	has CArray[gint16]     $!d_int16array; # Typedef<gint16>->«short int»* d_int16array
+	has CArray[guint8]     $!d_int8array; # Typedef<guint8>->«unsigned char»* d_int8array
+	has CArray[gdouble]    $!d_floatarray; # Typedef<gdouble>->«double»* d_floatarray
+	has CArray[Str]        $!d_stringarray; # Typedef<gchar>->«char»** d_stringarray
+	has GimpRGB            $!d_colorarray; # Typedef<GimpRGB>->«_GimpRGB»* d_colorarray
+	has GimpRGB            $!d_color; # Typedef<GimpRGB>->«_GimpRGB» d_color
+	has GimpParamRegion    $!d_region; # Typedef<GimpParamRegion>->«_GimpParamRegion» d_region
+	has gint32             $.d_display; # Typedef<gint32>->«int» d_display
+	has gint32             $.d_image; # Typedef<gint32>->«int» d_image
+	has gint32             $.d_item; # Typedef<gint32>->«int» d_item
+	has gint32             $.d_layer; # Typedef<gint32>->«int» d_layer
+	has gint32             $.d_layer_mask; # Typedef<gint32>->«int» d_layer_mask
+	has gint32             $.d_channel; # Typedef<gint32>->«int» d_channel
+	has gint32             $.d_drawable; # Typedef<gint32>->«int» d_drawable
+	has gint32             $.d_selection; # Typedef<gint32>->«int» d_selection
+	has gint32             $.d_boundary; # Typedef<gint32>->«int» d_boundary
+	has gint32             $.d_path; # Typedef<gint32>->«int» d_path
+	has gint32             $.d_vectors; # Typedef<gint32>->«int» d_vectors
+	has gint32             $.d_unit; # Typedef<gint32>->«int» d_unit
+	has GimpParasite       $!d_parasite; # Typedef<GimpParasite>->«_GimpParasite» d_parasite
+	has gint32             $.d_tattoo; # Typedef<gint32>->«int» d_tattoo
+	has int32              $.d_status; # Typedef<GimpPDBStatusType>->«GimpPDBStatusType» d_status
+}
 
 class GimpParam is repr('CStruct') is export {
 	has int32              $.type is rw;
-	has GimpParamData      $!data;
+	HAS GimpParamData      $.data;
 }
 
-sub sprintf-SIGpIGpaa-i (
+sub sprintf-SIPIrwP (
   Blob,
   Str,
-  & (Str, GimpParam, gint, CArray[Pointer[GimpParam]]),
+  & (Str, gint, Pointer, gint is rw, Pointer),
   gpointer
  --> int64
 )
     is native is symbol('sprintf') { * }
 
 class GimpPluginInfo is repr('CStruct') is export {
-	has Pointer       $!init_proc;  # Typedef<GimpInitProc>->«F:void ( )*» init_proc
-	has Pointer       $!quit_proc;  # Typedef<GimpQuitProc>->«F:void ( )*» quit_proc
-	has Pointer       $!query_proc; # Typedef<GimpQueryProc>->«F:void ( )*» query_proc
-	has Pointer       $!run_proc;   # Typedef<GimpRunProc>->«F:void ( )*» run_proc
+	has Pointer       $!init;  # Typedef<GimpInitProc>->«F:void ( )*» init_proc
+	has Pointer       $!quit;  # Typedef<GimpQuitProc>->«F:void ( )*» quit_proc
+	has Pointer       $!query; # Typedef<GimpQueryProc>->«F:void ( )*» query_proc
+	has Pointer       $!run;   # Typedef<GimpRunProc>->«F:void ( )*» run_proc
 
-  method init_proc is rw {
+  submethod TWEAK {
+    $!init  = Pointer unless $!init;
+    $!quit  = Pointer unless $!quit;
+    $!query = Pointer unless $!query;
+    $!run   = Pointer unless $!run;
+  }
+
+  method init is rw {
     Proxy.new:
-      FETCH => -> $ { $!init_proc },
+      FETCH => -> $ { $!init },
       STORE => -> $, \func {
-        $!init_proc := set_func_pointer( &(func), &sprintf-v);
+        $!init := set_func_pointer( &(func), &sprintf-v);
       };
   }
 
-  method quit_proc is rw {
+  method quit is rw {
     Proxy.new:
-      FETCH => -> $ { $!quit_proc },
+      FETCH => -> $ { $!quit },
       STORE => -> $, \func {
-        $!quit_proc := set_func_pointer( &(func), &sprintf-v);
+        $!quit := set_func_pointer( &(func), &sprintf-v);
       };
   }
 
-  method query_proc is rw {
+  method query is rw {
     Proxy.new:
-      FETCH => -> $ { $!query_proc },
+      FETCH => -> $ { $!query },
       STORE => -> $, \func {
-        $!query_proc := set_func_pointer( &(func), &sprintf-v);
+        $!query := set_func_pointer( &(func), &sprintf-v);
       };
   }
 
-  method run_proc is rw {
+  method run is rw {
     Proxy.new:
-      FETCH => -> $ { $!run_proc },
+      FETCH => -> $ { $!run },
       STORE => -> $, \func {
-        $!run_proc := set_func_pointer( &(func), &sprintf-SIGpIGpaa-i);
+        $!run := set_func_pointer( &(func), &sprintf-SIPIrwP);
       };
   }
 }
@@ -197,51 +247,6 @@ class GimpParamDef is repr('CStruct') is export {
       STORE => -> $, Str() $val    { self.^attributes(:local)[2]
                                          .set_value(self, $val)    };
   }
-}
-
-class GimpParamRegion is repr('CStruct') is export {
-	has gint32        $.x      is rw;
-	has gint32        $.y      is rw;
-	has gint32        $.width  is rw;
-	has gint32        $.height is rw;
-}
-
-class GimpParasite is repr('CStruct') is export {
-	has Str                $!name;
-	has guint32            $.flags is rw;
-	has guint32            $.size  is rw;
-	has Pointer            $!data;
-}
-
-class GimpParamData {
-	has gint32             $.d_int32; # Typedef<gint32>->«int» d_int32
-	has gint16             $.d_int16; # Typedef<gint16>->«short int» d_int16
-	has guint8             $.d_int8; # Typedef<guint8>->«unsigned char» d_int8
-	has gdouble            $.d_float; # Typedef<gdouble>->«double» d_float
-	has Str                $!d_string; # Typedef<gchar>->«char»* d_string
-	has CArray[gint32]     $!d_int32array; # Typedef<gint32>->«int»* d_int32array
-	has CArray[gint16]     $!d_int16array; # Typedef<gint16>->«short int»* d_int16array
-	has CArray[guint8]     $!d_int8array; # Typedef<guint8>->«unsigned char»* d_int8array
-	has CArray[gdouble]    $!d_floatarray; # Typedef<gdouble>->«double»* d_floatarray
-	has CArray[Str]        $!d_stringarray; # Typedef<gchar>->«char»** d_stringarray
-	has GimpRGB            $!d_colorarray; # Typedef<GimpRGB>->«_GimpRGB»* d_colorarray
-	has GimpRGB            $!d_color; # Typedef<GimpRGB>->«_GimpRGB» d_color
-	has GimpParamRegion    $!d_region; # Typedef<GimpParamRegion>->«_GimpParamRegion» d_region
-	has gint32             $.d_display; # Typedef<gint32>->«int» d_display
-	has gint32             $.d_image; # Typedef<gint32>->«int» d_image
-	has gint32             $.d_item; # Typedef<gint32>->«int» d_item
-	has gint32             $.d_layer; # Typedef<gint32>->«int» d_layer
-	has gint32             $.d_layer_mask; # Typedef<gint32>->«int» d_layer_mask
-	has gint32             $.d_channel; # Typedef<gint32>->«int» d_channel
-	has gint32             $.d_drawable; # Typedef<gint32>->«int» d_drawable
-	has gint32             $.d_selection; # Typedef<gint32>->«int» d_selection
-	has gint32             $.d_boundary; # Typedef<gint32>->«int» d_boundary
-	has gint32             $.d_path; # Typedef<gint32>->«int» d_path
-	has gint32             $.d_vectors; # Typedef<gint32>->«int» d_vectors
-	has gint32             $.d_unit; # Typedef<gint32>->«int» d_unit
-	has GimpParasite       $!d_parasite; # Typedef<GimpParasite>->«_GimpParasite» d_parasite
-	has gint32             $.d_tattoo; # Typedef<gint32>->«int» d_tattoo
-	has int32              $.d_status; # Typedef<GimpPDBStatusType>->«GimpPDBStatusType» d_status
 }
 
 class GimpMatrix2 is repr('CStruct') is export {

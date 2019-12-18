@@ -48,3 +48,5 @@ class GIMP::PDB::Plugin {
   }
 
 }
+
+constant Plugin is export := GIMP::PDB::Plugin;
