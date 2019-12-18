@@ -37,6 +37,7 @@ GIMP::Widget::Roles::Signals::BrushSelectButton
 GIMP::Widget::Roles::Signals::FontSelectButton
 GIMP::Widget::Roles::Signals::GradientSelectButton
 GIMP::Widget::Roles::Signals::PaletteSelectButton
+GIMP::Widget::Roles::Signals::PatternSelectButton
 GIMP::Widget::SelectButton
 GIMP::Checks
 GIMP::CpuAccel
@@ -90,6 +91,7 @@ GIMP::Widget::BrushSelectButton
 GIMP::Widget::FontSelectButton
 GIMP::Widget::GradientSelectButton
 GIMP::Widget::PaletteSelectButton
+GIMP::Widget::PatternSelectButton
 GIMP::Widget::Preview
 GIMP::Widget::ScrolledPreview
 GIMP::Widget::ZoomPreview
