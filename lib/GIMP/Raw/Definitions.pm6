@@ -6,6 +6,9 @@ use GTK::Roles::Pointers;
 
 unit package GIMP::Raw::Definitions;
 
+# Number of times we've bumped
+constant forced = 4;
+
 constant Babl      is export := Pointer;
 
 class GimpColorProfile is repr<CPointer> does GTK::Roles::Pointers is export {}

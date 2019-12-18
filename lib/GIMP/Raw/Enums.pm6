@@ -4,6 +4,9 @@ use GTK::Compat::Types;
 
 use GIMP::Compat::GEGL_Enums;
 
+# Number of times we've bumped
+constant forced = 4;
+
 package GIMP::Raw::Enums {
 
   # GIMP

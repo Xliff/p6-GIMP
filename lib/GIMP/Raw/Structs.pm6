@@ -8,6 +8,9 @@ use GIMP::Raw::Libs;
 
 unit package GIMP::Raw::Structs;
 
+# Number of times we've bumped
+constant forced = 4;
+
 class GimpDrawable is repr<CStruct> is export { ... }
 
 class GimpRGB is repr('CStruct') is export {
