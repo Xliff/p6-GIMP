@@ -1,5 +1,6 @@
 use v6;
 
+use Method::Also;
 use NativeCall;
 
 use GTK::Raw::Types;
@@ -55,6 +56,10 @@ class GIMP::Widget::Button is GTK::Button {
     self.setButton($to-parent);
   }
 
+  method GIMP::Raw::Widgets::GimpButton
+    is also<GimpButton>
+  { * }
+
   proto method new (|)
   { * }
 
@@ -73,17 +78,19 @@ class GIMP::Widget::Button is GTK::Button {
 
   # Is originally:
   # GimpButton, GdkModifierType, gpointer --> void
-  method extended-clicked {
+  method extended-clicked is also<extended_clicked> {
     self.connect-extended-clicked($!gb);
   }
 
-  method emit_extended_clicked (Int() $state) {
+  method emit_extended_clicked (Int() $state)
+    is also<emit-extended-clicked>
+  {
     my guint $s = $state; # GdkModifierType
 
     gimp_button_extended_clicked($!gb, $s);
   }
 
-  method get_type {
+  method get_type is also<get-type> {
     state ($n, $t);
 
     unstable_get_type( self.^name, &gimp_button_get_type, $n, $t );
