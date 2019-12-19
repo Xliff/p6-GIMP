@@ -8,6 +8,7 @@ GTK::Compat::Roles::TypedBuffer
 GTK::Compat::Types
 GTK::Compat::Value
 GTK::Dialog
+GTK::Pane
 GTK::ProgressBar
 GTK::Raw::Types
 GTK::Raw::Utils
@@ -31,10 +32,12 @@ GIMP::ValueArray
 GIMP::Vector
 GIMP::Raw::Widgets
 GIMP::Widget::ProgressBar
+GIMP::Widget::Raw::Browser
 GIMP::Widget::Raw::Dialog
 GIMP::Widget::Raw::Preview
 GIMP::Widget::Raw::ScrolledPreview
 GIMP::Widget::Raw::ZoomPreview
+GIMP::Widget::Roles::Signals::Browser
 GIMP::Widget::Roles::Signals::BrushSelectButton
 GIMP::Widget::Roles::Signals::FontSelectButton
 GIMP::Widget::Roles::Signals::GradientSelectButton
@@ -89,6 +92,7 @@ GIMP::Raw::Thumb
 GIMP::Raw::Thumbnail
 GIMP::Thumb
 GIMP::Thumbnail
+GIMP::Widget::Browser
 GIMP::Widget::BrushSelectButton
 GIMP::Widget::Dialog
 GIMP::Widget::FontSelectButton

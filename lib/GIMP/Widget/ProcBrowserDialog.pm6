@@ -68,7 +68,7 @@ class GIMP::Widget::ProcBrowserDialog is GIMP::Widget::Dialog {
     *@buttons
   ) {
     my $gimp-procdialog =
-      gimp_proc_browser_dialog_new($title, $role, &help_func, $help_id);
+      gimp_proc_browser_dialog_new($title, $role, &help_func, $help_id, Str);
 
     @buttons.append: %buttons.pairs;
 
