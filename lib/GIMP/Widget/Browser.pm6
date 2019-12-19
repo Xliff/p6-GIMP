@@ -10,10 +10,14 @@ use GIMP::Widget::Raw::Browser;
 
 use GTK::Pane;
 
+use GIMP::Widget::Roles::Signals::Browser;
+
 our subset GimpBrowserAncestry is export
   where GimpBrowser | PaneAncestry;
 
 class GIMP::Widget::Browser is GTK::Pane {
+  also does GIMP::Widget::Roles::Signals::Browser;
+  
   has GimpBrowser $!gb;
 
   method bless(*%attrinit) {

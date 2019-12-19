@@ -3,6 +3,7 @@ GLib::Object::ParamSpec
 GLib::Roles::StaticClass
 GTK::Bin
 GTK::Box
+GTK::Button
 GTK::Compat::Pixbuf
 GTK::Compat::Roles::Object
 GTK::Compat::Roles::TypedBuffer
@@ -41,6 +42,7 @@ GIMP::Widget::Raw::ScrolledPreview
 GIMP::Widget::Raw::ZoomPreview
 GIMP::Widget::Roles::Signals::Browser
 GIMP::Widget::Roles::Signals::BrushSelectButton
+GIMP::Widget::Roles::Signals::Button
 GIMP::Widget::Roles::Signals::FontSelectButton
 GIMP::Widget::Roles::Signals::GradientSelectButton
 GIMP::Widget::Roles::Signals::PaletteSelectButton
@@ -96,6 +98,7 @@ GIMP::Thumb
 GIMP::Thumbnail
 GIMP::Widget::Browser
 GIMP::Widget::BrushSelectButton
+GIMP::Widget::Button
 GIMP::Widget::Dialog
 GIMP::Widget::FontSelectButton
 GIMP::Widget::GradientSelectButton
