@@ -12,6 +12,7 @@ constant forced = 3;
 class GimpAspectPreview         is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpBrowser               is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpBrushSelectButton     is repr<CPointer> is export does GTK::Roles::Pointers {}
+class GimpBusyBox               is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpDialog                is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpDrawablePreview       is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpFontSelectButton      is repr<CPointer> is export does GTK::Roles::Pointers {}

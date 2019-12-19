@@ -23,6 +23,7 @@
       "GIMP::ValueArray"                                   :  "lib/GIMP/ValueArray.pm6"                                ,
       "GIMP::Vector"                                       :  "lib/GIMP/Vector.pm6"                                    ,
       "GIMP::Raw::Widgets"                                 :  "lib/GIMP/Raw/Widgets.pm6"                               ,
+      "GIMP::Widget::BusyBox"                              :  "lib/GIMP/Widget/BusyBox.pm6"                            ,
       "GIMP::Widget::ProgressBar"                          :  "lib/GIMP/Widget/ProgressBar.pm6"                        ,
       "GIMP::Widget::Raw::Browser"                         :  "lib/GIMP/Widget/Raw/Browser.pm6"                        ,
       "GIMP::Widget::Raw::Dialog"                          :  "lib/GIMP/Widget/Raw/Dialog.pm6"                         ,

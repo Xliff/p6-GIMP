@@ -1,6 +1,7 @@
 Cairo
 GLib::Object::ParamSpec
 GLib::Roles::StaticClass
+GTK::Bin
 GTK::Box
 GTK::Compat::Pixbuf
 GTK::Compat::Roles::Object
@@ -31,6 +32,7 @@ GIMP::Unit
 GIMP::ValueArray
 GIMP::Vector
 GIMP::Raw::Widgets
+GIMP::Widget::BusyBox
 GIMP::Widget::ProgressBar
 GIMP::Widget::Raw::Browser
 GIMP::Widget::Raw::Dialog
