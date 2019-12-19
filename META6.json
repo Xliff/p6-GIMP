@@ -25,6 +25,7 @@
       "GIMP::Raw::Widgets"                                 :  "lib/GIMP/Raw/Widgets.pm6"                               ,
       "GIMP::Widget::BusyBox"                              :  "lib/GIMP/Widget/BusyBox.pm6"                            ,
       "GIMP::Widget::CellRendererColor"                    :  "lib/GIMP/Widget/CellRendererColor.pm6"                  ,
+      "GIMP::Widget::ChainButton"                          :  "lib/GIMP/Widget/ChainButton.pm6"                        ,
       "GIMP::Widget::ProgressBar"                          :  "lib/GIMP/Widget/ProgressBar.pm6"                        ,
       "GIMP::Widget::Raw::Browser"                         :  "lib/GIMP/Widget/Raw/Browser.pm6"                        ,
       "GIMP::Widget::Raw::Dialog"                          :  "lib/GIMP/Widget/Raw/Dialog.pm6"                         ,

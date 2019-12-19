@@ -21,6 +21,7 @@ GTK::Raw::Utils
 GTK::Roles::Pointers
 GTK::Roles::Properties
 GTK::Roles::Signals::Generic
+GTK::Table
 GTK::Widget
 Method::Also
 GIMP::PDB::Roles::Assumable
@@ -39,6 +40,7 @@ GIMP::Vector
 GIMP::Raw::Widgets
 GIMP::Widget::BusyBox
 GIMP::Widget::CellRendererColor
+GIMP::Widget::ChainButton
 GIMP::Widget::ProgressBar
 GIMP::Widget::Raw::Browser
 GIMP::Widget::Raw::Dialog
