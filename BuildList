@@ -46,6 +46,7 @@ GIMP::Widget::Raw::ZoomPreview
 GIMP::Widget::Roles::Signals::Browser
 GIMP::Widget::Roles::Signals::BrushSelectButton
 GIMP::Widget::Roles::Signals::Button
+GIMP::Widget::Roles::Signals::CellRendererToggle
 GIMP::Widget::Roles::Signals::FontSelectButton
 GIMP::Widget::Roles::Signals::GradientSelectButton
 GIMP::Widget::Roles::Signals::PaletteSelectButton
@@ -102,6 +103,7 @@ GIMP::Thumbnail
 GIMP::Widget::Browser
 GIMP::Widget::BrushSelectButton
 GIMP::Widget::Button
+GIMP::Widget::CellRendererToggle
 GIMP::Widget::Dialog
 GIMP::Widget::FontSelectButton
 GIMP::Widget::GradientSelectButton

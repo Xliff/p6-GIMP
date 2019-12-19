@@ -43,10 +43,17 @@ class GIMP::Widget::CellRendererColor is GTK::CellRenderer {
     self.setCellRenderer($to-parent);
   }
 
-  method GIMP::Raw::Widget::GimpCellRenderer
+  method GIMP::Raw::Widget::GimpCellRendererColor
   { $!gcrc }
 
-  method new {
+  multi method new(GimpCellRendererColorAncestry $color-cell) {
+    return Nil unless $color-cell;
+
+    my $o = self.bless( :$color-cell );
+    $o.upref;
+    $o;
+  }
+  multi method new {
     my $color-cell = gimp_cell_renderer_color_new();
 
     $color-cell ?? self.bless( :$color-cell ) !! Nil;
