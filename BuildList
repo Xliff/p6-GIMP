@@ -13,6 +13,7 @@ GTK::Compat::Types
 GTK::Compat::Value
 GTK::Container
 GTK::Dialog
+GTK::DrawingArea
 GTK::Pane
 GTK::ProgressBar
 GTK::Raw::Table
@@ -40,9 +41,11 @@ GIMP::Vector
 GIMP::Raw::Widgets
 GIMP::Widget::BusyBox
 GIMP::Widget::CellRendererColor
+GIMP::Compat::Deprecated
 GIMP::Widget::ChainButton
 GIMP::Widget::ProgressBar
 GIMP::Widget::Raw::Browser
+GIMP::Widget::Raw::ColorArea
 GIMP::Widget::Raw::Dialog
 GIMP::Widget::Raw::Preview
 GIMP::Widget::Raw::ScrolledPreview
@@ -56,7 +59,6 @@ GIMP::Widget::Roles::Signals::GradientSelectButton
 GIMP::Widget::Roles::Signals::PaletteSelectButton
 GIMP::Widget::Roles::Signals::PatternSelectButton
 GIMP::Widget::SelectButton
-GIMP::Compat::Deprecated
 GTK::Raw::Table
 GTK::Table
 GIMP::Checks
@@ -111,6 +113,7 @@ GIMP::Widget::Browser
 GIMP::Widget::BrushSelectButton
 GIMP::Widget::Button
 GIMP::Widget::CellRendererToggle
+GIMP::Widget::ColorArea
 GIMP::Widget::Dialog
 GIMP::Widget::FontSelectButton
 GIMP::Widget::GradientSelectButton

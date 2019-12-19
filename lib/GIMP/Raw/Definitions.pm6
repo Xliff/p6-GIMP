@@ -11,6 +11,7 @@ constant forced = 4;
 
 constant Babl      is export := Pointer;
 
+class GimpColorConfig  is repr<CPointer> does GTK::Roles::Pointers is export {}  # Convert to Struct Later!!
 class GimpColorProfile is repr<CPointer> does GTK::Roles::Pointers is export {}
 class GimpThumbnail    is repr<CPointer> does GTK::Roles::Pointers is export {}
 class GimpValueArray   is repr<CPointer> does GTK::Roles::Pointers is export {}

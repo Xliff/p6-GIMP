@@ -17,6 +17,7 @@ class GimpButton                is repr<CPointer> is export does GTK::Roles::Poi
 class GimpCellRendererColor     is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpCellRendererToggle    is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpChainButton           is repr<CPointer> is export does GTK::Roles::Pointers {}
+class GimpColorArea             is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpDialog                is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpDrawablePreview       is repr<CPointer> is export does GTK::Roles::Pointers {}
 class GimpFontSelectButton      is repr<CPointer> is export does GTK::Roles::Pointers {}
