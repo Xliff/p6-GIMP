@@ -4,7 +4,9 @@ GLib::Roles::StaticClass
 GTK::Bin
 GTK::Box
 GTK::Button
+GTK::CellRenderer
 GTK::Compat::Pixbuf
+GTK::Compat::RGBA
 GTK::Compat::Roles::Object
 GTK::Compat::Roles::TypedBuffer
 GTK::Compat::Types
@@ -34,6 +36,7 @@ GIMP::ValueArray
 GIMP::Vector
 GIMP::Raw::Widgets
 GIMP::Widget::BusyBox
+GIMP::Widget::CellRendererColor
 GIMP::Widget::ProgressBar
 GIMP::Widget::Raw::Browser
 GIMP::Widget::Raw::Dialog
