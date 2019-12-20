@@ -46,6 +46,7 @@ GIMP::Widget::ChainButton
 GIMP::Widget::ProgressBar
 GIMP::Widget::Raw::Browser
 GIMP::Widget::Raw::ColorArea
+GIMP::Widget::Raw::ColorSelector
 GIMP::Widget::Raw::Dialog
 GIMP::Widget::Raw::Preview
 GIMP::Widget::Raw::ScrolledPreview
@@ -54,6 +55,7 @@ GIMP::Widget::Roles::Signals::Browser
 GIMP::Widget::Roles::Signals::BrushSelectButton
 GIMP::Widget::Roles::Signals::Button
 GIMP::Widget::Roles::Signals::CellRendererToggle
+GIMP::Widget::Roles::Signals::ColorSelector
 GIMP::Widget::Roles::Signals::FontSelectButton
 GIMP::Widget::Roles::Signals::GradientSelectButton
 GIMP::Widget::Roles::Signals::PaletteSelectButton
@@ -114,6 +116,7 @@ GIMP::Widget::BrushSelectButton
 GIMP::Widget::Button
 GIMP::Widget::CellRendererToggle
 GIMP::Widget::ColorArea
+GIMP::Widget::ColorSelector
 GIMP::Widget::Dialog
 GIMP::Widget::FontSelectButton
 GIMP::Widget::GradientSelectButton
