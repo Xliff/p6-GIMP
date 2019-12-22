@@ -46,6 +46,7 @@ GIMP::Widget::ChainButton
 GIMP::Widget::ProgressBar
 GIMP::Widget::Raw::Browser
 GIMP::Widget::Raw::ColorArea
+GIMP::Widget::Raw::ColorSelection
 GIMP::Widget::Raw::ColorSelector
 GIMP::Widget::Raw::Dialog
 GIMP::Widget::Raw::Preview
@@ -116,6 +117,7 @@ GIMP::Widget::BrushSelectButton
 GIMP::Widget::Button
 GIMP::Widget::CellRendererToggle
 GIMP::Widget::ColorArea
+GIMP::Widget::ColorSelection
 GIMP::Widget::ColorSelector
 GIMP::Widget::Dialog
 GIMP::Widget::FontSelectButton
