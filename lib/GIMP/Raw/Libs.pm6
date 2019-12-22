@@ -8,3 +8,4 @@ constant gimpcolor  is export = 'gimpcolor-2.0',v0;
 constant gimpmath   is export = 'gimpmath-2.0',v0;
 constant gimpthumb  is export = 'gimpthumb-2.0',v0;
 constant gimpwidget is export = 'gimpwidgets-2.0',v0;
+constant gimpconfig is export = 'gimpconfig-2.0',v0;

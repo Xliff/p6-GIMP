@@ -102,6 +102,7 @@ GIMP::PDB::Text
 GIMP::PDB::TextTool
 GIMP::PixPipeParams
 GIMP::Raw::Color
+GIMP::Raw::ColorConfig
 GIMP::Raw::ColorProfile
 GIMP::Raw::Env
 GIMP::Raw::Main
@@ -110,6 +111,7 @@ GIMP::Raw::Parasite
 GIMP::Raw::RGB
 GIMP::Raw::Thumb
 GIMP::Raw::Thumbnail
+GIMP::Roles::ColorConfig
 GIMP::Thumb
 GIMP::Thumbnail
 GIMP::Widget::Browser

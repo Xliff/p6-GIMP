@@ -5,6 +5,7 @@ use NativeCall;
 use GTK::Compat::Types;
 
 use GIMP::Raw::Libs;
+use GIMP::Raw::Enums;
 
 unit package GIMP::Raw::Structs;
 
@@ -420,6 +421,154 @@ class GimpProgressVtable is repr<CStruct> is export {
   has Pointer $!gimp_reserved7;
   has Pointer $!gimp_reserved8;
 }
+
+role Delegatable is export { };
+
+class GimpColorConfig32 is repr<CStruct> {
+  has GObject                    $!parent_instance;
+
+  # Public
+  has GimpColorManagementMode    $.mode                                    does Delegatable is rw;
+  has Str                        $!rgb_profile                             does Delegatable;
+  has Str                        $!cmyk_profile                            does Delegatable;
+  has Str                        $!display_profile                         does Delegatable;
+  has gboolean                   $.display_profile_from_gdk                does Delegatable is rw;
+  has Str                        $!printer_profile                         does Delegatable;
+  has GimpColorRenderingIntent   $.display_intent                          does Delegatable is rw;
+  has GimpColorRenderingIntent   $.simulation_intent                       does Delegatable is rw;
+  has Str                        $!display_module                          does Delegatable;
+  has gboolean                   $.simulation_gamut_check                  does Delegatable is rw;
+  has GimpRGB                    $!out_of_gamut_color                      does Delegatable;
+  has gboolean                   $.display_use_black_point_compensation    does Delegatable is rw;
+  has gboolean                   $.simulation_use_black_point_compensation does Delegatable is rw;
+  has Str                        $.gray_profile                            does Delegatable;
+
+  # Private
+  has Pointer                    $!gimp_reserved4;
+  has Pointer                    $!gimp_reserved5;
+  has Pointer                    $!gimp_reserved6;
+  has Pointer                    $!gimp_reserved7;
+  has Pointer                    $!gimp_reserved8;
+
+  method rgb_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[2].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[2].set_value(self, val) };
+  }
+
+  method cmyk_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[3].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[3].set_value(self, val) };
+  }
+
+  method display_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[4].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[4].set_value(self, val) };
+  }
+
+  method printer_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[6].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[6].set_value(self, val) };
+  }
+
+
+  method simulation_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[9].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[9].set_value(self, val) };
+  }
+
+  method out_of_gamut_color is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[11].get_value(self) },
+      STORE => -> $, GimpRGB \val { self.^attributes[11].set_value(self, val) };
+  }
+
+  method gray_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[14].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[14].set_value(self, val) };
+  }
+
+}
+
+class GimpColorConfig64 is repr<CStruct> {
+  has GObject                    $!parent_instance;
+
+  # Public
+  has GimpColorManagementMode    $.mode                                    does Delegatable is rw;
+  has Str                        $!rgb_profile                             does Delegatable;
+  has Str                        $!cmyk_profile                            does Delegatable;
+  has Str                        $!display_profile                         does Delegatable;
+  has gboolean                   $.display_profile_from_gdk                does Delegatable is rw;
+  has Str                        $!printer_profile                         does Delegatable;
+  has GimpColorRenderingIntent   $.display_intent                          does Delegatable is rw;
+  has GimpColorRenderingIntent   $.simulation_intent                       does Delegatable is rw;
+  has Str                        $!display_module                          does Delegatable;
+  has gboolean                   $.simulation_gamut_check                  does Delegatable is rw;
+  has GimpRGB                    $!out_of_gamut_color                      does Delegatable;
+  has gboolean                   $.display_use_black_point_compensation    does Delegatable is rw;
+  has gboolean                   $.simulation_use_black_point_compensation does Delegatable is rw;
+  has Str                        $.gray_profile                            does Delegatable;
+
+  # Private
+  has Pointer                    $!gimp_reserved3;
+  has Pointer                    $!gimp_reserved4;
+  has Pointer                    $!gimp_reserved5;
+  has Pointer                    $!gimp_reserved6;
+  has Pointer                    $!gimp_reserved7;
+  has Pointer                    $!gimp_reserved8;
+
+  method rgb_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[2].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[2].set_value(self, val) };
+  }
+
+  method cmyk_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[3].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[3].set_value(self, val) };
+  }
+
+  method display_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[4].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[4].set_value(self, val) };
+  }
+
+  method printer_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[6].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[6].set_value(self, val) };
+  }
+
+
+  method simulation_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[9].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[9].set_value(self, val) };
+  }
+
+  method out_of_gamut_color is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[11].get_value(self) },
+      STORE => -> $, GimpRGB \val { self.^attributes[11].set_value(self, val) };
+  }
+
+  method gray_profile is rw {
+    Proxy.new:
+      FETCH => -> $               { self.^attributes[14].get_value(self) },
+      STORE => -> $, Str() \val   { self.^attributes[14].set_value(self, val) };
+  }
+
+}
+
+constant GimpColorConfig is export = $?BITS == 32 ??
+    GimpColorConfig32 !! GimpColorConfig64;
 
 ### /usr/include/gimp-2.0/libgimpcolor/gimphsl.h
 
