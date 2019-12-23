@@ -6,10 +6,28 @@ use GIMP::Raw::Types;
 
 use GIMP::Raw::ColorConfig;
 
+use GIMP::Roles::Config;
+
 role GIMP::Roles::ColorConfig {
+  also does GIMP::Roles::Config;
+
   has GimpColorConfig $!gcc;
 
-  submethod BUILD (
+  method !configCheckForRole {
+    my \i = findProperImplementor(self.^attributes);
+    $!gcc does Implementor unless i;
+  }
+
+  multi submethod BUILD (
+    :$color-config is required
+  ) {
+    $!gcc = $color-config if $color-config.defined;
+
+    self!configCheckForRole;
+    self.roleInit-Config;
+  }
+  multi submethod BUILD (
+    :$color-config,
     :$mode,
     :$rgb_profile,
     :$cmyk_profile,
@@ -25,6 +43,8 @@ role GIMP::Roles::ColorConfig {
     :$simulation_use_black_point_compensation,
     :$gray_profile
   ) {
+    $!gcc = GimpColorConfig.new;
+
     # Insures methods are used, if defined.
     self.mode                     = $mode;
     self.rgb_profile              = $rgb_profile;
@@ -43,6 +63,9 @@ role GIMP::Roles::ColorConfig {
       $display_use_black_point_compensation;
     self.simulation_use_black_point_compensation =
       $simulation_use_black_point_compensation;
+
+    self!configCheckForRole;
+    self.roleInit-Config;
   }
 
   method get_cmyk_color_profile (

@@ -11,9 +11,11 @@ constant forced = 4;
 
 constant Babl      is export := Pointer;
 
-class GimpColorProfile is repr<CPointer> does GTK::Roles::Pointers is export {}
-class GimpThumbnail    is repr<CPointer> does GTK::Roles::Pointers is export {}
-class GimpValueArray   is repr<CPointer> does GTK::Roles::Pointers is export {}
+class GimpConfig        is repr<CPointer> does GTK::Roles::Pointers is export {}
+class GimpConfigWriter  is repr<CPointer> does GTK::Roles::Pointers is export {}
+class GimpColorProfile  is repr<CPointer> does GTK::Roles::Pointers is export {}
+class GimpThumbnail     is repr<CPointer> does GTK::Roles::Pointers is export {}
+class GimpValueArray    is repr<CPointer> does GTK::Roles::Pointers is export {}
 
 constant GIMP_RGB_INTENSITY_RED   is export = 0.30;
 constant GIMP_RGB_INTENSITY_GREEN is export = 0.59;

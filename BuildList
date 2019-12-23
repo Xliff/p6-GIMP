@@ -104,6 +104,7 @@ GIMP::PixPipeParams
 GIMP::Raw::Color
 GIMP::Raw::ColorConfig
 GIMP::Raw::ColorProfile
+GIMP::Raw::Config
 GIMP::Raw::Env
 GIMP::Raw::Main
 GIMP::Raw::Matrix
@@ -111,7 +112,7 @@ GIMP::Raw::Parasite
 GIMP::Raw::RGB
 GIMP::Raw::Thumb
 GIMP::Raw::Thumbnail
-GIMP::Roles::ColorConfig
+GIMP::Roles::Config
 GIMP::Thumb
 GIMP::Thumbnail
 GIMP::Widget::Browser
@@ -156,5 +157,6 @@ GIMP::PDB::Progress
 GIMP::PDB::RC
 GIMP::Parasite
 GIMP::RGB
+GIMP::Roles::ColorConfig
 GIMP::Widget::AspectPreview
 GIMP::Widget::DrawablePreview
