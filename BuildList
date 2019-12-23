@@ -105,6 +105,7 @@ GIMP::Raw::Color
 GIMP::Raw::ColorConfig
 GIMP::Raw::ColorProfile
 GIMP::Raw::Config
+GIMP::Raw::ConfigWriter
 GIMP::Raw::Env
 GIMP::Raw::Main
 GIMP::Raw::Matrix
@@ -133,6 +134,7 @@ GIMP::Widget::ScrolledPreview
 GIMP::Widget::ZoomPreview
 GIMP::Color
 GIMP::ColorProfile
+GIMP::ConfigWriter
 GIMP::Env
 GIMP::Main
 GIMP::Matrix
