@@ -16,6 +16,10 @@ class GIMP::ConfigWriter {
   submethod GIMP::Raw::Definitions::GimpConfigWriter
   { $!gcw }
 
+  method new (GimpConfigWriter $writer) {
+    $writer ?? self.bless( :$writer ) !! Nil;
+  }
+
   method new_fd (Int() $fd) {
     my gint $f = $fd;
     my $writer = gimp_config_writer_new_fd($fd);

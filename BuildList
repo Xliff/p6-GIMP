@@ -1,6 +1,7 @@
 Cairo
 GLib::Object::ParamSpec
 GLib::Roles::StaticClass
+GLib::Scanner
 GTK::Bin
 GTK::Box
 GTK::Button
@@ -111,9 +112,11 @@ GIMP::Raw::Main
 GIMP::Raw::Matrix
 GIMP::Raw::Parasite
 GIMP::Raw::RGB
+GIMP::Raw::Scanner
 GIMP::Raw::Thumb
 GIMP::Raw::Thumbnail
 GIMP::Roles::Config
+GIMP::Scanner
 GIMP::Thumb
 GIMP::Thumbnail
 GIMP::Widget::Browser
