@@ -1,0 +1,2 @@
+- Currently GIMP is still linked to GTK2, however the existing projects all use *GTK3*. 
+  Work on this project will not be halted until the upstream makes the plunge.
