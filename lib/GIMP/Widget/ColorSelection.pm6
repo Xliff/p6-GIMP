@@ -2,6 +2,7 @@ use v6;
 
 use Method::Also;
 
+use GTK::Raw::Types;
 use GIMP::Raw::Types;
 use GIMP::Raw::Widgets;
 
@@ -9,13 +10,13 @@ use GIMP::Widget::Raw::ColorSelection;
 
 use GTK::Box;
 
-our subset GimpColorSelectionionAncestry is export
+use GTK::Roles::Signals::Generic;
+
+our subset GimpColorSelectionAncestry is export
   where GimpColorSelection | BoxAncestry;
 
-class GIMP::Widget::ColorSelector is GTK::Box {
-  use GTK::Roles::Signals::Generic;
-  
-  also does GIMP::Widget::Roles::Signals::ColorSelector;
+class GIMP::Widget::ColorSelection is GTK::Box {
+  also does GTK::Roles::Signals::Generic;
 
   has GimpColorSelection $!gcs is implementor;
 
@@ -27,9 +28,7 @@ class GIMP::Widget::ColorSelector is GTK::Box {
 
   submethod BUILD(:$color-selection) {
     given $color-selection {
-      when GimpColorSelectionAncestry {
-        self.setBox($_);
-      }
+      when GimpColorSelectionAncestry { self.setGimpColorSelection($_) }
 
       when GIMP::Widget::ColorSelection {
         my $class = ::?CLASS.^name;
@@ -73,13 +72,15 @@ class GIMP::Widget::ColorSelector is GTK::Box {
   multi method new {
     my $color-selection = gimp_color_selection_new();
 
+    say "CS: $color-selection";
+
     $color-selection ?? self.bless( :$color-selection ) !! Nil;
   }
 
   # Is originally:
   # GimpColorSelection, gpointer --> void
-  method color-changed is also<color_changed> {
-    self.connect($!w, 'color-changed');
+  method color-changed {
+    self.connect($!gcs, 'color-changed');
   }
 
   method emit_color_changed is also<emit-color-changed> {

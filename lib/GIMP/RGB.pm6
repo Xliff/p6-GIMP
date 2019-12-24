@@ -71,6 +71,22 @@ augment class GimpRGB {
     $pixel;
   }
 
+  method hex {
+    my \f = '%02x';
+
+    "#" ~ self.red.fmt(f)
+        ~ self.green.fmt(f)
+        ~ self.blue.fmt(f)
+  }
+  method hexa {
+    my \f = '%02x';
+    
+    "#" ~ self.red.fmt(f)
+        ~ self.green.fmt(f)
+        ~ self.blue.fmt(f)
+        ~ self.alpha.fmt(f);
+  }
+
   method get_type {
     state ($n, $t);
 

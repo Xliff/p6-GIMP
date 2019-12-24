@@ -3,6 +3,7 @@ use v6;
 use NativeCall;
 
 use GIMP::Raw::Types;
+use GIMP::Raw::Widgets;
 
 unit package GIMP::Widget::Raw::ColorSelection;
 
