@@ -8,6 +8,7 @@ use GTK::Raw::Types;
 use GIMP::Raw::Types;
 use GIMP::Raw::Widgets;
 
+use GLib::Value;
 use GTK::CellRenderer;
 
 our subset GimpCellRendererColorAncestry is export of Mu
@@ -61,10 +62,10 @@ class GIMP::Widget::CellRendererColor is GTK::CellRenderer {
 
   # Type: GimpRGB
   method color is rw  {
-    my GTK::Compat::Value $gv .= new( GTK::Compat::RGBA.get_type );
+    my GLib::Value $gv .= new( GTK::Compat::RGBA.get_type );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('color', $gv)
         );
         cast(GimpRGB, $gv.boxed);
@@ -78,10 +79,10 @@ class GIMP::Widget::CellRendererColor is GTK::CellRenderer {
 
   # Type: gint
   method icon-size is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_INT );
+    my GLib::Value $gv .= new( G_TYPE_INT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('icon-size', $gv)
         );
         $gv.int;
@@ -95,10 +96,10 @@ class GIMP::Widget::CellRendererColor is GTK::CellRenderer {
 
   # Type: gboolean
   method opaque is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_BOOLEAN );
+    my GLib::Value $gv .= new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('opaque', $gv)
         );
         $gv.boolean;

@@ -6,7 +6,7 @@ use NativeCall;
 use GIMP::Raw::Types;
 use GIMP::Raw::Widgets;
 
-use GTK::Compat::Value;
+use GLib::Value;
 use GIMP::Widget::SelectButton;
 
 use GIMP::Widget::Roles::Signals::FontSelectButton;
@@ -70,10 +70,10 @@ class GIMP::Widget::FontSelectButton is GIMP::Widget::SelectButton {
 
   # Type: gchar
   method font-name is rw  is also<font_name> {
-    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    my GLib::Value $gv .= new( G_TYPE_STRING );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('font-name', $gv)
         );
         $gv.string;
@@ -87,10 +87,10 @@ class GIMP::Widget::FontSelectButton is GIMP::Widget::SelectButton {
 
   # Type: gchar
   method title is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    my GLib::Value $gv .= new( G_TYPE_STRING );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('title', $gv)
         );
         $gv.string;

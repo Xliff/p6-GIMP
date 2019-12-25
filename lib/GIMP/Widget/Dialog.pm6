@@ -8,6 +8,7 @@ use GIMP::Raw::Widgets;
 
 use GIMP::Widget::Raw::Dialog;
 
+use GLib::Value;
 use GTK::Dialog;
 
 our subset GimpDialogAncestry is export of Mu
@@ -87,10 +88,10 @@ class GIMP::Widget::Dialog is GTK::Dialog {
 
   # Type: gpointer
   method help-func is rw is also<help_func> {
-    my GTK::Compat::Value $gv .= new( G_TYPE_POINTER );
+    my GLib::Value $gv .= new( G_TYPE_POINTER );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('help-func', $gv)
         );
         $gv.pointer
@@ -104,10 +105,10 @@ class GIMP::Widget::Dialog is GTK::Dialog {
 
   # Type: gchar
   method help-id is rw is also<help_id> {
-    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    my GLib::Value $gv .= new( G_TYPE_STRING );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('help-id', $gv)
         );
         $gv.string;

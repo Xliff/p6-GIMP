@@ -6,7 +6,7 @@ use NativeCall;
 use GIMP::Raw::Types;
 use GIMP::Raw::Widgets;
 
-use GTK::Compat::Value;
+use GLib::Value;
 
 use GIMP::Widget::SelectButton;
 
@@ -82,10 +82,10 @@ class GIMP::Widget::BrushSelectButton is GIMP::Widget::SelectButton {
 
   # Type: gchar
   method brush-name is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    my GLib::Value $gv .= new( G_TYPE_STRING );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('brush-name', $gv)
         );
         $gv.string;
@@ -99,10 +99,10 @@ class GIMP::Widget::BrushSelectButton is GIMP::Widget::SelectButton {
 
   # Type: gdouble
   method brush-opacity is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_DOUBLE );
+    my GLib::Value $gv .= new( G_TYPE_DOUBLE );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('brush-opacity', $gv)
         );
         $gv.double;
@@ -116,10 +116,10 @@ class GIMP::Widget::BrushSelectButton is GIMP::Widget::SelectButton {
 
   # Type: gint
   method brush-paint-mode is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_INT );
+    my GLib::Value $gv .= new( G_TYPE_INT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('brush-paint-mode', $gv)
         );
         $gv.int;
@@ -133,10 +133,10 @@ class GIMP::Widget::BrushSelectButton is GIMP::Widget::SelectButton {
 
   # Type: gint
   method brush-spacing is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_INT );
+    my GLib::Value $gv .= new( G_TYPE_INT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('brush-spacing', $gv)
         );
         $gv.int;
@@ -150,10 +150,10 @@ class GIMP::Widget::BrushSelectButton is GIMP::Widget::SelectButton {
 
   # Type: gchar
   method title is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    my GLib::Value $gv .= new( G_TYPE_STRING );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('title', $gv)
         );
         $gv.string;

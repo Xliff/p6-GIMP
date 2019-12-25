@@ -6,6 +6,7 @@ use GIMP::Raw::Widgets;
 
 use GIMP::Widget::Raw::ColorArea;
 
+use GLib::Value;
 use GTK::DrawingArea;
 
 use GTK::Roles::Signals::Generic;
@@ -75,10 +76,10 @@ class GIMP::Widget::ColorArea is GTK::DrawingArea {
 
   # Type: gboolean
   method draw-border is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_BOOLEAN );
+    my GLib::Value $gv .= new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('draw-border', $gv)
         );
         $gv.boolean;
@@ -92,10 +93,10 @@ class GIMP::Widget::ColorArea is GTK::DrawingArea {
 
   # Type: GimpColorAreaType
   method type is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_UINT );
+    my GLib::Value $gv .= new( G_TYPE_UINT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('type', $gv)
         );
         GimpColorAreaTypeEnum( $gv.uint );

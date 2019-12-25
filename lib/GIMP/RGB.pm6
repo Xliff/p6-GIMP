@@ -9,7 +9,7 @@ use GTK::Raw::Utils;
 use GIMP::Raw::Types;
 use GIMP::Raw::RGB;
 
-use GTK::Compat::Value;
+use GLib::Value;
 use GLib::Object::ParamSpec;
 
 use GLib::Roles::StaticClass;
@@ -143,7 +143,7 @@ augment class GimpRGB {
   multi method value_get (GValue() $value, :$raw = False) {
     gimp_value_get_rgb($value, self);
 
-    $raw ?? $value !! GTK::Compat::Value.new($value);
+    $raw ?? $value !! GLib::Value.new($value);
   }
 
   method value_set (GValue() $value) {

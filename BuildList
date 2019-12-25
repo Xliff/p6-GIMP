@@ -2,6 +2,7 @@ Cairo
 GLib::Object::ParamSpec
 GLib::Roles::StaticClass
 GLib::Scanner
+GLib::Value
 GTK::Bin
 GTK::Box
 GTK::Button
@@ -11,7 +12,6 @@ GTK::Compat::RGBA
 GTK::Compat::Roles::Object
 GTK::Compat::Roles::TypedBuffer
 GTK::Compat::Types
-GTK::Compat::Value
 GTK::Container
 GTK::Dialog
 GTK::DrawingArea

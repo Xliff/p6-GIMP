@@ -8,6 +8,7 @@ use GTK::Raw::Types;
 
 use GTK::Raw::Table;
 
+use GLib::Value;
 use GTK::Container;
 
 our subset TableAncestry is export of Mu
@@ -81,10 +82,10 @@ class GTK::Table is GTK::Container {
 
   # Type: guint
   method column-spacing is rw  is also<column_spacing> {
-    my GTK::Compat::Value $gv .= new( G_TYPE_UINT );
+    my GLib::Value $gv .= new( G_TYPE_UINT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('column-spacing', $gv)
         );
         $gv.uint;
@@ -98,10 +99,10 @@ class GTK::Table is GTK::Container {
 
   # Type: gboolean
   method homogeneous is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_BOOLEAN );
+    my GLib::Value $gv .= new( G_TYPE_BOOLEAN );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('homogeneous', $gv)
         );
         $gv.boolean;
@@ -115,10 +116,10 @@ class GTK::Table is GTK::Container {
 
   # Type: guint
   method n-columns is rw  is also<n_columns> {
-    my GTK::Compat::Value $gv .= new( G_TYPE_UINT );
+    my GLib::Value $gv .= new( G_TYPE_UINT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('n-columns', $gv)
         );
         $gv.uint;
@@ -132,10 +133,10 @@ class GTK::Table is GTK::Container {
 
   # Type: guint
   method n-rows is rw  is also<n_rows> {
-    my GTK::Compat::Value $gv .= new( G_TYPE_UINT );
+    my GLib::Value $gv .= new( G_TYPE_UINT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('n-rows', $gv)
         );
         $gv.uint;
@@ -149,10 +150,10 @@ class GTK::Table is GTK::Container {
 
   # Type: guint
   method row-spacing is rw  is also<row_spacing> {
-    my GTK::Compat::Value $gv .= new( G_TYPE_UINT );
+    my GLib::Value $gv .= new( G_TYPE_UINT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('row-spacing', $gv)
         );
         $gv.uint;

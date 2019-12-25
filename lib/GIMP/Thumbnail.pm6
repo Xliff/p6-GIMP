@@ -5,6 +5,7 @@ use NativeCall;
 use GIMP::Raw::Types;
 use GIMP::Raw::Thumbnail;
 
+use GLib::Value;
 use GTK::Compat::Pixbuf;
 
 use GTK::Roles::Properties;
@@ -25,10 +26,10 @@ class GIMP::Thumbnail {
 
   # Type: gint64
   method image-filesize is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_INT64 );
+    my GLib::Value $gv .= new( G_TYPE_INT64 );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('image-filesize', $gv)
         );
         $gv.int64;
@@ -42,10 +43,10 @@ class GIMP::Thumbnail {
 
   # Type: gint
   method image-height is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_INT );
+    my GLib::Value $gv .= new( G_TYPE_INT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('image-height', $gv)
         );
         $gv.int;
@@ -59,10 +60,10 @@ class GIMP::Thumbnail {
 
   # Type: gchar
   method image-mimetype is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    my GLib::Value $gv .= new( G_TYPE_STRING );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('image-mimetype', $gv)
         );
         $gv.string;
@@ -76,10 +77,10 @@ class GIMP::Thumbnail {
 
   # Type: gint64
   method image-mtime is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_INT64 );
+    my GLib::Value $gv .= new( G_TYPE_INT64 );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('image-mtime', $gv)
         );
         $gv.int64;
@@ -93,10 +94,10 @@ class GIMP::Thumbnail {
 
   # Type: gint
   method image-num-layers is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_INT );
+    my GLib::Value $gv .= new( G_TYPE_INT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('image-num-layers', $gv)
         );
         $gv.int;
@@ -111,10 +112,10 @@ class GIMP::Thumbnail {
   # Type: GimpThumbState
   method image-state is rw  {
 
-    my GTK::Compat::Value $gv .= new( GIMP::Thumbnail::Enum.state_get_type );
+    my GLib::Value $gv .= new( GIMP::Thumbnail::Enum.state_get_type );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('image-state', $gv)
         );
         GimpThumbStateEnum( $gv.enum );
@@ -128,10 +129,10 @@ class GIMP::Thumbnail {
 
   # Type: gchar
   method image-type is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    my GLib::Value $gv .= new( G_TYPE_STRING );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('image-type', $gv)
         );
         $gv.string;
@@ -145,10 +146,10 @@ class GIMP::Thumbnail {
 
   # Type: gchar
   method image-uri is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_STRING );
+    my GLib::Value $gv .= new( G_TYPE_STRING );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('image-uri', $gv)
         );
         $gv.string;
@@ -162,10 +163,10 @@ class GIMP::Thumbnail {
 
   # Type: gint
   method image-width is rw  {
-    my GTK::Compat::Value $gv .= new( G_TYPE_INT );
+    my GLib::Value $gv .= new( G_TYPE_INT );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('image-width', $gv)
         );
         $gv.int;
@@ -179,10 +180,10 @@ class GIMP::Thumbnail {
 
   # Type: GimpThumbState
   method thumb-state is rw  {
-    my GTK::Compat::Value $gv .= new( GIMP::Thumbnail::Enum.state_get_type );
+    my GLib::Value $gv .= new( GIMP::Thumbnail::Enum.state_get_type );
     Proxy.new(
       FETCH => -> $ {
-        $gv = GTK::Compat::Value.new(
+        $gv = GLib::Value.new(
           self.prop_get('thumb-state', $gv)
         );
         GimpThumbStateEnum( $gv.enum );
