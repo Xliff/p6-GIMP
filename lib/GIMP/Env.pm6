@@ -72,7 +72,7 @@ class GIMP::Env {
 
     my $pl = gimp_path_parse($path, $m, $c, $cf);
     $check_failed = $cf[0] ??
-      ( $glist ?? $cf[0] !! GTK::Compat::GList.new($cf[0]) )
+      ( $glist ?? $cf[0] !! GLib::GList.new($cf[0]) )
       !!
       Nil;
     $check_failed = ($check_failed but GTK::Compat::ListData[Str]).Array
@@ -81,7 +81,7 @@ class GIMP::Env {
     return Nil unless $pl;
     return $pl if     $glist;
 
-    $pl = $pl but GTK::Compat::Roles::ListData[Str];
+    $pl = $pl but GLib::Roles::ListData[Str];
     $all.not ?? $pl.Array !! ($pl.Array, $check_failed);
   }
 
