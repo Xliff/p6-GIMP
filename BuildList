@@ -1,5 +1,6 @@
 Cairo
 GLib::Object::ParamSpec
+GLib::Roles::Object
 GLib::Roles::StaticClass
 GLib::Roles::TypedBuffer
 GLib::Scanner
@@ -10,7 +11,6 @@ GTK::Button
 GTK::CellRenderer
 GTK::Compat::Pixbuf
 GTK::Compat::RGBA
-GTK::Compat::Roles::Object
 GTK::Compat::Types
 GTK::Container
 GTK::Dialog

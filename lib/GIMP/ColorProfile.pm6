@@ -7,10 +7,10 @@ use GIMP::Raw::ColorProfile;
 
 use GTK::Raw::Utils;
 
-use GTK::Compat::Roles::Object;
+use GLib::Roles::Object;
 
 class GIMP::ColorProfile {
-  also does GTK::Compat::Roles::Object;
+  also does GLib::Roles::Object;
 
   has GimpColorProfile $!cp;
 
