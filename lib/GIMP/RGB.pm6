@@ -175,7 +175,7 @@ augment class GimpRGB {
 
     # ($n, $c)».&gfree;
     my @colors = CStringArrayToArray($n[0], $num);
-    my @rgbs = GTK::Compat::Roles::TypedBuffer.new($c[0]).Array;
+    my @rgbs = GLib::Roles::TypedBuffer.new($c[0]).Array;
 
     ($names, $colors) = (@colors, @rgbs);
   }

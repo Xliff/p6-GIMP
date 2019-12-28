@@ -10,7 +10,7 @@ use GLib::Log;
 use GIMP::Main;
 use GIMP::PDB::Plugin;
 
-use GTK::Compat::Roles::TypedBuffer;
+use GLib::Roles::TypedBuffer;
 
 sub query {
   my @args = (
@@ -42,7 +42,7 @@ sub run (
   gint $n-vals is rw,
   gpointer $return_vals
 ) {
-  my $v = GTK::Compat::Roles::TypedBuffer[GimpParam].new( size => 1 );
+  my $v = GLib::Roles::TypedBuffer[GimpParam].new( size => 1 );
   my $param = GTK::Compat::TypedBuffer[GimpParam].new($param-buf);
   my $value = GimpParam.new;
 

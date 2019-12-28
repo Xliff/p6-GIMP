@@ -7,7 +7,7 @@ use GIMP::PDB::Raw::Palette;
 
 use GLib::Roles::StaticClass;
 
-use GTK::Compat::Roles::TypedBuffer;
+use GLib::Roles::TypedBuffer;
 use GLib::Roles::StaticClass;
 use GIMP::PDB::Roles::Assumable;
 
@@ -93,7 +93,7 @@ class GIMP::PDB::Palette {
     $num_colors = $n;
 
     return $rv if $raw;
-    my $b = GTK::Compat::Roles::TypedBuffer[GimpRGB].new($rv);
+    my $b = GLib::Roles::TypedBuffer[GimpRGB].new($rv);
     $b.setSize($n, :forced);
     $b.Array;
   }

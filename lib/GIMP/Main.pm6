@@ -9,7 +9,7 @@ use GIMP::Raw::Main;
 
 use GLib::Roles::StaticClass;
 
-use GTK::Compat::Roles::TypedBuffer;
+use GLib::Roles::TypedBuffer;
 
 package GIMP::MainVar {
   our $PLUG_IN_INFO is export;
@@ -34,7 +34,7 @@ class GIMP::Main {
   { * }
 
   multi method destroy_paramdefs (
-    GTK::Compat::Roles::TypedBuffer[GimpParamDef] $defs
+    GLib::Roles::TypedBuffer[GimpParamDef] $defs
   ) {
     samewith($defs.p, $defs.size);
   }
@@ -48,7 +48,7 @@ class GIMP::Main {
   { * }
 
   multi method destroy_params (
-    GTK::Compat::Roles::TypedBuffer[GimpParam] $defs
+    GLib::Roles::TypedBuffer[GimpParam] $defs
   ) {
     samewith($defs.p, $defs.size);
   }
@@ -132,8 +132,8 @@ class GIMP::Main {
       unless @params.all ~~ GimpParamDef;
     die '@returns must only contain GimpParamDef elements!'
       unless @returns.all ~~ GimpParamDef;
-    my $p = GTK::Compat::Roles::TypedBuffer[GimpParamDef].new(@params);
-    my $r = GTK::Compat::Roles::TypedBuffer[GimpParamDef].new(@returns);
+    my $p = GLib::Roles::TypedBuffer[GimpParamDef].new(@params);
+    my $r = GLib::Roles::TypedBuffer[GimpParamDef].new(@returns);
 
     samewith(
       $name,
@@ -207,8 +207,8 @@ class GIMP::Main {
       unless @params.all ~~ GimpParamDef;
     die '@returns must only contain GimpParamDef elements!'
       unless @returns.all ~~ GimpParamDef;
-    my $p = GTK::Compat::Roles::TypedBuffer[GimpParamDef].new(@params);
-    my $r = GTK::Compat::Roles::TypedBuffer[GimpParamDef].new(@returns);
+    my $p = GLib::Roles::TypedBuffer[GimpParamDef].new(@params);
+    my $r = GLib::Roles::TypedBuffer[GimpParamDef].new(@returns);
 
     samewith(
       $name,
@@ -303,7 +303,7 @@ class GIMP::Main {
     return Nil unless $p;
     return $p  if $raw;
 
-    GTK::Compat::Roles::TypedBuffer[GimpParam].new($p);
+    GLib::Roles::TypedBuffer[GimpParam].new($p);
   }
 
   method shm_ID {
