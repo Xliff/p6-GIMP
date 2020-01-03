@@ -2,7 +2,7 @@ use v6;
 
 use NativeCall;
 
-use GTK::Roles::Pointers;
+use GLib::Roles::Pointers;
 
 unit package GIMP::Raw::Definitions;
 
@@ -11,11 +11,11 @@ constant forced = 4;
 
 constant Babl      is export := Pointer;
 
-class GimpConfig        is repr<CPointer> does GTK::Roles::Pointers is export {}
-class GimpConfigWriter  is repr<CPointer> does GTK::Roles::Pointers is export {}
-class GimpColorProfile  is repr<CPointer> does GTK::Roles::Pointers is export {}
-class GimpThumbnail     is repr<CPointer> does GTK::Roles::Pointers is export {}
-class GimpValueArray    is repr<CPointer> does GTK::Roles::Pointers is export {}
+class GimpConfig        is repr<CPointer> does GLib::Roles::Pointers is export {}
+class GimpConfigWriter  is repr<CPointer> does GLib::Roles::Pointers is export {}
+class GimpColorProfile  is repr<CPointer> does GLib::Roles::Pointers is export {}
+class GimpThumbnail     is repr<CPointer> does GLib::Roles::Pointers is export {}
+class GimpValueArray    is repr<CPointer> does GLib::Roles::Pointers is export {}
 
 constant GIMP_RGB_INTENSITY_RED   is export = 0.30;
 constant GIMP_RGB_INTENSITY_GREEN is export = 0.59;
