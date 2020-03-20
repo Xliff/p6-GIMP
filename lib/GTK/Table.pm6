@@ -84,7 +84,7 @@ class GTK::Table is GTK::Container {
   method column-spacing is rw  is also<column_spacing> {
     my GLib::Value $gv .= new( G_TYPE_UINT );
     Proxy.new(
-      FETCH => -> $ {
+      FETCH => sub ($) {
         $gv = GLib::Value.new(
           self.prop_get('column-spacing', $gv)
         );
@@ -101,7 +101,7 @@ class GTK::Table is GTK::Container {
   method homogeneous is rw  {
     my GLib::Value $gv .= new( G_TYPE_BOOLEAN );
     Proxy.new(
-      FETCH => -> $ {
+      FETCH => sub ($) {
         $gv = GLib::Value.new(
           self.prop_get('homogeneous', $gv)
         );
@@ -118,7 +118,7 @@ class GTK::Table is GTK::Container {
   method n-columns is rw  is also<n_columns> {
     my GLib::Value $gv .= new( G_TYPE_UINT );
     Proxy.new(
-      FETCH => -> $ {
+      FETCH => sub ($) {
         $gv = GLib::Value.new(
           self.prop_get('n-columns', $gv)
         );
@@ -135,7 +135,7 @@ class GTK::Table is GTK::Container {
   method n-rows is rw  is also<n_rows> {
     my GLib::Value $gv .= new( G_TYPE_UINT );
     Proxy.new(
-      FETCH => -> $ {
+      FETCH => sub ($) {
         $gv = GLib::Value.new(
           self.prop_get('n-rows', $gv)
         );
@@ -152,7 +152,7 @@ class GTK::Table is GTK::Container {
   method row-spacing is rw  is also<row_spacing> {
     my GLib::Value $gv .= new( G_TYPE_UINT );
     Proxy.new(
-      FETCH => -> $ {
+      FETCH => sub ($) {
         $gv = GLib::Value.new(
           self.prop_get('row-spacing', $gv)
         );

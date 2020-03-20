@@ -17,12 +17,12 @@ role GIMP::Widget::Roles::Signals::BrushSelectButton {
     %!signals-gbsb{$signal} //= do {
       my $s = Supplier.new;
       $hid = g-connect-brush-set($obj, $signal,
-        -> $, $s, $d, $i1, $i2, $i3, $i4, $p, $b, $ud {
+        -> $, $s1, $d, $i1, $i2, $i3, $i4, $p, $b, $ud {
           CATCH {
             default { $s.note($_) }
           }
 
-          $s.emit( [self, $s, $d, $i1, $i2, $i3, $i4, $p, $b, $ud ] );
+          $s.emit( [self, $s1, $d, $i1, $i2, $i3, $i4, $p, $b, $ud ] );
         },
         Pointer, 0
       );

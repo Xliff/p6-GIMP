@@ -17,12 +17,12 @@ role GIMP::Widget::Roles::Signals::FontSelectButton {
     %!signals-gfsb{$signal} //= do {
       my $s = Supplier.new;
       $hid = g-connect-font-set($obj, $signal,
-        -> $, $s, $b, $ud {
+        -> $, $s1, $b, $ud {
           CATCH {
             default { $s.note($_) }
           }
 
-          $s.emit( [self, $s, $b, $ud ] );
+          $s.emit( [self, $s1, $b, $ud ] );
         },
         Pointer, 0
       );

@@ -17,12 +17,12 @@ role GIMP::Widget::Roles::Signals::Browser {
     %!signals-gb{$signal} //= do {
       my $s = Supplier.new;
       $hid = g-connect-search($obj, $signal,
-        -> $, $s, $i, $ud {
+        -> $, $s1, $i, $ud {
           CATCH {
             default { $s.note($_) }
           }
 
-          $s.emit( [self, $s, $i, $ud ] );
+          $s.emit( [self, $s1, $i, $ud ] );
         },
         Pointer, 0
       );
