@@ -18,12 +18,12 @@ role GIMP::Widget::Roles::Signals::GradientSelectButton {
     %!signals-ggsb{$signal} //= do {
       my $s = Supplier.new;
       $hid = g-connect-gradient-set($obj, $signal,
-        -> $, $s, $i, $gp, $b, $ud {
+        -> $, $s1, $i, $gp, $b, $ud {
           CATCH {
             default { $s.note($_) }
           }
 
-          $s.emit( [self, $s, $i, $gp, $b, $ud ] );
+          $s.emit( [self, $s1, $i, $gp, $b, $ud ] );
         },
         Pointer, 0
       );

@@ -18,12 +18,12 @@ role GIMP::Widget::Roles::Signals::PaletteSelectButton {
     %!signals-gpsb{$signal} //= do {
       my $s = Supplier.new;
       $hid = g-connect-palette-set($obj, $signal,
-        -> $, $s, $b, $ud {
+        -> $, $s1, $b, $ud {
           CATCH {
             default { $s.note($_) }
           }
 
-          $s.emit( [self, $s, $b, $ud ] );
+          $s.emit( [self, $s1, $b, $ud ] );
         },
         Pointer, 0
       );
